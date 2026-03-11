@@ -161,7 +161,7 @@ a:hover {
 
 .profile-photo-placeholder {
   width: 140px;
-  height: 200px;
+  height: 180px;
   border-radius: 50%;
   border: 3px solid var(--color-border);
   background: linear-gradient(135deg, #c8d0e8, #e0e4f0);
@@ -753,5 +753,6 @@ a:hover {
     grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
   }
 }
+
 
 
