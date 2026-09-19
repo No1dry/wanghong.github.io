@@ -54,6 +54,7 @@
           <div class="pub-links">
             <a href="PDF/Enhancing firefighter safety and efficiency throughUAV-assisted AI-based human .pdf">[PDF]</a>
             <a href="#" class="abstract-toggle">[Abstract]</a>
+            <a href="#" class="citation-toggle">[Citation]</a>
           </div>
 
           <div class="pub-abstract">
@@ -86,6 +87,7 @@
           <div class="pub-links">
             <a href="PDF/Enhancing Human Detection in Post-disaster ScenariosThrough Generative Adversar.pdf">[PDF]</a>
             <a href="#" class="abstract-toggle">[Abstract]</a>
+            <a href="#" class="citation-toggle">[Citation]</a>
           </div>
 
           <div class="pub-abstract">
@@ -118,6 +120,7 @@
           <div class="pub-links">
             <a href="PDF/Autonomous Video Transmission and Air-to-GroundCoordination in UAV-Swarm-Aided .pdf">[PDF]</a>
             <a href="#" class="abstract-toggle">[Abstract]</a>
+            <a href="#" class="citation-toggle">[Citation]</a>
           </div>
 
           <div class="pub-abstract">
@@ -150,6 +153,7 @@
           <div class="pub-links">
             <a href="PDF/Emotion Recognition in Dance  A Novel Approach UsingLaban Movement Analysis and Artificial Intelligence.pdf">[PDF]</a>
             <a href="#" class="abstract-toggle">[Abstract]</a>
+            <a href="#" class="citation-toggle">[Citation]</a>
           </div>
 
           <div class="pub-abstract">
@@ -182,6 +186,7 @@
           <div class="pub-links">
             <a href="PDF/An AI-Based Action Detection UAV System to ImproveFirefighter Safety.pdf">[PDF]</a>
             <a href="#" class="abstract-toggle">[Abstract]</a>
+            <a href="#" class="citation-toggle">[Citation]</a>
           </div>
 
           <div class="pub-abstract">
@@ -214,6 +219,7 @@
           <div class="pub-links">
             <a href="PDF/An autonomous robot for shell and tube heat exchangerinspection.pdf">[PDF]</a>
             <a href="#" class="abstract-toggle">[Abstract]</a>
+            <a href="#" class="citation-toggle">[Citation]</a>
           </div>
 
           <div class="pub-abstract">
@@ -245,6 +251,7 @@
           <div class="pub-links">
             <a href="PDF/Inverse design of two-dimensional graphene h-BN hybrids bya regressional and co.pdf">[PDF]</a>
             <a href="#" class="abstract-toggle">[Abstract]</a>
+            <a href="#" class="citation-toggle">[Citation]</a>
           </div>
 
           <div class="pub-abstract">
@@ -276,6 +283,7 @@
           <div class="pub-links">
             <a href="PDF/Rapid Identification of X-ray Diffraction Patterns Basedon Very Limited Data by..pdf">[PDF]</a>
             <a href="#" class="abstract-toggle">[Abstract]</a>
+            <a href="#" class="citation-toggle">[Citation]</a>
           </div>
 
           <div class="pub-abstract">
@@ -310,6 +318,89 @@ document.querySelectorAll(".abstract-toggle").forEach(btn=>{
         abstract.style.display="block"
     }
 
+  })
+})
+
+const citationTexts = [
+String.raw`@article{wang2025firefighter,
+  author  = {Wang, Hong and Zhao, Chenyang and Feng, Yuan and Huang, Xu and Qu, Chenyi and Zhu, Yaguang and Xin, Ming and Guo, Wenbin},
+  title   = {Enhancing firefighter safety and efficiency through UAV-assisted AI-based human motion recognition system},
+  journal = {Expert Systems with Applications},
+  year    = {2025},
+  pages   = {128176}
+}`,
+String.raw`@inproceedings{qu2025humanDetection,
+  author    = {Qu, Chengyi and Hao, Xiaodong and Ma, Feiyu and Hui, Jizhuang and Guo, Wenbin and Wang, Hong},
+  title     = {Enhancing Human Detection in Post-Disaster Scenarios through Generative Adversarial Networks},
+  booktitle = {International Conference on Human-Computer Interaction},
+  pages     = {257--272},
+  year      = {2025}
+}`,
+String.raw`@inproceedings{qu2025uavTransmission,
+  author    = {Qu, Chengyi and Hao, Xiaodong and Ma, Feiyu and Hui, Jizhuang and Guo, Wenbin and Wang, Hong},
+  title     = {Autonomous Video Transmission and Air-to-Ground Coordination in UAV-Swarm-Aided Disaster Response Platform},
+  booktitle = {International Conference on Human-Computer Interaction},
+  pages     = {339--355},
+  year      = {2025}
+}`,
+String.raw`@inproceedings{wang2024danceEmotion,
+  author    = {Wang, Hong and Zhao, Chenyang and Huang, Xu and Zhu, Yaguang and Qu, Chengyi and Guo, Wenbin},
+  title     = {Emotion Recognition in Dance: A Novel Approach Using Laban Movement Analysis and Artificial Intelligence},
+  booktitle = {International Conference on Human-Computer Interaction},
+  pages     = {189--201},
+  year      = {2024}
+}`,
+String.raw`@inproceedings{wang2023actionDetection,
+  author    = {Wang, Hong and Feng, Yuan and Huang, Xu and Guo, Wenbin},
+  title     = {An AI-Based Action Detection UAV System to Improve Firefighter Safety},
+  booktitle = {International Conference on Human-Computer Interaction},
+  pages     = {632--641},
+  year      = {2023}
+}`,
+String.raw`@article{zheng2022heatExchanger,
+  author  = {Zheng, Bujingda and Su, Jheng-Wun and Xie, Yunchao and Miles, Jonathan and Wang, Hong and Gao, Wenxin and Xin, Ming and Lin, Jian},
+  title   = {An autonomous robot for shell and tube heat exchanger inspection},
+  journal = {Journal of Field Robotics},
+  volume  = {39},
+  number  = {8},
+  pages   = {1165--1177},
+  year    = {2022}
+}`,
+String.raw`@article{dong2020grapheneHBN,
+  author  = {Dong, Yuan and Li, Dawei and Zhang, Chi and Wu, Chuhan and Wang, Hong and Xin, Ming and Cheng, Jianlin and Lin, Jian},
+  title   = {Inverse design of two-dimensional graphene/h-BN hybrids by a regressional and conditional GAN},
+  journal = {Carbon},
+  volume  = {169},
+  pages   = {9--16},
+  year    = {2020}
+}`,
+String.raw`@article{wang2020xrd,
+  author  = {Wang, Hong and Xie, Yunchao and Li, Dawei and Deng, Heng and Zhao, Yunxin and Xin, Ming and Lin, Jian},
+  title   = {Rapid Identification of X-ray Diffraction Patterns Based on Very Limited Data by Interpretable Convolutional Neural Networks},
+  journal = {Journal of Chemical Information and Modeling},
+  volume  = {60},
+  number  = {4},
+  pages   = {2004--2011},
+  year    = {2020}
+}`
+]
+
+document.querySelectorAll(".citation-toggle").forEach((btn,index)=>{
+  btn.addEventListener("click",function(e){
+    e.preventDefault()
+
+    const info=this.closest(".pub-info")
+    let citation=info.querySelector(".pub-citation")
+
+    if(!citation){
+      citation=document.createElement("pre")
+      citation.className="pub-citation"
+      citation.innerHTML="<code></code>"
+      citation.querySelector("code").textContent=citationTexts[index]
+      info.appendChild(citation)
+    }
+
+    citation.style.display=citation.style.display==="block" ? "none" : "block"
   })
 })
 
