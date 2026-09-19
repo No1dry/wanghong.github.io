@@ -30,6 +30,38 @@
 
     <div class="pub-list">
 
+      <!-- New Paper 0 -->
+      <div class="pub-item">
+
+        <div class="pub-image">
+          <img src="paper_photo/paper12.png" alt="paper">
+        </div>
+
+        <div class="pub-info">
+
+          <div class="pub-title">
+            Cross-Domain Adversarial Structural Deformation Model for Post-Disaster Image Generation
+          </div>
+
+          <div class="pub-authors">
+            Chengyi Qu, Xiaodong Hao, Xu Huang, Wenbin Guo, Jizhuang Hui, and Hong Wang.
+          </div>
+
+          <div class="pub-venue">
+            2025 Fourteenth International Conference on Image Processing, Theory, Tools and Applications (IPTA), 2025
+          </div>
+
+          <div class="pub-links">
+            <a href="#" class="abstract-toggle">[Abstract]</a>
+            <a href="#" class="citation-toggle">[Citation]</a>
+          </div>
+
+          <div class="pub-abstract">
+            Generative Adversarial Networks (GANs) offer a powerful framework for synthesizing post-disaster imagery, but their application to building damage assessment is limited by difficulties in generating realistic images of severely deformed structures, slow inference speeds that hinder real-time use in emergency scenarios, and a reliance on paired pre- and post-disaster data, which are rarely available in datasets collected by unmanned aerial vehicles (UAVs). To address these challenges, we propose Struct-CycleGAN, a cross-domain GAN model designed to generate high-fidelity and structurally consistent post-disaster building images from unpaired data. The model improves upon prior limitations in texture transformation and structural deformation synthesis while significantly enhancing inference speed for practical deployment. Compared to a commonly used state-of-the-art method, Struct-CycleGAN achieves nearly four times faster inference and obtains a perceptual quality score of 23.7 based on Fréchet Inception Distance (FID) evaluation. Further validation using a ResNet UNet segmentation framework shows that undamaged building areas in pre-disaster images decrease from 45% to 22% in the generated post-disaster outputs, demonstrating the model's effectiveness in simulating structural degradation. This work provides a scalable solution for synthesizing post-disaster building scenarios, supporting rapid damage assessment, emergency preparedness, and intelligent reconstruction efforts.
+          </div>
+        </div>
+      </div>
+
       <!-- New Paper 1 -->
       <div class="pub-item">
 
@@ -421,6 +453,14 @@ document.querySelectorAll(".abstract-toggle").forEach(btn=>{
 })
 
 const citationTexts = [
+String.raw`@inproceedings{qu2025structCycleGAN,
+  author    = {Qu, Chengyi and Hao, Xiaodong and Huang, Xu and Guo, Wenbin and Hui, Jizhuang and Wang, Hong},
+  title     = {Cross-Domain Adversarial Structural Deformation Model for Post-Disaster Image Generation},
+  booktitle = {2025 Fourteenth International Conference on Image Processing, Theory, Tools and Applications (IPTA)},
+  publisher = {IEEE},
+  address   = {Istanbul, T{\"u}rkiye},
+  year      = {2025}
+}`,
 String.raw`@article{zhang2026vafastnavi,
   author  = {Zhang, Yang and Jing, Shengxi and Wang, Fengxiang and Yuan, Feng and Wang, Hong},
   title   = {VA-FastNavi-MARL: Real-Time Robot Control with Multimedia-Driven Meta-Reinforcement Learning},
