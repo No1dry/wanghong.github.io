@@ -1,256 +1,135 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hong Wang | School of Artificial Intelligence, Hubei University</title>
+  <script src="assets/js/site-theme.js"></script>
+  <script src="assets/js/site-language.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title data-i18n="news.title">News · EI Lab</title>
+  <meta name="description" content="Research milestones, achievements, and events from the Embodied Intelligence Lab at Hubei University.">
   <link rel="stylesheet" href="assets/css/style.css" />
-  <style>
-    /* 展开/收起按钮样式 */
-    .toggle-btn {
-      margin: 8px 0;
-      padding: 4px 10px;
-      font-size: 14px;
-      cursor: pointer;
-      background: #f0f7ff;
-      border: 1px solid #cce4ff;
-      border-radius: 4px;
-      color: #0066cc;
-    }
-    /* 媒体内容默认隐藏 */
-    .news-media {
-      display: none;
-      margin-top: 10px;
-    }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap">
+  <link rel="stylesheet" href="assets/css/news-timeline.css">
+  <script src="assets/js/i18n-news.js"></script>
+  <link rel="stylesheet" href="assets/css/site-shell.css">
+  <link rel="stylesheet" href="assets/css/site-background.css">
+  <script src="assets/js/site-background.js" defer></script>
+  <link rel="stylesheet" href="assets/css/news-electric-border.css">
+  <script src="assets/js/news-electric-border.js" defer></script>
 </head>
-<body>
+<body class="site-page news-timeline-page" data-page="news">
 
   <!-- ===== Navigation ===== -->
-  <nav class="navbar">
-    <div class="navbar-inner">
-      <ul class="navbar-links">
-        <li><a href="index.html">Homepage</a></li>
-        <li><a href="lab.html">Lab</a></li>
-        <li><a href="publications.html">Publications</a></li>
-        <li><a href="news.html" class="active">News</a></li>
-        <li><a href="join_us.html">Join Us</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <!-- ===== Main Content ===== -->
-  <div class="page-wrapper">
-  <div class="news-layout">
-    <h1 class="lab-title">News</h1>
-
-    <div class="news-list">
-      
-      <div class="news-item">
-        <div class="news-date">2026.6</div>
-        <div class="news-content">
-          One academic paper has been accepted by <strong>ICCC 2026</strong>.
-        </div>
-      </div>
-      
-      <div class="news-item">
-        <div class="news-date">2026.6</div>
-        <div class="news-content">
-          <a href="https://mp.weixin.qq.com/s/lja2DFNFyQK7A-C94MFOzw" 
-             style="color:#87CEEB; text-decoration:underline;"
-             onmouseover="this.style.color='#00BFFF'" 
-             onmouseout="this.style.color='#87CEEB'">
-             Master’s student Peng Zhang attended <strong>the Thematic Forum on Artificial Intelligence and Youth Empowerment</strong> hosted by Dongfeng Motor Group Co., Ltd.
-          </a>
-          <!-- 点击展开按钮 -->
-          <br><button class="toggle-btn" onclick="toggleMedia(this)">查看详情 ▼</button>
-          
-          <div class="news-media">
-            <img width="400" height="225" 
-                 src="images/AIluntan.jpg" 
-                 alt="AI Forum" 
-                 style="max-width:100%; height:auto; display:block;">
-          </div><br>
-        </div>
-      </div>
-
-      <div class="news-item">
-        <div class="news-date">2026.5</div>
-        <div class="news-content">
-          <a href="https://mp.weixin.qq.com/s/ZKvWB9YQoOu0-xn39bjq2g" 
-             style="color:#87CEEB; text-decoration:underline;"
-             onmouseover="this.style.color='#00BFFF'" 
-             onmouseout="this.style.color='#87CEEB'">
-             Prof. Hong Wang is one of the ten selected experts at the <strong>Wuhan Institute of Industrial Innovation and Development</strong>.
-          </a>
-          <!-- 点击展开按钮 -->
-          <br><button class="toggle-btn" onclick="toggleMedia(this)">查看详情 ▼</button>
-          
-          <div class="news-media">
-            <img width="400" height="225" 
-                 src="images/wcy.jpg" 
-                 alt="job fair" 
-                 style="max-width:100%; height:auto; display:block;">
-          </div><br>
-        </div>
-      </div>
-      
-      <div class="news-item">
-        <div class="news-date">2026.5</div>
-        <div class="news-content">
-          Submitted one academic papers to <strong>EMNLP 2026</strong>.
-        </div>
-      </div>
-
-      <div class="news-item">
-        <div class="news-date">2026.5</div>
-        <div class="news-content">
-          Submitted one academic papers to the IEEE/CIC International Conference on Communications in China(<strong>ICCC 2026</strong>).
-        </div>
-      </div>
-
-      <div class="news-item">
-        <div class="news-date">2026.5</div>
-        <div class="news-content">
-          <a href="https://mp.weixin.qq.com/s/H8zbwVyQoGDkhouzNo_GSA" 
-             style="color:#87CEEB; text-decoration:underline;"
-             onmouseover="this.style.color='#00BFFF'" 
-             onmouseout="this.style.color='#87CEEB'">
-          Our team was invited to deliver a robot performance at the 2026 May Fourth Youth Day themed event of Hubei University.
-          </a>
-        </div>
-      </div>
-
-      <!-- 2026.4 -->
-      <div class="news-item">
-        <div class="news-date">2026.4</div>
-        <div class="news-content">
-          Our Team Collaborates with Gu Yu’s Team from Hubei University’s School of Journalism and Communication to Win <strong>Award in "Challenge Cup" Hubei University Competition</strong>.
-
-        <!-- 点击展开按钮 -->
-          <br><button class="toggle-btn" onclick="toggleMedia(this)">查看详情 ▼</button>
-          
-          <div class="news-media">
-            <video width="560" height="315" controls style="max-width:100%;">
-              <source src="video/tiaozhan.mp4" type="video/mp4">
-              您的浏览器不支持视频播放
-            </video>
-          </div><br>
-        </div>
-      </div>
-
-      <div class="news-item">
-        <div class="news-date">2026.4</div>
-        <div class="news-content">
-          <a href="https://mp.weixin.qq.com/s/vxZbCALDr9FileYLNhP9hQ" 
-             style="color:#87CEEB; text-decoration:underline;"
-             onmouseover="this.style.color='#00BFFF'" 
-             onmouseout="this.style.color='#87CEEB'">
-             Our team was invited to represent the School of Artificial Intelligence, Hubei University at the unveiling ceremony of AISW Dai Jiashan OPC Community during the Wuhan Sensor World Expo.
-          </a>
-        </div>
-      </div>
-
-      <!-- 2026.3 招聘会 图片 -->
-      <div class="news-item">
-        <div class="news-date">2026.3</div>
-        <div class="news-content">
-          <a href="https://mp.weixin.qq.com/s/fkVk9JQNH56naZBzYfFSXw" 
-             style="color:#87CEEB; text-decoration:underline;"
-             onmouseover="this.style.color='#00BFFF'" 
-             onmouseout="this.style.color='#87CEEB'">
-          Our team was invited to showcase a recruitment project at the job fair organized by the Department of Human Resources and Social Security of Hubei Province.
-          </a>
-          <!-- 点击展开按钮 -->
-          <br><button class="toggle-btn" onclick="toggleMedia(this)">查看详情 ▼</button>
-          
-          <div class="news-media">
-            <img width="400" height="225" 
-                 src="images/zhaopinghui.jpg" 
-                 alt="job fair" 
-                 style="max-width:100%; height:auto; display:block;">
-          </div><br>
-        </div>
-      </div>
-
-      <!-- 2026.3 创新创业中心 -->
-      <div class="news-item">
-        <div class="news-date">2026.3</div>
-        <div class="news-content">
-          <a href="https://mp.weixin.qq.com/s/7yih4c-OnrWdCiYH0f_Dxw" 
-             style="color:#87CEEB; text-decoration:underline;"
-             onmouseover="this.style.color='#00BFFF'" 
-             onmouseout="this.style.color='#87CEEB'">
-             Our team was invited to present our project at the unveiling ceremony of the Innovation and Entrepreneurship Service Center at Hubei University.
-          </a>
-        </div>
-      </div>
-
-      <!-- 2026.3 ICME 2026 -->
-      <div class="news-item">
-        <div class="news-date">2026.3</div>
-        <div class="news-content">
-          One academic paper has been accepted by <strong>ICME 2026</strong>.
-        </div>
-      </div>
-
-      <!-- 2026.1 -->
-      <div class="news-item">
-        <div class="news-date">2026.1</div>
-        <div class="news-content">
-          Submitted two academic papers to <strong>ICME 2026</strong>.
-        </div>
-      </div>
-
-      <!-- 2025.12 -->
-      <div class="news-item">
-        <div class="news-date">2025.12</div>
-        <div class="news-content">
-          Submitted 5 academic papers to <strong>ICAPS 2026</strong>.
-        </div>
-      </div>
-
-      <!-- 2025.11 辩论赛 视频 -->
-      <div class="news-item">
-        <div class="news-date">2025.11</div>
-        <div class="news-content">
-          <strong>Zhang Peng, Zhao Xun and Pei Yaoqiang</strong> won the second prize at the 1st China (International) Robotics Debate Competition.
-          
-          <!-- 点击展开按钮 -->
-          <button class="toggle-btn" onclick="toggleMedia(this)">查看详情 ▼</button>
-          
-          <div class="news-media">
-            <video width="560" height="315" controls style="max-width:100%;">
-              <source src="video/debate.mp4" type="video/mp4">
-              您的浏览器不支持视频播放
-            </video>
-          </div>
-        </div>
+  <header class="site-header">
+    <a class="wordmark" href="index.html" aria-label="EI Lab homepage" data-i18n-aria-label="site.homeLabel">EI <em>Lab</em></a>
+    <nav class="site-nav" aria-label="Main navigation" data-i18n-aria-label="site.navigation">
+      <a href="index.html" data-i18n="site.homepage">Homepage</a>
+      <a href="lab.html" data-i18n="site.lab">Lab</a>
+      <a href="publications.html" data-i18n="site.publications">Publications</a>
+      <a href="news.html" data-i18n="site.news" aria-current="page">News</a>
+      <a href="join_us.html" data-i18n="site.join">Join Us</a>
+    </nav>
+    <div class="header-actions">
+      <button id="themeBtn" class="theme-btn" type="button" aria-pressed="false" aria-label="Switch to light background">
+        <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 1v3m0 16v3M1 12h3m16 0h3M4.2 4.2l2.1 2.1m11.4 11.4 2.1 2.1M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"></path></svg>
+        <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.4 15.5A9 9 0 0 1 8.5 3.6a9 9 0 1 0 11.9 11.9Z"></path></svg>
+        <span id="themeLabel" aria-hidden="true">Light</span>
+      </button>
+      <div class="language-switch" role="group" aria-label="Language" data-i18n-aria-label="site.language">
+        <button type="button" data-language="en" aria-pressed="true" aria-label="Switch to English" data-i18n-aria-label="site.english">EN</button>
+        <span aria-hidden="true">/</span>
+        <button type="button" data-language="zh" aria-pressed="false" aria-label="Switch to Chinese" data-i18n-aria-label="site.chinese">CN</button>
       </div>
     </div>
-  </div>
+  </header>
+
+  <main aria-labelledby="newsTitle" class="nt-page">
+<aside class="nt-intro">
+<p class="nt-kicker" data-i18n="news.kicker">Life at EI Lab</p>
+<h1 data-i18n="news.heading" id="newsTitle">News</h1>
+<p class="nt-description" data-i18n="news.description">Research milestones, shared achievements, and moments from our lab.</p>
+<div aria-label="Filter news by category" class="nt-filters" data-i18n-aria-label="news.filters" role="group">
+<button aria-controls="timelineViewport" aria-pressed="true" class="nt-filter" data-news-filter="all" disabled="" type="button"><span data-i18n="news.all">All updates</span><span class="nt-filter-count">14</span></button>
+<button aria-controls="timelineViewport" aria-pressed="false" class="nt-filter" data-news-filter="publications" disabled="" type="button"><span data-i18n="news.publications">Publications</span><span class="nt-filter-count">06</span></button>
+<button aria-controls="timelineViewport" aria-pressed="false" class="nt-filter" data-news-filter="events" disabled="" type="button"><span data-i18n="news.events">Events</span><span class="nt-filter-count">05</span></button>
+<button aria-controls="timelineViewport" aria-pressed="false" class="nt-filter" data-news-filter="achievements" disabled="" type="button"><span data-i18n="news.achievements">Achievements</span><span class="nt-filter-count">03</span></button>
 </div>
-
-  <!-- Footer -->
-  <footer class="site-footer">
-    © 2024 王翃 (Hong Wang) · 湖北大学人工智能学院 · 
-    <a href="mailto:hong.wang@hubu.edu.cn">hong.wang@hubu.edu.cn</a>
-  </footer>
-
-  <!-- 展开/收起 JS -->
-  <script>
-    function toggleMedia(btn) {
-      // 找到相邻的媒体容器
-      const media = btn.nextElementSibling;
-      
-      if (media.style.display === 'block' || media.style.display === '') {
-        media.style.display = 'none';
-        btn.textContent = btn.textContent.replace('收起', '查看');
-      } else {
-        media.style.display = 'block';
-        btn.textContent = btn.textContent.replace('查看', '收起');
-      }
-    }
-  </script>
+<nav aria-label="Jump to year" class="nt-years" data-i18n-aria-label="news.years"><span data-i18n="news.archive">Archive</span><a aria-current="date" data-news-year="2026" href="#news-year-2026">2026</a><a data-news-year="2025" href="#news-year-2025">2025</a></nav>
+<div class="nt-reading"><div class="nt-reading-label"><span data-i18n="news.scroll">Scroll the timeline</span><span aria-hidden="true">↓</span></div><div aria-label="Timeline reading progress" aria-valuemax="100" aria-valuemin="0" aria-valuenow="0" class="nt-reading-bar" data-i18n-aria-label="news.progress" id="newsProgress" role="progressbar"></div></div>
+</aside>
+<section aria-labelledby="timelineTitle" class="nt-panel">
+<div class="nt-panel-top"><h2 data-i18n="news.fromLab" id="timelineTitle">From the lab</h2><p aria-live="polite" class="nt-status" id="newsStatus" role="status">14 updates · Newest first</p></div>
+<div aria-label="Lab news timeline. Scroll to browse updates." class="nt-viewport" data-i18n-aria-label="news.region" id="timelineViewport" role="region" tabindex="0">
+<div class="nt-track" id="timelineTrack">
+<section aria-labelledby="news-heading-2026" class="nt-year-group" data-year="2026" id="news-year-2026">
+<div class="nt-year-heading"><h3 id="news-heading-2026">2026</h3><span class="nt-year-count">12 updates</span></div>
+<article class="nt-item active" data-category="publications" data-year="2026" id="news-2026-06-1">
+<time aria-label="Jun 2026" class="nt-date" datetime="2026-06"><span class="nt-date-month" data-i18n="news.month.6">Jun</span><span class="nt-date-year">2026</span></time>
+<div class="nt-copy"><p class="nt-category" data-i18n="news.publications">Publications</p><p class="nt-text" data-i18n-html="news.item.1">One academic paper has been accepted by <strong>ICCC 2026</strong>.</p></div>
+</article>
+<article class="nt-item" data-category="events" data-year="2026" id="news-2026-06-2">
+<time aria-label="Jun 2026" class="nt-date" datetime="2026-06"><span class="nt-date-month" data-i18n="news.month.6">Jun</span><span class="nt-date-year">2026</span></time>
+<div class="nt-copy"><p class="nt-category" data-i18n="news.events">Events</p><p class="nt-text" data-i18n-html="news.item.2">Master’s student Peng Zhang attended <strong>the Thematic Forum on Artificial Intelligence and Youth Empowerment</strong> hosted by Dongfeng Motor Group Co., Ltd.</p><a class="nt-source" data-i18n="news.source" href="https://mp.weixin.qq.com/s/lja2DFNFyQK7A-C94MFOzw" rel="noopener noreferrer" target="_blank">Read source ↗</a><details class="nt-media-details"><summary data-i18n="news.photo">View photograph</summary><figure class="nt-media"><img alt="AI Forum" data-i18n-alt="news.alt.forum" decoding="async" height="225" loading="lazy" src="images/AIluntan.jpg" width="400"/></figure></details></div>
+</article>
+<article class="nt-item" data-category="achievements" data-year="2026" id="news-2026-05-3">
+<time aria-label="May 2026" class="nt-date" datetime="2026-05"><span class="nt-date-month" data-i18n="news.month.5">May</span><span class="nt-date-year">2026</span></time>
+<div class="nt-copy"><p class="nt-category" data-i18n="news.achievements">Achievements</p><p class="nt-text" data-i18n-html="news.item.3">Prof. Hong Wang is one of the ten selected experts at the <strong>Wuhan Institute of Industrial Innovation and Development</strong>.</p><a class="nt-source" data-i18n="news.source" href="https://mp.weixin.qq.com/s/ZKvWB9YQoOu0-xn39bjq2g" rel="noopener noreferrer" target="_blank">Read source ↗</a><details class="nt-media-details"><summary data-i18n="news.photo">View photograph</summary><figure class="nt-media"><img alt="Wuhan Institute of Industrial Innovation and Development" data-i18n-alt="news.alt.wcy" decoding="async" height="225" loading="lazy" src="images/wcy.jpg" width="400"/></figure></details></div>
+</article>
+<article class="nt-item" data-category="publications" data-year="2026" id="news-2026-05-4">
+<time aria-label="May 2026" class="nt-date" datetime="2026-05"><span class="nt-date-month" data-i18n="news.month.5">May</span><span class="nt-date-year">2026</span></time>
+<div class="nt-copy"><p class="nt-category" data-i18n="news.publications">Publications</p><p class="nt-text" data-i18n-html="news.item.4">Submitted one academic papers to <strong>EMNLP 2026</strong>.</p></div>
+</article>
+<article class="nt-item" data-category="publications" data-year="2026" id="news-2026-05-5">
+<time aria-label="May 2026" class="nt-date" datetime="2026-05"><span class="nt-date-month" data-i18n="news.month.5">May</span><span class="nt-date-year">2026</span></time>
+<div class="nt-copy"><p class="nt-category" data-i18n="news.publications">Publications</p><p class="nt-text" data-i18n-html="news.item.5">Submitted one academic papers to the IEEE/CIC International Conference on Communications in China(<strong>ICCC 2026</strong>).</p></div>
+</article>
+<article class="nt-item" data-category="events" data-year="2026" id="news-2026-05-6">
+<time aria-label="May 2026" class="nt-date" datetime="2026-05"><span class="nt-date-month" data-i18n="news.month.5">May</span><span class="nt-date-year">2026</span></time>
+<div class="nt-copy"><p class="nt-category" data-i18n="news.events">Events</p><p class="nt-text" data-i18n-html="news.item.6">Our team was invited to deliver a robot performance at the 2026 May Fourth Youth Day themed event of Hubei University.</p><a class="nt-source" data-i18n="news.source" href="https://mp.weixin.qq.com/s/H8zbwVyQoGDkhouzNo_GSA" rel="noopener noreferrer" target="_blank">Read source ↗</a></div>
+</article>
+<article class="nt-item" data-category="achievements" data-year="2026" id="news-2026-04-7">
+<time aria-label="Apr 2026" class="nt-date" datetime="2026-04"><span class="nt-date-month" data-i18n="news.month.4">Apr</span><span class="nt-date-year">2026</span></time>
+<div class="nt-copy"><p class="nt-category" data-i18n="news.achievements">Achievements</p><p class="nt-text" data-i18n-html="news.item.7">Our Team Collaborates with Gu Yu’s Team from Hubei University’s School of Journalism and Communication to Win <strong>Award in "Challenge Cup" Hubei University Competition</strong>.</p><details class="nt-media-details"><summary data-i18n="news.video">Watch event video</summary><figure class="nt-media"><video controls="" playsinline="" preload="none"><source src="https://raw.githubusercontent.com/No1dry/wanghong.github.io/main/video/tiaozhang.mp4" type="video/mp4"/><span data-i18n="news.videoFallback">Your browser does not support video playback.</span></video><figcaption><a data-i18n="news.openVideo" href="https://raw.githubusercontent.com/No1dry/wanghong.github.io/main/video/tiaozhang.mp4" rel="noopener noreferrer" target="_blank">Open video ↗</a></figcaption></figure></details></div>
+</article>
+<article class="nt-item" data-category="events" data-year="2026" id="news-2026-04-8">
+<time aria-label="Apr 2026" class="nt-date" datetime="2026-04"><span class="nt-date-month" data-i18n="news.month.4">Apr</span><span class="nt-date-year">2026</span></time>
+<div class="nt-copy"><p class="nt-category" data-i18n="news.events">Events</p><p class="nt-text" data-i18n-html="news.item.8">Our team was invited to represent the School of Artificial Intelligence, Hubei University at the unveiling ceremony of AISW Dai Jiashan OPC Community during the Wuhan Sensor World Expo.</p><a class="nt-source" data-i18n="news.source" href="https://mp.weixin.qq.com/s/vxZbCALDr9FileYLNhP9hQ" rel="noopener noreferrer" target="_blank">Read source ↗</a></div>
+</article>
+<article class="nt-item" data-category="events" data-year="2026" id="news-2026-03-9">
+<time aria-label="Mar 2026" class="nt-date" datetime="2026-03"><span class="nt-date-month" data-i18n="news.month.3">Mar</span><span class="nt-date-year">2026</span></time>
+<div class="nt-copy"><p class="nt-category" data-i18n="news.events">Events</p><p class="nt-text" data-i18n-html="news.item.9">Our team was invited to showcase a recruitment project at the job fair organized by the Department of Human Resources and Social Security of Hubei Province.</p><a class="nt-source" data-i18n="news.source" href="https://mp.weixin.qq.com/s/fkVk9JQNH56naZBzYfFSXw" rel="noopener noreferrer" target="_blank">Read source ↗</a><details class="nt-media-details"><summary data-i18n="news.photo">View photograph</summary><figure class="nt-media"><img alt="Job fair" data-i18n-alt="news.alt.fair" decoding="async" height="225" loading="lazy" src="images/zhaopinghui.jpg" width="400"/></figure></details></div>
+</article>
+<article class="nt-item" data-category="events" data-year="2026" id="news-2026-03-10">
+<time aria-label="Mar 2026" class="nt-date" datetime="2026-03"><span class="nt-date-month" data-i18n="news.month.3">Mar</span><span class="nt-date-year">2026</span></time>
+<div class="nt-copy"><p class="nt-category" data-i18n="news.events">Events</p><p class="nt-text" data-i18n-html="news.item.10">Our team was invited to present our project at the unveiling ceremony of the Innovation and Entrepreneurship Service Center at Hubei University.</p><a class="nt-source" data-i18n="news.source" href="https://mp.weixin.qq.com/s/7yih4c-OnrWdCiYH0f_Dxw" rel="noopener noreferrer" target="_blank">Read source ↗</a></div>
+</article>
+<article class="nt-item" data-category="publications" data-year="2026" id="news-2026-03-11">
+<time aria-label="Mar 2026" class="nt-date" datetime="2026-03"><span class="nt-date-month" data-i18n="news.month.3">Mar</span><span class="nt-date-year">2026</span></time>
+<div class="nt-copy"><p class="nt-category" data-i18n="news.publications">Publications</p><p class="nt-text" data-i18n-html="news.item.11">One academic paper has been accepted by <strong>ICME 2026</strong>.</p></div>
+</article>
+<article class="nt-item" data-category="publications" data-year="2026" id="news-2026-01-12">
+<time aria-label="Jan 2026" class="nt-date" datetime="2026-01"><span class="nt-date-month" data-i18n="news.month.1">Jan</span><span class="nt-date-year">2026</span></time>
+<div class="nt-copy"><p class="nt-category" data-i18n="news.publications">Publications</p><p class="nt-text" data-i18n-html="news.item.12">Submitted two academic papers to <strong>ICME 2026</strong>.</p></div>
+</article>
+</section>
+<section aria-labelledby="news-heading-2025" class="nt-year-group" data-year="2025" id="news-year-2025">
+<div class="nt-year-heading"><h3 id="news-heading-2025">2025</h3><span class="nt-year-count">2 updates</span></div>
+<article class="nt-item" data-category="publications" data-year="2025" id="news-2025-12-13">
+<time aria-label="Dec 2025" class="nt-date" datetime="2025-12"><span class="nt-date-month" data-i18n="news.month.12">Dec</span><span class="nt-date-year">2025</span></time>
+<div class="nt-copy"><p class="nt-category" data-i18n="news.publications">Publications</p><p class="nt-text" data-i18n-html="news.item.13">Submitted 5 academic papers to <strong>ICAPS 2026</strong>.</p></div>
+</article>
+<article class="nt-item" data-category="achievements" data-year="2025" id="news-2025-11-14">
+<time aria-label="Nov 2025" class="nt-date" datetime="2025-11"><span class="nt-date-month" data-i18n="news.month.11">Nov</span><span class="nt-date-year">2025</span></time>
+<div class="nt-copy"><p class="nt-category" data-i18n="news.achievements">Achievements</p><p class="nt-text" data-i18n-html="news.item.14"><strong>Zhang Peng, Zhao Xun and Pei Yaoqiang</strong> won the second prize at the 1st China (International) Robotics Debate Competition.</p><details class="nt-media-details"><summary data-i18n="news.video">Watch event video</summary><figure class="nt-media"><video controls="" playsinline="" preload="none"><source src="https://raw.githubusercontent.com/No1dry/wanghong.github.io/main/video/debate.mp4" type="video/mp4"/><span data-i18n="news.videoFallback">Your browser does not support video playback.</span></video><figcaption><a data-i18n="news.openVideo" href="https://raw.githubusercontent.com/No1dry/wanghong.github.io/main/video/debate.mp4" rel="noopener noreferrer" target="_blank">Open video ↗</a></figcaption></figure></details></div>
+</article>
+</section>
+<footer class="nt-end"><p data-i18n="news.end">End of archive · 2025—2026</p><p><span data-i18n="news.footer">© 2024 Hong Wang · School of Artificial Intelligence, Hubei University ·</span> <a href="mailto:hong.wang@hubu.edu.cn">hong.wang@hubu.edu.cn</a></p></footer>
+</div>
+</div>
+</section>
+</main>
+  <script src="assets/js/news-timeline.js"></script>
 </body>
 </html>

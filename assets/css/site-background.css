@@ -1,0 +1,16 @@
+/* A decorative layer only; all existing content keeps its own layout and depth. */
+body.kinetic-background {isolation:isolate}
+#site-kinetic-background {
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  display:block;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  user-select:none;
+  -webkit-user-select:none;
+}
+/* These are full-page backdrops, not cards or dialog surfaces. */
+body.kinetic-background #grid,
+body.kinetic-background .join-intro {background:transparent}

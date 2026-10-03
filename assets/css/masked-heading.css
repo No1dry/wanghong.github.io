@@ -1,0 +1,49 @@
+/* React Bits MaskedHeading, adapted to the existing two-line homepage h1.
+ * Original font sizes, line heights, wording and layout remain the source of truth. */
+#ei-welcome-title.masked-heading {position:relative}
+#ei-welcome-title > .masked-heading__line {position:relative}
+#ei-welcome-title .masked-heading__baseline {
+  display:inline-block;
+  width:0;
+  height:0;
+  margin:0;
+  padding:0;
+  vertical-align:baseline;
+  pointer-events:none;
+}
+#ei-welcome-title.masked-heading--ready > .masked-heading__line {
+  color:transparent;
+  text-shadow:none;
+}
+#ei-welcome-title > .masked-heading__defs {
+  position:absolute;
+  top:0;
+  left:0;
+  width:0;
+  height:0;
+  overflow:hidden;
+  pointer-events:none;
+}
+#ei-welcome-title .masked-heading__reveal,
+#ei-welcome-title .masked-heading__clip,
+#ei-welcome-title .masked-heading__media {
+  position:absolute;
+  inset:0;
+  display:block;
+  pointer-events:none;
+}
+#ei-welcome-title .masked-heading__reveal {visibility:hidden;text-shadow:none}
+#ei-welcome-title.masked-heading--ready .masked-heading__reveal {visibility:visible}
+#ei-welcome-title .masked-heading__media {will-change:transform}
+#ei-welcome-title .masked-heading__source {
+  display:block;
+  width:100%;
+  height:100%;
+  max-width:none;
+  object-fit:cover;
+  user-select:none;
+  -webkit-user-drag:none;
+}
+@media(prefers-reduced-motion:reduce) {
+  #ei-welcome-title .masked-heading__media {will-change:auto}
+}

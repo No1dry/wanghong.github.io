@@ -1,0 +1,104 @@
+/* The lettering itself is the particle field; ordinary text remains a fallback. */
+.lab-particle-hero {
+  --lab-particle-ink:var(--site-ink,#f4f2ef);
+  --lab-particle-accent:#9abbe5;
+  position:relative;
+  isolation:isolate;
+  min-height:330px;
+  overflow:hidden;
+  margin:0 0 34px;
+  border:1px solid var(--site-line,rgba(244,242,239,.28));
+  border-radius:14px;
+  background:radial-gradient(ellipse at 82% 16%,rgba(78,115,164,.08),transparent 56%),var(--site-bg,#000);
+  touch-action:pan-y;
+}
+html[data-theme="light"] .lab-particle-hero {
+  --lab-particle-ink:#24467e;
+  --lab-particle-accent:#5b7eaf;
+  background:radial-gradient(ellipse at 82% 16%,rgba(112,149,198,.08),transparent 56%),var(--site-bg,#fff);
+}
+.lab-particle-hero #labParticles {
+  position:absolute;
+  inset:0;
+  z-index:2;
+  display:block;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+}
+.lab-particle-copy {
+  position:relative;
+  z-index:1;
+  padding:43px clamp(24px,4.4vw,62px) 60px;
+  pointer-events:none;
+}
+.lab-particle-copy .page-kicker {
+  margin:0 0 19px;
+  color:var(--site-dim,#8c8783);
+  font:400 10px/1.5 var(--site-sans,"Inter",Arial,sans-serif);
+  letter-spacing:.19em;
+}
+.lab-particle-hero .sr-only {
+  position:absolute!important;
+  width:1px!important;
+  height:1px!important;
+  padding:0!important;
+  margin:-1px!important;
+  overflow:hidden!important;
+  clip:rect(0,0,0,0)!important;
+  white-space:nowrap!important;
+  border:0!important;
+}
+.lab-particle-hero .particle-wordmark {
+  position:relative;
+  width:100%;
+  height:108px;
+  margin:0;
+  color:var(--lab-particle-ink);
+  font:400 clamp(40px,6.6vw,82px)/1.12 var(--site-serif,"Playfair Display","Times New Roman",serif);
+  letter-spacing:-.038em;
+}
+.lab-particle-hero .particle-wordmark::before {
+  content:"Embodied Intelligence";
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  font:inherit;
+  letter-spacing:inherit;
+}
+.lab-particle-hero.particles-ready .particle-wordmark::before {visibility:hidden}
+.lab-particle-copy .lab-hero-description {
+  max-width:590px;
+  margin:20px 0 0;
+  color:var(--site-muted,rgba(244,242,239,.72));
+  font:300 13px/1.75 var(--site-sans,"Inter",Arial,sans-serif);
+}
+.lab-particle-hint {
+  position:absolute;
+  right:clamp(24px,4.4vw,62px);
+  bottom:22px;
+  z-index:3;
+  color:var(--site-dim,#8c8783);
+  font:300 10px/1.5 var(--site-sans,"Inter",Arial,sans-serif);
+  letter-spacing:.04em;
+  pointer-events:none;
+}
+@media(max-width:700px) {
+  .lab-particle-hero {min-height:280px;margin-bottom:24px;border-radius:10px}
+  .lab-particle-copy {padding:26px 22px 52px}
+  .lab-particle-copy .page-kicker {font-size:9px;margin-bottom:12px}
+  .lab-particle-hero .particle-wordmark {height:112px;font-size:clamp(37px,8.6vw,54px);line-height:1.03}
+  .lab-particle-hero .particle-wordmark::before {content:"Embodied\A Intelligence";white-space:pre;display:block}
+  .lab-particle-copy .lab-hero-description {max-width:420px;font-size:12px;line-height:1.65;margin-top:14px}
+  .lab-particle-hint {left:22px;right:auto;bottom:17px;font-size:9px}
+}
+@media(max-width:380px) {
+  .lab-particle-copy {padding-right:18px;padding-left:18px}
+  .lab-particle-hero .particle-wordmark {font-size:36px;height:100px}
+  .lab-particle-hint {left:18px}
+}
+@media(prefers-reduced-motion:reduce) {
+  .lab-particle-hero #labParticles {display:none}
+  .lab-particle-hero.particles-ready .particle-wordmark::before {visibility:visible}
+}

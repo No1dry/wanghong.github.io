@@ -1,0 +1,6 @@
+GSAP 3.15.0, pinned local browser runtime.
+Source: https://registry.npmjs.org/gsap/-/gsap-3.15.0.tgz
+Integrity: sha512-dMW4CWBTUK1AEEDeZc1g4xpPGIrSf9fJF960qbTZmN/QwZIWY5wgliS6JWl9/25fpTGJrMRtSjGtOmPnfjZB+A==
+gsap.min.js and README.md are unmodified files from the npm package.
+The distribution's license header is retained in gsap.min.js.
+License: https://gsap.com/standard-license/

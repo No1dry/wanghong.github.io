@@ -1,411 +1,163 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hong Wang | School of Artificial Intelligence, Hubei University</title>
+  <script src="assets/js/site-theme.js"></script>
+  <script src="assets/js/site-language.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title data-i18n="lab.title">Lab · People | EI Lab</title>
   <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap">
+  <link rel="stylesheet" href="assets/css/lab-experience.css">
+  <link rel="stylesheet" href="assets/css/lab-particles.css">
+  <meta name="description" content="Meet the researchers and students of the Embodied Intelligence Lab at Hubei University.">
+  <script src="assets/js/i18n-lab.js"></script>
+  <link rel="stylesheet" href="assets/css/site-shell.css">
+  <link rel="stylesheet" href="assets/css/site-background.css">
+  <script src="assets/js/site-background.js" defer></script>
+  <link rel="stylesheet" href="assets/css/lab-glow-cursor.css">
+  <script type="module" src="assets/js/lab-glow-cursor.js"></script>
 </head>
-<body>
+<body class="site-page" data-page="lab">
 
   <!-- ===== Navigation ===== -->
-  <nav class="navbar">
-    <div class="navbar-inner">
-      <ul class="navbar-links">
-        <li><a href="index.html">Homepage</a></li>
-        <li><a href="lab.html" class="active">Lab</a></li>
-        <li><a href="publications.html">Publications</a></li>
-        <li><a href="news.html">News</a></li>
-        <li><a href="join_us.html">Join Us</a></li>
-      </ul>
+  <header class="site-header">
+    <a class="wordmark" href="index.html" aria-label="EI Lab homepage" data-i18n-aria-label="site.homeLabel">EI <em>Lab</em></a>
+    <nav class="site-nav" aria-label="Main navigation" data-i18n-aria-label="site.navigation">
+      <a href="index.html" data-i18n="site.homepage">Homepage</a>
+      <a href="lab.html" data-i18n="site.lab" aria-current="page">Lab</a>
+      <a href="publications.html" data-i18n="site.publications">Publications</a>
+      <a href="news.html" data-i18n="site.news">News</a>
+      <a href="join_us.html" data-i18n="site.join">Join Us</a>
+    </nav>
+    <div class="header-actions">
+      <button id="themeBtn" class="theme-btn" type="button" aria-pressed="false" aria-label="Switch to light background">
+        <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 1v3m0 16v3M1 12h3m16 0h3M4.2 4.2l2.1 2.1m11.4 11.4 2.1 2.1M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"></path></svg>
+        <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.4 15.5A9 9 0 0 1 8.5 3.6a9 9 0 1 0 11.9 11.9Z"></path></svg>
+        <span id="themeLabel" aria-hidden="true">Light</span>
+      </button>
+      <div class="language-switch" role="group" aria-label="Language" data-i18n-aria-label="site.language">
+        <button type="button" data-language="en" aria-pressed="true" aria-label="Switch to English" data-i18n-aria-label="site.english">EN</button>
+        <span aria-hidden="true">/</span>
+        <button type="button" data-language="zh" aria-pressed="false" aria-label="Switch to Chinese" data-i18n-aria-label="site.chinese">CN</button>
+      </div>
     </div>
-  </nav>
+  </header>
 
   <!-- ===== Main Content ===== -->
-  <div class="page-wrapper">
-    <div class="lab-layout">
+<main class="lab-experience">
+<section class="lab-particle-hero" id="labParticleHero">
+<canvas aria-hidden="true" id="labParticles"></canvas>
+<div class="lab-particle-copy">
+<p class="page-kicker" data-i18n="lab.kicker">EI LAB · PEOPLE</p>
+<h1 class="sr-only">Embodied Intelligence</h1>
+<div aria-hidden="true" class="particle-wordmark"></div>
+<p class="lab-hero-description" data-i18n="lab.heroDescription">Researchers and students working across perception, cognition, and action.</p>
+</div>
+<div class="lab-particle-hint" data-i18n="lab.particleHint">Move to explore · Click to scatter</div>
+</section>
+<section aria-label="Our people" class="lab-people" data-i18n-aria-label="lab.people" id="team">
+<div class="people-heading"><h2 data-i18n="lab.people">Our people</h2><span data-i18n="lab.peopleSubtitle">26 people · One shared curiosity</span></div>
+<div aria-label="Team groups" class="lab-tabs" data-i18n-aria-label="lab.groups" role="group">
+<button aria-controls="teamPanel" aria-pressed="true" class="lab-tab" data-group="faculty" type="button"><span data-i18n="lab.group.faculty">Faculty</span> <span>04</span></button>
+<button aria-controls="teamPanel" aria-pressed="false" class="lab-tab" data-group="graduate" type="button"><span data-i18n="lab.group.graduate">Master Students</span> <span>10</span></button>
+<button aria-controls="teamPanel" aria-pressed="false" class="lab-tab" data-group="undergrad" type="button"><span data-i18n="lab.group.undergrad">Undergraduate</span> <span>09</span></button>
+<button aria-controls="teamPanel" aria-pressed="false" class="lab-tab" data-group="alumni" type="button"><span data-i18n="lab.group.alumni">Alumni</span> <span>03</span></button>
+</div>
+<div class="team-stage" id="teamPanel">
+<div class="team-disc-wrap">
+<div class="team-disc">
+<svg aria-describedby="discHint" aria-label="Rotating team selector" data-i18n-aria-label="lab.selector" id="teamDonut" role="group" viewBox="0 0 530 530">
+<defs id="teamDefs"></defs>
+<circle class="disc-orbit" cx="265" cy="265" r="235"></circle>
+<g aria-hidden="true" id="teamTicks"></g>
+<g id="teamRotor"></g>
+<circle class="disc-center" cx="265" cy="265" r="110"></circle>
+<text class="disc-eyebrow" text-anchor="middle" x="265" y="236">EI LAB</text>
+<text class="disc-title" id="teamGroupName" text-anchor="middle" x="265" y="272">Faculty</text>
+<text class="disc-count" id="teamCount" text-anchor="middle" x="265" y="298">04 TEAMMATES</text>
+<path aria-hidden="true" class="disc-indicator" d="M509 259 L501 265 L509 271"></path>
+</svg>
+</div>
+<div class="disc-controls">
+<button aria-label="Previous teammate" data-i18n-aria-label="lab.previous" id="teamPrev" type="button">←</button>
+<p data-i18n="lab.discHint" id="discHint">Drag to rotate · Click to meet</p>
+<button aria-label="Next teammate" data-i18n-aria-label="lab.next" id="teamNext" type="button">→</button>
+</div>
+<label class="member-select-label" data-i18n="lab.find" for="memberSelect">Find a teammate</label>
+<select aria-controls="memberDetail" id="memberSelect"><option value="0">Hong Wang</option></select>
+</div>
+<article aria-labelledby="memberName" class="member-detail" id="memberDetail">
+<div class="member-topline"><span id="memberRole">Faculty</span><span id="memberPosition">01 / 04</span></div>
+<div class="member-profile">
+<div class="member-portrait" id="memberPortrait"><span aria-hidden="true" id="memberInitials">HW</span><img alt="Hong Wang" height="184" id="memberPhoto" src="images/wanghong.jpg" width="152"/></div>
+<div class="member-identity"><h3 id="memberName">Hong Wang</h3><p id="memberAffiliation"></p></div>
+</div>
+<div class="member-section" id="memberResearch"><h4 data-i18n="lab.interests">Research interests</h4><p id="memberInterests">Computer vision · Reinforcement learning · Robotics</p></div>
+<div class="member-section" hidden="" id="memberLinksSection"><h4 data-i18n="lab.connect">Connect</h4><div id="memberLinks"></div></div>
+<div class="member-section" hidden="" id="memberPublicationsSection"><h4 data-i18n="lab.selectedPapers">Selected publications</h4><ul id="memberPublications"></ul></div>
+<a class="member-archive" href="publications.html#archive"><span data-i18n="lab.explorePapers">Explore our publications</span><span aria-hidden="true">↗</span></a>
+</article>
+</div>
+<p aria-atomic="true" aria-live="polite" class="lab-sr-only" id="teamStatus"></p>
+<noscript><div class="team-fallback"><h3>Faculty</h3><ul>
+<li>Hong Wang · Computer vision · Reinforcement learning · Robotics </li>
+<li>Chengyu Jiao · Embodied AI · LLMs · Agents </li>
+<li>Dr.Zhang · Computer vision · Reinforcement learning </li>
+<li>Dr.Huang · Robotics · Sim-to-real transfer </li>
+</ul>
+<h3>Master Students</h3><ul>
+<li>Lingxiao Hu · Chang&#x27;an University </li>
+<li>Feiyu Ma · Chang&#x27;an University </li>
+<li>Peng Zhang · Hubei University <a href="https://github.com/No1dry">GitHub</a></li>
+<li>Xun Zhao · Hubei University <a href="https://github.com/zx2002430">GitHub</a></li>
+<li>Qingyang Sun · Hubei University </li>
+<li>Yaoqiang Pei · Hubei University </li>
+<li>Fengxiang Wang · Chang&#x27;an University </li>
+<li>Lidong Zhen · Hubei University </li>
+<li>Li Shen · Hubei University </li>
+<li>Fan Tingting · Hubei University </li>
+</ul>
+<h3>Undergraduate</h3><ul>
+<li>Geming Liang · Hubei University </li>
+<li>Yizhou Hu · Hubei University <a href="https://springfieldcafe.github.io/404/">Blog</a> <a href="https://github.com/SpringFieldCafe">GitHub</a></li>
+<li>Pengchong Lei · Hubei University </li>
+<li>Ke Zhou · Hubei University </li>
+<li>Shudan Ding · Hubei University </li>
+<li>Shengxi Jing · Chang&#x27;an University </li>
+<li>Tao Li · East China University of Technology </li>
+<li>Wei Zhu · Chang&#x27;an University </li>
+<li>Chenxuan Yuan · Laboratory Assistant </li>
+</ul>
+<h3>Alumni</h3><ul>
+<li>Chenyang Zhao · Chang&#x27;an University · Academy of Aerospace Propulsion Technology · Enhancing firefighter safety and efficiency through UAV-assisted AI-based human motion recognition system · Emotion Recognition in Dance: A Novel Approach Using Laban Movement Analysis and Artificial Intelligence </li>
+<li>Xiaodong Hao · Chang&#x27;an University · Enhancing Human Detection in Post-Disaster Scenarios through Generative Adversarial Networks · Cross-domain adversarial structural deformation model for post-disaster image generation </li>
+<li>Zhaochen Xi · Chang&#x27;an University · PhD at Xi&#x27;an Jiaotong University </li>
+</ul></div></noscript>
+</section>
+<section aria-labelledby="aboutTitle" class="lab-about" id="about">
+<div class="about-heading"><p class="lab-kicker" data-i18n="lab.aboutKicker">PERCEPTION · COGNITION · ACTION</p><h2 data-i18n-html="lab.aboutTitle" id="aboutTitle">From ideas<br/>to the real world.</h2><p data-i18n-html="lab.institution">Embodied Intelligence Lab<br/>School of Artificial Intelligence, Hubei University</p></div>
+<div class="about-copy"><h3 data-i18n="lab.aboutHeading">About the Lab</h3><p data-i18n="lab.about1">The Embodied Intelligence Lab was co-founded by Hong Wang and several faculty colleagues at the School of Artificial Intelligence, Hubei University. We work to give robots the ability to perceive, make decisions, and manipulate objects in real, open-world environments. Our research covers computer vision, deep reinforcement learning, robot manipulation and navigation, vision-language models, and sim-to-real transfer.</p><p data-i18n="lab.about2">Our goal is to build general-purpose embodied intelligence systems that can autonomously carry out complex tasks in unstructured environments, bringing embodied AI from the laboratory into practical use. We collaborate with universities and companies in China and abroad, and welcome students who are passionate about embodied intelligence.</p><div class="research-tags"><span class="research-tag" data-i18n="lab.tag.embodied">Embodied AI</span><span class="research-tag" data-i18n="lab.tag.vision">Computer Vision</span><span class="research-tag" data-i18n="lab.tag.rl">Deep Reinforcement Learning</span><span class="research-tag" data-i18n="lab.tag.manipulation">Robot Manipulation</span><span class="research-tag" data-i18n="lab.tag.sim">Sim-to-Real</span><span class="research-tag" data-i18n="lab.tag.vla">Vision-Language-Action Models</span></div></div>
+</section>
+<section aria-labelledby="demosTitle" class="lab-demos">
+<div class="people-heading"><h2 data-i18n="lab.demos" id="demosTitle">In the lab</h2><span data-i18n="lab.demosSubtitle">Research in motion</span></div>
+<div class="lab-demo-grid">
+<figure><video aria-label="Robotic Arm Demo" controls="" data-i18n-aria-label="lab.demo.arm" playsinline="" preload="none"><source src="https://raw.githubusercontent.com/No1dry/wanghong.github.io/main/video/arm.mp4" type="video/mp4"/></video><figcaption><span>01</span> <span data-i18n="lab.demo.arm">Robotic Arm Demo</span></figcaption></figure>
+<figure><video aria-label="Quadruped Robot Demo" controls="" data-i18n-aria-label="lab.demo.dog" playsinline="" preload="none"><source src="https://raw.githubusercontent.com/No1dry/wanghong.github.io/main/video/robotics_dog.mp4" type="video/mp4"/></video><figcaption><span>02</span> <span data-i18n="lab.demo.dog">Quadruped Robot Demo</span></figcaption></figure>
+</div>
+</section>
+</main>
+<script id="labTeamData" type="application/json">{"faculty": {"label": "Faculty", "sourceLabel": "👨‍🏫 Faculty", "members": [{"name": "Hong Wang(王翃)", "short": "HW", "photo": "images/wanghong.jpg", "alt": "Hong Wang", "affiliation": "", "affiliations": [], "interests": "compute vision · reinforce learning · robotics", "roles": ["compute vision · reinforce learning · robotics"], "links": [], "publications": []}, {"name": "Chengyu Jiao(焦成域)", "short": "CJ", "photo": "images/jiaochengyu.jpg", "alt": "Chengyu Jiao", "affiliation": "", "affiliations": [], "interests": "Embodied AI · LLM · Agent", "roles": ["Embodied AI · LLM · Agent"], "links": [], "publications": []}, {"name": "Dr.Zhang", "short": "DZ", "photo": null, "alt": "", "affiliation": "", "affiliations": [], "interests": "compute vision · reinforce learning", "roles": ["compute vision · reinforce learning"], "links": [], "publications": []}, {"name": "Dr.Huang", "short": "DH", "photo": "images/huangxu.png", "alt": "Xu Huang", "affiliation": "", "affiliations": [], "interests": "robotics · sim2real", "roles": ["robotics · sim2real"], "links": [], "publications": []}]}, "graduate": {"label": "Master Students", "sourceLabel": "🎓 Master Students", "members": [{"name": "Lingxiao Hu(胡凌霄)", "short": "LH", "photo": "images/hulingxiao.jpg", "alt": "Lingxiao Hu", "affiliation": "Chang'an university", "affiliations": ["Chang'an university"], "interests": "", "roles": ["Chang'an university"], "links": [], "publications": []}, {"name": "Feiyu Ma(马飞宇)", "short": "FM", "photo": "images/mafeiyu.jpg", "alt": "Feiyu Ma", "affiliation": "Chang'an university", "affiliations": ["Chang'an university"], "interests": "", "roles": ["Chang'an university"], "links": [], "publications": []}, {"name": "Peng Zhang (张鹏)", "short": "PZ", "photo": "images/zhangpeng.jpg", "alt": "Peng Zhang", "affiliation": "Hubei University", "affiliations": ["Hubei University"], "interests": "", "roles": ["Hubei University"], "links": [{"label": "GitHub", "href": "https://github.com/No1dry"}], "publications": []}, {"name": "Xun Zhao(赵汛)", "short": "XZ", "photo": "images/zhaoxun.jpg", "alt": "Xun Zhao", "affiliation": "HuBei university", "affiliations": ["HuBei university"], "interests": "", "roles": ["HuBei university"], "links": [{"label": "GitHub", "href": "https://github.com/zx2002430"}], "publications": []}, {"name": "Qingyang Sun(孙清扬)", "short": "QS", "photo": "images/sunqingyang.jpg", "alt": "Qingyan Sun", "affiliation": "HuBei university", "affiliations": ["HuBei university"], "interests": "", "roles": ["HuBei university"], "links": [], "publications": []}, {"name": "Yaoqiang Pei(裴耀强)", "short": "YP", "photo": "images/peiyaoqiang.jpg", "alt": "Yaoqiang Pei", "affiliation": "HuBei university", "affiliations": ["HuBei university"], "interests": "", "roles": ["HuBei university"], "links": [], "publications": []}, {"name": "Fengxiang Wang(王凤翔)", "short": "FW", "photo": "images/wangfengxiang.jpg", "alt": "Fengxiang Wang", "affiliation": "Chang'an university", "affiliations": ["Chang'an university"], "interests": "", "roles": ["Chang'an university"], "links": [], "publications": []}, {"name": "Lidong Zhen(李东震)", "short": "LZ", "photo": "images/lidongzhen.jpg", "alt": "Lidong Zhen", "affiliation": "HuBei university", "affiliations": ["HuBei university"], "interests": "", "roles": ["HuBei university"], "links": [], "publications": []}, {"name": "Li Shen(沈力)", "short": "LS", "photo": "images/shenli.jpg", "alt": "Li Shen", "affiliation": "HuBei university", "affiliations": ["HuBei university"], "interests": "", "roles": ["HuBei university"], "links": [], "publications": []}, {"name": "Fan Tingting(范婷婷)", "short": "FT", "photo": "images/fantingting.jpg", "alt": "Fan Tingting", "affiliation": "HuBei university", "affiliations": ["HuBei university"], "interests": "", "roles": ["HuBei university"], "links": [], "publications": []}]}, "undergrad": {"label": "Undergraduate", "sourceLabel": "🎓 Undergraduated", "members": [{"name": "Geming Liang(梁ger铭)", "short": "GL", "photo": "images/lianggeming.jpg", "alt": "Geming Liang", "affiliation": "HuBei university", "affiliations": ["HuBei university"], "interests": "", "roles": ["HuBei university"], "links": [], "publications": []}, {"name": "Yizhou Hu (胡弈周)", "short": "YH", "photo": "images/huyizhou.jpg", "alt": "Yizhou Hu", "affiliation": "Hubei University", "affiliations": ["Hubei University"], "interests": "", "roles": ["Hubei University"], "links": [{"label": "Blog", "href": "https://springfieldcafe.github.io/404/"}, {"label": "GitHub", "href": "https://github.com/SpringFieldCafe"}], "publications": []}, {"name": "Pengchong Lei(雷鹏翀)", "short": "PL", "photo": "images/leipengchong.jpg", "alt": "Pengchong Lei", "affiliation": "HuBei university", "affiliations": ["HuBei university"], "interests": "", "roles": ["HuBei university"], "links": [], "publications": []}, {"name": "Ke Zhou(周可)", "short": "KZ", "photo": "images/zhouke.jpg", "alt": "Ke Zhou", "affiliation": "HuBei university", "affiliations": ["HuBei university"], "interests": "", "roles": ["HuBei university"], "links": [], "publications": []}, {"name": "Shudan Ding(丁淑丹)", "short": "SD", "photo": "images/dingshudan.jpg", "alt": "Shudan Ding", "affiliation": "HuBei university", "affiliations": ["HuBei university"], "interests": "", "roles": ["HuBei university"], "links": [], "publications": []}, {"name": "Shengxi Jing(景晟熙)", "short": "SJ", "photo": "images/jingshengxi.jpg", "alt": "Shengxi Jing", "affiliation": "Chang'an university", "affiliations": ["Chang'an university"], "interests": "", "roles": ["Chang'an university"], "links": [], "publications": []}, {"name": "Tao Li(李涛)", "short": "TL", "photo": "images/litao.jpg", "alt": "Tao Li", "affiliation": "East China University of Technology", "affiliations": ["East China University of Technology"], "interests": "", "roles": ["East China University of Technology"], "links": [], "publications": []}, {"name": "Wei Zhu(朱炜)", "short": "WZ", "photo": "images/zhuwei.jpg", "alt": "Wei Zhu", "affiliation": "Chang'an university", "affiliations": ["Chang'an university"], "interests": "", "roles": ["Chang'an university"], "links": [], "publications": []}, {"name": "Chenxuan Yuan(原神)", "short": "CY", "photo": "images/yuanchenxuan.jpg", "alt": "Chenxuan Yuan", "affiliation": "Laboratory Assistant", "affiliations": ["Laboratory Assistant"], "interests": "", "roles": ["Laboratory Assistant"], "links": [], "publications": []}]}, "alumni": {"label": "Alumni", "sourceLabel": "🎓 Alumni", "members": [{"name": "Chenyang Zhao(赵晨阳)", "short": "CZ", "photo": "images/zhaochenyang.jpg", "alt": "Chenyang Zhao", "affiliation": "Chang'an University · 中国航天推进技术研究院", "affiliations": ["Chang'an University", "中国航天推进技术研究院"], "interests": "", "roles": ["Chang'an University", "中国航天推进技术研究院"], "links": [], "publications": [{"title": "Enhancing firefighter safety and efficiency through UAV-assisted AI-based human motion recognition system"}, {"title": "Emotion Recognition in Dance: A Novel Approach Using Laban Movement Analysis and Artificial Intelligence"}]}, {"name": "Xiaodong Hao(郝晓东)", "short": "XH", "photo": "images/haoxiaodong.jpg", "alt": "Xiaodong Hao", "affiliation": "Chang'an University", "affiliations": ["Chang'an University"], "interests": "", "roles": ["Chang'an University"], "links": [], "publications": [{"title": "Enhancing Human Detection in Post-Disaster Scenarios through Generative Adversarial Networks"}, {"title": "Cross-domain adversarial structural deformation model for post-disaster image generation"}]}, {"name": "Zhaochen Xi(席兆琛)", "short": "ZX", "photo": null, "alt": "", "affiliation": "Chang'an University · PhD at Xi'an Jiaotong University", "affiliations": ["Chang'an University", "PhD at Xi'an Jiaotong University"], "interests": "", "roles": ["Chang'an University", "PhD at Xi'an Jiaotong University"], "links": [], "publications": []}]}}</script>
 
-      <!-- Lab title -->
-      <h1 class="lab-title">具身智能实验室</h1>
-      <p class="lab-subtitle">Embodied Intelligence Lab &nbsp;·&nbsp; 湖北大学人工智能学院</p>
-
-      <!-- About the Lab -->
-      <section class="content-section" id="about">
-        <h2 class="section-heading">About the Lab</h2>
-        <div class="section-text">
-          <p>
-            具身智能实验室（Embodied Intelligence Lab）由王翃老师和其他几位老师共同创立，
-            依托湖北大学人工智能学院开展研究工作。
-            实验室聚焦于让机器人具备在真实、开放世界中感知、决策与操作的能力，
-            研究方向覆盖计算机视觉、深度强化学习、机器人操作与导航、
-            视觉-语言模型以及仿真到真实迁移（Sim-to-Real）等前沿课题。
-          </p>
-          <p>
-            我们的目标是构建能够在非结构化环境中自主完成复杂任务的通用具身智能系统，
-            推动具身 AI 从实验室走向现实应用。
-            实验室积极与国内外高校及企业合作，欢迎对具身智能充满热情的学生加入。
-          </p>
-          <p>
-            The Embodied Intelligence Lab focuses on building robots that can perceive, reason, 
-            and act in the real physical world. Our research spans computer vision, 
-            deep reinforcement learning, robot manipulation, and vision-language models, 
-            with the ultimate goal of developing general-purpose embodied agents.
-          </p>
-        </div>
-        <div class="research-tags" style="margin-top:16px;">
-          <span class="research-tag">Embodied AI</span>
-          <span class="research-tag">Computer Vision</span>
-          <span class="research-tag">Deep Reinforcement Learning</span>
-          <span class="research-tag">Robot Manipulation</span>
-          <span class="research-tag">Sim-to-Real</span>
-          <span class="research-tag">Vision-Language-Action Models</span>
-        </div>
-      </section>
-
-      <div class="video-container">
-
-        <div class="video-card">
-          <video controls>
-            <source src="video/arm.mp4" type="video/mp4">
-          </video>
-          <p class="video-caption">Robotic Arm Demo</p>
-        </div>
-
-        <div class="video-card">
-          <video controls>
-            <source src="video/robotics_dog.mp4" type="video/mp4">
-          </video>
-          <p class="video-caption">Quadruoed robot Demo</p>
-        </div>
-
-      </div>
-
-      <!-- Teammates Section -->
-      <section class="content-section" id="team">
-        <h2 class="section-heading">Teammates</h2>
-
-        <!-- Faculty -->
-        <div class="team-section-title">👨‍🏫 Faculty</div>
-        <div class="team-grid">
-
-          <div class="team-card">
-            <div class="team-photo">
-              <img src="images/wanghong.jpg" alt="Hong Wang">
-            </div>
-            <div class="team-name">Hong Wang(王翃)</div>
-            <div class="team-role">compute vision · reinforce learning · robotics</div>
-          </div>
-
-          <div class="team-card">
-            <div class="team-photo">
-              <img src="images/jiaochengyu.jpg" alt="Chengyu Jiao">
-            </div>
-            <div class="team-name">Chengyu Jiao(焦成域)</div>
-            <div class="team-role">Embodied AI · LLM · Agent</div>
-          </div>
-
-          <div class="team-card">
-            <div class="team-photo">👤</div>
-            <div class="team-name">Dr.Zhang</div>
-            <div class="team-role">compute vision · reinforce learning</div>
-          </div>
-
-          <div class="team-card">
-            <div class="team-photo">
-              <img src="images/huangxu.png" alt="Xu Huang">
-            </div>
-            <div class="team-name">Dr.Huang</div>
-            <div class="team-role">robotics · sim2real</div>
-          </div>
-
-        </div>
-
-        <!-- Students -->
-        <div class="team-section-title">🎓 Master Students</div>
-        <div class="team-grid student-grid">
-
-          <div class="team-card">
-            <div class="team-photo">
-              <img src="images/hulingxiao.jpg" alt="Lingxiao Hu">
-            </div>
-            <div class="team-name">Lingxiao Hu(胡凌霄)</div>
-            <div class="team-role">Chang'an university</div>
-          </div>
-
-          <div class="team-card">
-            <div class="team-photo">
-              <img src="images/mafeiyu.jpg" alt="Feiyu Ma">
-            </div>
-            <div class="team-name">Feiyu Ma(马飞宇)</div>
-            <div class="team-role">Chang'an university</div>
-          </div>
-
-          <div class="team-card">
-            <div class="team-photo">
-              <img src="images/zhangpeng.jpg" alt="Peng Zhang">
-            </div>
-
-            <div class="team-name">Peng Zhang (张鹏)</div>
-            <div class="team-role">Hubei University</div>
-
-            <div class="member-links">
-              <a
-                class="member-link"
-                href="https://github.com/No1dry"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Visit Peng Zhang's GitHub profile"
-              >
-                GitHub ↗
-              </a>
-            </div>
-          </div>
-
-          <div class="team-card">
-            <div class="team-photo">
-              <img src="images/zhaoxun.jpg" alt="Xun Zhao">
-            </div>
-            <div class="team-name">Xun Zhao(赵汛)</div>
-            <div class="team-role">HuBei university</div>
-            <div class="member-links">
-              <a
-                class="member-link"
-                href="https://github.com/zx2002430"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Visit Xun Zhao's GitHub profile"
-              >
-                GitHub ↗
-              </a>
-            </div>
-          </div>
-
-          <div class="team-card">
-            <div class="team-photo">
-              <img src="images/sunqingyang.jpg" alt="Qingyan Sun">
-            </div>
-            <div class="team-name">Qingyang Sun(孙清扬)</div>
-            <div class="team-role">HuBei university</div>
-          </div>
-
-          <div class="team-card">
-            <div class="team-photo">
-              <img src="images/peiyaoqiang.jpg" alt="Yaoqiang Pei">
-            </div>
-            <div class="team-name">Yaoqiang Pei(裴耀强)</div>
-            <div class="team-role">HuBei university</div>
-          </div>
-
-          <div class="team-card">
-            <div class="team-photo">
-              <img src="images/wangfengxiang.jpg" alt="Fengxiang Wang">
-            </div>
-            <div class="team-name">Fengxiang Wang(王凤翔)</div>
-            <div class="team-role">Chang'an university</div>
-          </div>
-
-          <div class="team-card">
-            <div class="team-photo">
-              <img src="images/lidongzhen.jpg" alt="Lidong Zhen">
-            </div>
-            <div class="team-name">Lidong Zhen(李东震)</div>
-            <div class="team-role">HuBei university</div>
-          </div>
-
-          <div class="team-card">
-            <div class="team-photo">
-              <img src="images/shenli.jpg" alt="Li Shen">
-            </div>
-            <div class="team-name">Li Shen(沈力)</div>
-            <div class="team-role">HuBei university</div>
-          </div>
-
-          <div class="team-card">
-            <div class="team-photo">
-              <img src="images/fantingting.jpg" alt="Fan Tingting">
-            </div>
-            <div class="team-name">Fan Tingting(范婷婷)</div>
-            <div class="team-role">HuBei university</div>
-          </div>
-
-        </div>
-
-        <div class="team-section-title">🎓 Undergraduated</div>
-        <div class="team-grid student-grid">
-
-          <div class="team-card">
-            <div class="team-photo">
-              <img src="images/lianggeming.jpg" alt="Geming Liang">
-            </div>
-            <div class="team-name">Geming Liang(梁ger铭)</div>
-            <div class="team-role">HuBei university</div>
-          </div>
-
-          <div class="team-card">
-            <div class="team-photo">
-              <img src="images/huyizhou.jpg" alt="Yizhou Hu">
-            </div>
-
-            <div class="team-name">Yizhou Hu (胡弈周)</div>
-            <div class="team-role">Hubei University</div>
-            <div class="member-links">
-              <a
-                class="member-link"
-                href="https://springfieldcafe.github.io/404/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Blog ↗
-              </a>
-
-              <a
-                class="member-link"
-                href="https://github.com/SpringFieldCafe"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                GitHub ↗
-              </a>
-            </div>
-          </div>
-
-          <div class="team-card">
-            <div class="team-photo">
-              <img src="images/leipengchong.jpg" alt="Pengchong Lei">
-            </div>
-            <div class="team-name">Pengchong Lei(雷鹏翀)</div>
-            <div class="team-role">HuBei university</div>
-          </div>
-
-          <div class="team-card">
-            <div class="team-photo">
-              <img src="images/zhouke.jpg" alt="Ke Zhou">
-            </div>
-            <div class="team-name">Ke Zhou(周可)</div>
-            <div class="team-role">HuBei university</div>
-          </div>
-
-          <div class="team-card">
-            <div class="team-photo">
-              <img src="images/dingshudan.jpg" alt="Shudan Ding">
-            </div>
-            <div class="team-name">Shudan Ding(丁淑丹)</div>
-            <div class="team-role">HuBei university</div>
-          </div>
-
-          <div class="team-card">
-            <div class="team-photo">
-              <img src="images/jingshengxi.jpg" alt="Shengxi Jing">
-            </div>
-            <div class="team-name">Shengxi Jing(景晟熙)</div>
-            <div class="team-role">Chang'an university</div>
-          </div>
-
-          <div class="team-card">
-            <div class="team-photo">
-              <img src="images/litao.jpg" alt="Tao Li">
-            </div>
-            <div class="team-name">Tao Li(李涛)</div>
-            <div class="team-role">East China University of Technology</div>
-          </div>
-
-          <div class="team-card">
-            <div class="team-photo">
-              <img src="images/zhuwei.jpg" alt="Wei Zhu">
-            </div>
-            <div class="team-name">Wei Zhu(朱炜)</div>
-            <div class="team-role">Chang'an university</div>
-          </div>
-
-          <div class="team-card">
-            <div class="team-photo">
-              <img src="images/yuanchenxuan.jpg" alt="Chenxuan Yuan">
-            </div>
-            <div class="team-name">Chenxuan Yuan(原神)</div>
-            <div class="team-role">Laboratory Assistant</div>
-          </div>
-
-        </div>
-
-        <!-- Graduated Alumni -->
-        <div class="team-section-title">🎓 Alumni</div>
-        <div class="alumni-list">
-
-          <div class="alumni-card">
-            <div class="alumni-left">
-              <div class="alumni-photo">
-                <img src="images/zhaochenyang.jpg" alt="Chenyang Zhao">
-              </div>
-              <div class="alumni-name">Chenyang Zhao(赵晨阳)</div>
-              <div class="alumni-affiliation">Chang'an University</div>
-              <div class="alumni-affiliation">中国航天推进技术研究院</div>
-            </div>
-            <div class="alumni-divider"></div>
-            <div class="alumni-right">
-              <div class="alumni-pubs-heading"><strong>Publications</strong></div>
-              <div class="alumni-pubs">
-                <div class="alumni-pub-entry">
-                  <div class="alumni-pub-title">Enhancing firefighter safety and efficiency through UAV-assisted AI-based human motion recognition system</div>
-                </div>
-
-                <div class="alumni-pub-entry">
-                  <div class="alumni-pub-title">Emotion Recognition in Dance: A Novel Approach Using Laban Movement Analysis and Artificial Intelligence</div>
-                </div>
-                <!-- Add more .alumni-pub-entry here -->
-              </div>
-            </div>
-          </div>
-
-          <div class="alumni-card single-master">
-            <div class="alumni-left">
-              <div class="alumni-photo">
-                <img src="images/haoxiaodong.jpg" alt="Xiaodong Hao">
-              </div>
-              <div class="alumni-name">Xiaodong Hao(郝晓东)</div>
-              <div class="alumni-affiliation">Chang'an University</div>
-            </div>
-            <div class="alumni-divider"></div>
-            <div class="alumni-right">
-              <div class="alumni-pubs-heading"><strong>Publications</strong></div>
-              <div class="alumni-pubs">
-                <div class="alumni-pub-entry">
-                  <div class="alumni-pub-title">Enhancing Human Detection in Post-Disaster Scenarios through Generative Adversarial Networks</div>
-                </div>
-
-                <div class="alumni-pub-entry">
-                  <div class="alumni-pub-title">Cross-domain adversarial structural deformation model for post-disaster image generation</div>
-                </div>
-
-                <!-- Add more .alumni-pub-entry here -->
-              </div>
-            </div>
-          </div>
-
-          <div class="team-grid">
-
-            <div class="team-card">
-              <div class="team-photo">
-                👤
-              </div>
-              <div class="team-name">Zhaochen Xi(席兆琛)</div>
-              <div class="team-role">Chang'an University</div>
-              <div class="team-role">PhD at Xi'an Jiaotong University</div>
-            </div>
-
-          </div>
-
-          <!-- Add more .alumni-pub-entry here -->
-        </div>
-      </section>
-
-    </div>
-  </div>
 
   <!-- Footer -->
   <footer class="site-footer">
-    © 2024 具身智能实验室 · 湖北大学人工智能学院 · 
+    <span data-i18n="lab.footer">© 2024 Embodied Intelligence Lab · School of Artificial Intelligence, Hubei University ·</span>
     <a href="mailto:hong.wang@hubu.edu.cn">hong.wang@hubu.edu.cn</a>
   </footer>
-
+  <script src="assets/js/lab-team.js"></script>
+  <script src="assets/js/lab-particles.js"></script>
 </body>
 </html>

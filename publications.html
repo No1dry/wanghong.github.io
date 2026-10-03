@@ -1,568 +1,752 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Publications | 王翃</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
+<meta charset="utf-8"/>
+  <script src="assets/js/site-theme.js"></script>
+  <script src="assets/js/site-language.js"></script>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title data-i18n="pub.title">EI Lab — Selected Research in Intelligent Systems</title>
+<meta content="Research publication archive from EI Lab and Hong Wang at the School of Artificial Intelligence, Hubei University." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&amp;family=Inter:wght@300;400;500&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root{
+      --bg:#000;
+      --ink:#f4f2ef;
+      --dim:#8c8783;
+      --line:rgba(244,242,239,.28);
+      --muted:rgba(244,242,239,.72);
+      --surface:#0b0b0b;
+      --accent:#f4f2ef;
+      --depth-rgb:0,0,0;
+      --header-bg:rgba(0,0,0,.94);
+      color-scheme:dark;
+      --pad:clamp(14px, 2.6vw, 34px);
+      --ease:cubic-bezier(.22,.61,.36,1);
+      --hw:min(56vw, 640px);
+      --persp:1150px;
+      --safe-top:env(safe-area-inset-top, 0px);
+      --safe-right:env(safe-area-inset-right, 0px);
+      --safe-bottom:env(safe-area-inset-bottom, 0px);
+      --safe-left:env(safe-area-inset-left, 0px);
+      --tap:44px;
+      --serif:"Playfair Display", "Times New Roman", serif;
+      --sans:"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      --cw:160px;
+    }
+    *{box-sizing:border-box}
+    html{background:var(--bg);scrollbar-gutter:stable}
+    html[data-theme="light"]{--bg:#fff;--ink:#1a1a2e;--dim:#5a5a7a;--line:#d8dce8;--muted:#5a5a7a;--surface:#f5f6fa;--accent:#2a4a8a;--depth-rgb:255,255,255;--header-bg:rgba(255,255,255,.96);color-scheme:light}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;min-height:100vh;min-height:100dvh;overscroll-behavior-y:none}
+    img{display:block;max-width:100%}
+    button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+    a{-webkit-tap-highlight-color:transparent}
+    figure,p,h2{margin:0}
+    button:focus-visible,a:focus-visible,[role="button"]:focus-visible{outline:1px solid var(--ink);outline-offset:6px}
+    #scrolltrack{height:116vh;pointer-events:none}
+    #stage{position:fixed;inset:0;z-index:10;perspective:var(--persp);perspective-origin:50% 50%;overflow:hidden;touch-action:none;transition:opacity .6s ease,filter .6s ease}
+    #world{
+      position:absolute; top:50%; left:50%;
+      width:0; height:0;
+      transform-style:preserve-3d;
+      will-change:transform;
+    }
+    #orb{
+      position:absolute; top:0; left:0;
+      width:0; height:0;
+      transform-style:preserve-3d;
+      opacity:1;
+      transform:none;
+    }
+    #headline{
+      position:absolute; top:0; left:0;
+      width:var(--hw);
+      margin-left:calc(var(--hw) / -2);
+      text-align:center;
+      font-family:var(--serif);
+      font-weight:400;
+      font-size:clamp(25px, 3.7vw, 55px);
+      line-height:1.06;
+      letter-spacing:-.005em;
+      color:var(--ink);
+      text-shadow:0 2px 34px rgba(0,0,0,.55);
+      pointer-events:none;
+      user-select:none;
+      -webkit-user-select:none;
+    }
+    #headline .inner{
+      position:absolute; top:0; left:0;
+      width:100%;
+      transform:translateY(-50%);
+    }
+    #headline{margin-top:0;margin-bottom:0}
+    #headline .inner>span{display:inline-block;opacity:0;transform:translateY(.42em);filter:blur(7px);transition:opacity 1.05s var(--ease),transform 1.15s var(--ease),filter 1.05s var(--ease);transition-delay:calc(.9s + var(--i) * .085s)}
+    body.revealed #headline .inner>span{opacity:1;transform:none;filter:blur(0)}
+    .card{position:absolute;top:0;left:0;width:var(--cw);height:calc(var(--cw) / 1.5);margin-left:calc(var(--cw) / -2);margin-top:calc(var(--cw) / -3);cursor:pointer;user-select:none;-webkit-user-select:none}
+    .card figure{position:relative;width:100%;height:100%;overflow:hidden;border-radius:3px;background:#0a0a0a;transition:transform .5s ease}
+    .card:hover figure,.card:focus-visible figure{transform:scale(1.045)}
+    .card img{width:100%;height:100%;object-fit:cover;opacity:0;pointer-events:none}
+    .card img.in{opacity:1}
+    body.revealed .card img{transition:opacity .8s ease-out}
+    .card figure::after{content:"";position:absolute;inset:0;background:rgba(var(--depth-rgb),var(--d,0));box-shadow:inset 0 0 0 1px rgba(128,128,128,.12);border-radius:3px;pointer-events:none}
+    .vig{position:fixed;inset:0;z-index:12;pointer-events:none;background:radial-gradient(ellipse 88% 92% at 50% 50%,transparent 48%,rgba(0,0,0,.26) 80%,rgba(0,0,0,.72) 100%);transition:opacity .6s ease}
+    body.gridview .vig,body.lit .vig{opacity:0}
+    .chrome{opacity:0;transition:opacity 1.2s ease .15s,transform 1.2s var(--ease) .15s}
+    body.revealed .chrome{opacity:1}
+    header{position:fixed;top:0;left:0;right:0;z-index:60;display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:center;padding:calc(var(--pad) * .65 + var(--safe-top)) calc(var(--pad) + var(--safe-right)) 14px calc(var(--pad) + var(--safe-left));background:linear-gradient(var(--header-bg) 72%,transparent)}
+    .wordmark{justify-self:start;display:flex;align-items:center;gap:.25em;min-height:44px;font-family:var(--serif);font-weight:400;font-size:clamp(19px, 2.1vw, 27px);letter-spacing:.005em;line-height:1;color:var(--ink);text-decoration:none;white-space:nowrap}
+    .site-nav{display:flex;align-items:center;justify-content:center;gap:clamp(2px,1vw,16px)}
+    .site-nav a{display:flex;align-items:center;min-height:44px;padding:6px 8px;color:var(--muted);font-size:12px;font-weight:400;white-space:nowrap;text-decoration:none;border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
+    .site-nav a:hover,.site-nav a[aria-current="page"]{color:var(--accent);border-color:var(--accent)}
+    .header-actions{justify-self:end;display:flex;align-items:center;gap:20px}
+    .theme-btn{display:flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:8px 12px;border:1px solid var(--line);border-radius:999px;color:var(--ink);font-size:11px}
+    .theme-btn:hover{border-color:var(--ink)}
+    .theme-btn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.4}
+    .theme-btn .moon,html[data-theme="light"] .theme-btn .sun{display:none}
+    html[data-theme="light"] .theme-btn .moon{display:block}
+    .wordmark em{font-style:normal}
+    .bio{position:fixed;left:calc(var(--pad) + var(--safe-left));bottom:calc(var(--pad) + var(--safe-bottom));z-index:55;max-width:min(340px, 46vw)}
+    .who{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+    #avatar{width:52px;height:52px;border-radius:3px;object-fit:cover;filter:grayscale(.08)}
+    .who b{font-family:var(--serif);font-weight:400;font-size:19px;letter-spacing:.01em}
+    .bio p{font-size:12.5px;line-height:1.62;color:var(--muted)}
+    body.deep .bio,body.gridview .bio,body.lit .bio{opacity:0;transform:translateY(10px);pointer-events:none}
+    .colophon{position:fixed;right:calc(var(--pad) + var(--safe-right));bottom:calc(var(--pad) + var(--safe-bottom));z-index:55;font-size:12.5px;color:var(--muted)}
+    body.gridview .colophon,body.lit .colophon{opacity:0;pointer-events:none}
+    .gridbtn{position:fixed;left:calc(var(--pad) + var(--safe-left));bottom:calc(var(--pad) + var(--safe-bottom));z-index:56;width:44px;height:44px;padding:5px;display:grid;grid-template:repeat(2,1fr)/repeat(2,1fr);gap:4px;opacity:0;transform:translateY(8px);pointer-events:none;transition:opacity 1.2s ease .15s,transform 1.2s var(--ease) .15s}
+    .gridbtn b{display:block;background:var(--ink);border-radius:2px;transition:transform .4s ease,background .4s ease}
+    .gridbtn:hover b{background:var(--accent);transform:scale(.86)}
+    body.revealed.deep .gridbtn,body.revealed.gridview .gridbtn{opacity:1;transform:none;pointer-events:auto}
+    body.gridview .gridbtn b:first-child{transform:translate(3px,3px)}
+    body.gridview .gridbtn b:last-child{transform:translate(-3px,-3px)}
+    body.lit .gridbtn{opacity:0;pointer-events:none}
+    .cue{position:fixed;left:50%;bottom:calc(var(--pad) + var(--safe-bottom) + 4px);transform:translateX(-50%);z-index:54;display:flex;align-items:center;gap:10px;font-size:10px;text-transform:uppercase;letter-spacing:.24em;color:var(--dim);white-space:nowrap;pointer-events:none}
+    .cue s{position:relative;display:block;width:44px;height:1px;background:var(--line);overflow:hidden}
+    .cue s::after{content:"";position:absolute;inset:0;background:var(--ink);animation:sweep 2.6s ease infinite}
+    @keyframes sweep{0%{transform:translateX(-100%)}55%{transform:translateX(0)}100%{transform:translateX(100%)}}
+    body.deep .cue,body.gridview .cue,body.lit .cue{opacity:0;pointer-events:none}
+    #grid{position:fixed;inset:0;z-index:20;overflow:auto;overscroll-behavior:contain;padding:calc(var(--site-header-height,106px) + 18px) var(--pad) calc(var(--pad) * 4);background:var(--bg);opacity:0;pointer-events:none;transition:opacity .6s ease}
+    body.gridview #grid{opacity:1;pointer-events:auto}
+    body.gridview #stage{opacity:0;filter:blur(14px);pointer-events:none}
+    .rows{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:clamp(10px, 1.4vw, 20px);max-width:1680px;margin:0 auto}
+    .rows figure{position:relative;aspect-ratio:3/2;border-radius:3px;background:#0b0b0b;overflow:hidden;cursor:pointer;transition:opacity .42s ease}
+    .rows img{width:100%;height:100%;object-fit:cover;opacity:.82;transition:transform .8s ease,opacity .8s ease}
+    .rows figure:hover img,.rows figure:focus-visible img{transform:scale(1.05);opacity:1}
+    .rows figcaption{position:absolute;left:0;right:0;bottom:0;color:#f4f2ef;font-family:var(--serif);font-weight:400;font-size:15px;line-height:1.25;background:linear-gradient(transparent,rgba(0,0,0,.82));padding:26px 14px 12px;opacity:0;transform:translateY(6px);transition:opacity .5s ease,transform .5s ease}
+    .rows figure:hover figcaption,.rows figure:focus-visible figcaption{opacity:1;transform:none}
+    body.lit #grid .rows figure{opacity:.22}
+    body.lit #grid .rows figure.focused{opacity:0}
+    #lit{position:fixed;inset:0;z-index:90;display:grid;place-items:center;padding:calc(16px + var(--safe-top)) calc(var(--pad) + var(--safe-right)) calc(16px + var(--safe-bottom)) calc(var(--pad) + var(--safe-left));opacity:0;pointer-events:none;transition:opacity .42s ease}
+    body.lit #lit{opacity:1;pointer-events:auto}
+    .scrim{position:absolute;inset:0;background:none}
+    .plate{position:relative;width:min(92vw,900px);max-height:calc(100vh - 32px - var(--safe-top) - var(--safe-bottom));max-height:calc(100dvh - 32px - var(--safe-top) - var(--safe-bottom));overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;padding:0 24px 24px;background:var(--bg);border:1px solid var(--line);border-radius:6px;box-shadow:0 24px 90px rgba(0,0,0,.22);transform-origin:center center;transition:transform .62s ease,opacity .42s ease}
+    .plate-toolbar{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px;margin-bottom:8px;padding:10px 0;background:var(--bg)}
+    .plate-toolbar>span{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
+    .plate-toolbar button{font-size:12px;min-height:44px;padding:10px 16px;border:1px solid var(--line);border-radius:6px;background:var(--bg)}
+    .plate-toolbar button:hover{border-color:var(--ink)}
+    .shot{position:relative;width:min(100%,560px);height:clamp(150px,30vh,260px);margin:0 auto;border-radius:3px;background:var(--surface)}
+    .shot img{width:100%;height:100%;object-fit:contain;border-radius:3px}
+    .meta{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;padding-top:22px}
+    #litTitle{font-family:var(--serif);font-weight:400;font-size:clamp(21px,2.1vw,28px);line-height:1.22;letter-spacing:-.01em;margin-bottom:12px;overflow-wrap:anywhere}
+    .where{font-size:13px;font-weight:400;color:var(--accent);line-height:1.65}
+    .note{font-size:13px;line-height:1.65;color:var(--muted)}
+    .paper-links{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-top:20px}
+    .paper-links a,.citation-actions a,.citation-actions button{display:inline-flex;align-items:center;min-height:44px;padding:10px 15px;border:1px solid var(--line);border-radius:5px;font-size:12px;color:var(--accent);text-decoration:none}
+    .paper-links a:hover,.citation-actions a:hover,.citation-actions button:hover{border-color:var(--accent)}
+    .pdf-note{font-size:11px;line-height:1.6;color:var(--dim);margin-top:8px}
+    .paper-details{margin-top:20px;border-top:1px solid var(--line)}
+    .paper-details details{border-bottom:1px solid var(--line)}
+    .paper-details summary{min-height:52px;padding:16px 0;font-size:13px;font-weight:400;cursor:pointer;color:var(--ink)}
+    .paper-details summary:focus-visible{outline:1px solid var(--ink);outline-offset:3px}
+    #litAbstract{padding:0 0 22px;font-size:13px;line-height:1.85;color:var(--muted)}
+    .citation-code{margin:0 0 16px;padding:16px;background:var(--surface);border-radius:4px;white-space:pre-wrap;overflow-wrap:anywhere;font:11.5px/1.7 ui-monospace,SFMono-Regular,Consolas,monospace;color:var(--muted)}
+    .citation-actions{display:flex;align-items:center;flex-wrap:wrap;gap:10px;padding-bottom:20px}
+    #citationStatus{font-size:11px;color:var(--dim)}
+    [hidden]{display:none!important}
+    html[data-theme="light"] #headline{text-shadow:none}
+    html[data-theme="light"] .vig{background:radial-gradient(ellipse 88% 92% at 50% 50%,transparent 48%,rgba(255,255,255,.26) 80%,rgba(255,255,255,.72) 100%)}
+    #dot{position:fixed;top:0;left:0;z-index:300;width:19px;height:19px;margin:-9.5px;border-radius:50%;background:rgba(214,212,209,.9);mix-blend-mode:difference;border:1px solid transparent;pointer-events:none;transform:translate3d(-100px,-100px,0);transition:width .35s ease,height .35s ease,margin .35s ease,background .35s ease,border-color .35s ease;will-change:transform}
+    #dot.wide{width:52px;height:52px;margin:-26px;background:rgba(244,242,239,.14);border-color:rgba(244,242,239,.75)}
+    @media(pointer:coarse){#stage{touch-action:pan-y}}
+    @media(hover:none),(pointer:coarse){#dot{display:none}}
+    @media(max-width:900px){
+      header{grid-template-columns:1fr auto;row-gap:2px;padding-bottom:12px}
+      .site-nav{grid-column:1/-1;grid-row:2;justify-content:center;gap:4px}
+      .site-nav a{font-size:12px;padding:4px 10px}
+      .bio{max-width:min(420px, calc(100vw - var(--pad) * 2 - var(--safe-left) - var(--safe-right)))}
+      .bio p{font-size:12px}
+      .colophon{font-size:11px}
+      .meta{grid-template-columns:1fr;gap:10px;padding-top:14px}
+      .plate{width:100%;max-width:820px}
+      .rows{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+      #grid{padding-top:calc(var(--site-header-height,126px) + 18px)}
+    }
+    @media(max-width:768px){
+      .colophon{display:none}
+      .bio{max-width:calc(100vw - var(--pad) * 2 - var(--safe-left) - var(--safe-right))}
+      #headline{font-size:clamp(22px, 6.4vw, 34px)}
+      #menu nav a{font-size:clamp(28px, 9vw, 54px)}
+    }
+    @media(max-width:640px){
+      :root{--hw:min(84vw, 360px);--pad:clamp(12px, 4vw, 18px)}
+      .header-actions{gap:14px}
+      .menu-label{display:none}
+      .menu-btn{justify-content:center;padding:4px 0}
+      .site-nav{gap:0;justify-content:space-between}
+      .site-nav a{font-size:11px;padding:4px 6px}
+      #avatar{width:42px;height:42px}
+      .who b{font-size:17px}
+      .bio p{font-size:11.5px;line-height:1.55}
+      .cue{display:none}
+      #lit{padding:calc(10px + var(--safe-top)) calc(10px + var(--safe-right)) calc(10px + var(--safe-bottom)) calc(10px + var(--safe-left))}
+      .plate{width:100%;max-width:560px;max-height:calc(100dvh - 20px - var(--safe-top) - var(--safe-bottom));margin:0 auto;padding:0 16px 20px}
+      .plate-toolbar{min-height:60px}
+      .shot{height:clamp(145px,25vh,220px)}
+      #litTitle{font-size:clamp(20px, 5.6vw, 24px)}
+      .note{font-size:12.5px;line-height:1.58}
+      .rows{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+      .rows figcaption{opacity:1;transform:none;font-size:13px}
+      #grid{padding:calc(var(--site-header-height,122px) + 18px) calc(var(--pad) + var(--safe-right)) calc(var(--pad) * 4 + var(--safe-bottom)) calc(var(--pad) + var(--safe-left))}
+    }
+    @media(max-width:380px){
+      :root{--hw:min(88vw, 320px)}
+      .bio .who{gap:10px;margin-bottom:10px}
+      .bio p{display:none}
+      .rows{grid-template-columns:1fr}
+      #menu nav a{font-size:clamp(24px, 10vw, 40px)}
+    }
+    @media(max-height:520px) and (orientation:landscape){
+      .bio,.colophon,.cue{display:none}
+      #headline{font-size:clamp(18px, 4.8vh, 28px)}
+      .meta{padding-top:10px}
+      .plate{width:min(92vw,900px)}
+      .shot{height:160px}
+      #menu nav a{font-size:clamp(20px,5vh,28px)}
+      header{padding-top:calc(8px + var(--safe-top))}
+    }
+    @media(prefers-reduced-motion:reduce){
+      *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important;transition-duration:.14s!important;transition-delay:0s!important;scroll-behavior:auto!important}
+    }
+  </style>
+<script src="assets/js/i18n-publications.js"></script>  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap">
+  <link rel="stylesheet" href="assets/css/site-shell.css">
+  <link rel="stylesheet" href="assets/css/site-background.css">
+  <script src="assets/js/site-background.js" defer></script>
 </head>
-<body>
-
-  <!-- ===== Navigation ===== -->
-  <nav class="navbar">
-    <div class="navbar-inner">
-      <ul class="navbar-links">
-        <li><a href="index.html">Homepage</a></li>
-        <li><a href="lab.html">Lab</a></li>
-        <li><a href="publications.html" class="active">Publications</a></li>
-        <li><a href="news.html">News</a></li>
-        <li><a href="join_us.html">Join Us</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <!-- ===== Main Content ===== -->
-  <div class="page-wrapper">
-
-  <div class="lab-layout">
-
-    <h1 class="lab-title">Publications</h1>
-
-    <div class="pub-list">
-
-      <!-- New Paper 0 -->
-      <div class="pub-item">
-
-        <div class="pub-image">
-          <img src="paper_photo/paper12.png" alt="paper">
-        </div>
-
-        <div class="pub-info">
-
-          <div class="pub-title">
-            Cross-Domain Adversarial Structural Deformation Model for Post-Disaster Image Generation
-          </div>
-
-          <div class="pub-authors">
-            Chengyi Qu, Xiaodong Hao, Xu Huang, Wenbin Guo, Jizhuang Hui, and <strong>Hong Wang</strong>.
-          </div>
-
-          <div class="pub-venue">
-            2025 Fourteenth International Conference on Image Processing, Theory, Tools and Applications (IPTA), 2025
-          </div>
-
-          <div class="pub-links">
-            <a href="#" class="abstract-toggle">[Abstract]</a>
-            <a href="#" class="citation-toggle">[Citation]</a>
-          </div>
-
-          <div class="pub-abstract">
-            Generative Adversarial Networks (GANs) offer a powerful framework for synthesizing post-disaster imagery, but their application to building damage assessment is limited by difficulties in generating realistic images of severely deformed structures, slow inference speeds that hinder real-time use in emergency scenarios, and a reliance on paired pre- and post-disaster data, which are rarely available in datasets collected by unmanned aerial vehicles (UAVs). To address these challenges, we propose Struct-CycleGAN, a cross-domain GAN model designed to generate high-fidelity and structurally consistent post-disaster building images from unpaired data. The model improves upon prior limitations in texture transformation and structural deformation synthesis while significantly enhancing inference speed for practical deployment. Compared to a commonly used state-of-the-art method, Struct-CycleGAN achieves nearly four times faster inference and obtains a perceptual quality score of 23.7 based on Fréchet Inception Distance (FID) evaluation. Further validation using a ResNet UNet segmentation framework shows that undamaged building areas in pre-disaster images decrease from 45% to 22% in the generated post-disaster outputs, demonstrating the model's effectiveness in simulating structural degradation. This work provides a scalable solution for synthesizing post-disaster building scenarios, supporting rapid damage assessment, emergency preparedness, and intelligent reconstruction efforts.
-          </div>
-        </div>
-      </div>
-
-      <!-- New Paper 1 -->
-      <div class="pub-item">
-
-        <div class="pub-image">
-          <img src="paper_photo/paper9.png" alt="paper">
-        </div>
-
-        <div class="pub-info">
-
-          <div class="pub-title">
-            VA-FastNavi-MARL: Real-Time Robot Control with Multimedia-Driven Meta-Reinforcement Learning
-          </div>
-
-          <div class="pub-authors">
-            Yang Zhang, Shengxi Jing, Fengxiang Wang, Feng Yuan, and <strong>Hong Wang</strong>.
-          </div>
-
-          <div class="pub-venue">
-            2026 IEEE International Conference on Multimedia and Expo (ICME), 2026
-          </div>
-
-          <div class="pub-links">
-            <a href="PDF/VA-FastNavi-MARL.pdf">[PDF]</a>
-            <a href="#" class="abstract-toggle">[Abstract]</a>
-            <a href="#" class="citation-toggle">[Citation]</a>
-          </div>
-
-          <div class="pub-abstract">
-            Interpreting dynamic, heterogeneous multimedia commands with real-time responsiveness is critical for Human-Robot Interaction. We present VA-FastNavi-MARL, a framework that aligns asynchronous audio-visual inputs into a unified latent representation. By treating diverse instructions as a distribution of navigable goals via Meta-Reinforcement Learning, our method enables rapid adaptation to unseen directives with negligible inference overhead. Unlike approaches bottlenecked by heavy sensory processing, our modality-agnostic stream ensures seamless, low-latency control. Validation on a multi-arm workspace confirms that VA-FastNavi-MARL significantly outperforms baselines in sample efficiency and maintains robust, real-time execution even under noisy multimedia streams.
-          </div>
-        </div>
-      </div>
-
-      <!-- New Paper 2 -->
-      <div class="pub-item">
-
-        <div class="pub-image">
-          <img src="paper_photo/paper10.png" alt="paper">
-        </div>
-
-        <div class="pub-info">
-
-          <div class="pub-title">
-            Embracing Positional Bias in Multiple-Choice Question Answering via Permutation Equivariant Neural Networks
-          </div>
-
-          <div class="pub-authors">
-            <strong>Chengyu Jiao</strong>, Siyin Huang, and Yu Zhang.
-          </div>
-
-          <div class="pub-venue">
-            The Fortieth AAAI Conference on Artificial Intelligence (AAAI-26), 2026
-          </div>
-
-          <div class="pub-links">
-            <a href="PDF/EMBER.pdf">[PDF]</a>
-            <a href="#" class="abstract-toggle">[Abstract]</a>
-            <a href="#" class="citation-toggle">[Citation]</a>
-          </div>
-
-          <div class="pub-abstract">
-            Several studies have demonstrated that large language models (LLMs) exhibit positional bias when answering multiple-choice questions (MCQs). Previous methods have identified such bias to be detrimental, leading to the development of techniques to mitigate it. However, we observe that certain permutations of options can actually improve the performance. Therefore, instead of eliminating such bias, we propose an EMbracing the Bias EquivaRiantly (EMBER) network. Specifically, the EMBER network, which outputs a permutation of options in MCQs, is optimized towards the beneficial permutations to which the LLM is biased. Additionally, to solve the positional bias among different permutations of options, the EMBER network is designed to grant equivariance to the permutation to the LLMs. Theoretically and empirically, we show that the proposed EMBER network can effectively utilize positional bias and demonstrate state-of-the-art performance over various baselines.
-          </div>
-        </div>
-      </div>
-
-      <!-- New Paper 3 -->
-      <div class="pub-item">
-
-        <div class="pub-image">
-          <img src="paper_photo/paper11.png" alt="paper">
-        </div>
-
-        <div class="pub-info">
-
-          <div class="pub-title">
-            SPE Attention: Making Attention Equivariant to Semantic-Preserving Permutation for Code Processing
-          </div>
-
-          <div class="pub-authors">
-            <strong>Chengyu Jiao</strong>, Shuhao Chen, and Yu Zhang.
-          </div>
-
-          <div class="pub-venue">
-            Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing, 2025
-          </div>
-
-          <div class="pub-links">
-            <a href="PDF/SPE Attention.pdf">[PDF]</a>
-            <a href="#" class="abstract-toggle">[Abstract]</a>
-            <a href="#" class="citation-toggle">[Citation]</a>
-          </div>
-
-          <div class="pub-abstract">
-            Codes serve as the fundamental language for humans to communicate with machines, and various Transformer-based models are trained to process code in recent advancements. A unique symmetry of code is its semantic-preserving permutation, which allows certain lines to be rearranged without altering the overall meaning. To capture this symmetry, we propose a novel attention mechanism that incorporates semantic-preserving permutation equivariance, called SPE attention. By leveraging the symmetry relationships within code, we introduce a directed layered graph to represent the code structure, and this graph is then summarized into a symmetry mask. The SPE attention integrates those symmetry masks, granting semantic-preserving permutation equivariance to the model. Experiments on various code-related tasks, including code summarization and error detection, demonstrate the effectiveness of the proposed SPE attention.
-          </div>
-        </div>
-      </div>
-
-      <!-- Paper 1 -->
-      <div class="pub-item">
-
-        <div class="pub-image">
-          <img src="paper_photo/paper1.png" alt="paper">
-        </div>
-
-        <div class="pub-info">
-
-          <div class="pub-title">
-            Enhancing firefighter safety and efficiency through UAV-assisted AI-based human motion recognition system
-          </div>
-
-          <div class="pub-authors">
-            <strong>Hong Wang</strong>, Chenyang Zhao, Yuan Feng, Xu Huang, Chenyi Qu, Yaguang Zhu, Ming Xin, and Wenbin Guo.
-          </div>
-
-          <div class="pub-venue">
-            Expert Systems with Applications, 2025
-          </div>
-
-          <div class="pub-links">
-            <a href="PDF/Enhancing firefighter safety and efficiency throughUAV-assisted AI-based human .pdf">[PDF]</a>
-            <a href="#" class="abstract-toggle">[Abstract]</a>
-            <a href="#" class="citation-toggle">[Citation]</a>
-          </div>
-
-          <div class="pub-abstract">
-            Fires pose grave threats to lives, properties, and natural resources, necessitating effective fire suppression and rescue efforts. This paper proposes a solution to enhance firefighter safety and efficiency by integrating Unmanned Aerial Vehicles (UAVs) with Artificial Intelligence (AI)-based human motion recognition. The proposed system employs supervised machine learning algorithms trained on firefighting video datasets to recognize six crucial firefighter actions: ‘advance’, ‘climb’, ‘connect’, ‘fetchwater’, ‘hoselaying’, and ‘watersupply’. The trained model demonstrates 74.8% accuracy in identifying these actions during fire suppression activities. By utilizing UAVs and AI, this system offers extended detection range, deployment flexibility, and live, high-resolution image capture without risking pilots’ lives. The integration of UAVs and AI holds great promise in mitigating the devastating impact of fires and safeguarding the lives of firefighters.
-          </div>
-        </div>
-      </div>
-
-      <!-- Paper 2 -->
-      <div class="pub-item">
-
-        <div class="pub-image">
-          <img src="paper_photo/paper2.png" alt="paper">
-        </div>
-
-        <div class="pub-info">
-
-          <div class="pub-title">
-            Enhancing Human Detection in Post-Disaster Scenarios through Generative Adversarial Networks
-          </div>
-
-          <div class="pub-authors">
-            Chengyi Qu, Xiaodong Hao, Feiyu Ma, Jizhuang Hui , Wenbin Guo, and <strong>Hong Wang</strong>.
-          </div>
-
-          <div class="pub-venue">
-            InInternational Conference on Human-Computer Interaction, 2025
-          </div>
-
-          <div class="pub-links">
-            <a href="PDF/Enhancing Human Detection in Post-disaster ScenariosThrough Generative Adversar.pdf">[PDF]</a>
-            <a href="#" class="abstract-toggle">[Abstract]</a>
-            <a href="#" class="citation-toggle">[Citation]</a>
-          </div>
-
-          <div class="pub-abstract">
-            Human body detection is critical in post-disaster response, especially in UAV-assisted search and rescue missions, where accurate localization of stranded individuals is essential for efficient emergency operations. However, current disaster scene image datasets are often scarce, poorly annotated, and of inconsistent quality, limiting the performance of deep learning models in complex disaster environments (e.g., ruins, fires, floods). These challenges are exacerbated when human targets are intertwined with complex backgrounds, making existing techniques inadequate for practical needs. To address these limitations, this paper presents an integrated approach combining image generation and target detection techniques to enhance the adaptability and accuracy of deep learning models. By constructing diverse, high-quality disaster scene datasets, the proposed method alleviates data scarcity and improves generalization under complex scenarios. Models trained on the expanded dataset achieve significant improvement, with generated images yielding an FID score of 45 and mAP50 scores exceeding 98% across three detection models. Additionally, this study explores the integration of computer vision and human-computer interaction in UAV search and rescue missions. The proposed framework provides an intelligent, efficient solution for post-disaster search and rescue, demonstrating the transformative potential of data augmentation and target detection technologies in disaster management. This work establishes a robust technological foundation for future post-disaster response and intelligent search and rescue operations.
-          </div>
-        </div>
-      </div>
-
-      <!-- Paper 3 -->
-      <div class="pub-item">
-
-        <div class="pub-image">
-          <img src="paper_photo/paper3.png" alt="paper">
-        </div>
-
-        <div class="pub-info">
-
-          <div class="pub-title">
-            Autonomous Video Transmission and Air-to-Ground Coordination in UAV-Swarm-Aided Disaster Response Platform
-          </div>
-
-          <div class="pub-authors">
-            Chengyi Qu, Xiaodong Hao, Feiyu Ma, Jizhuang Hui, Wenbin Guo, and <strong>Hong Wang</strong>.
-          </div>
-
-          <div class="pub-venue">
-            InInternational Conference on Human-Computer Interaction, 2025
-          </div>
-
-          <div class="pub-links">
-            <a href="PDF/Autonomous Video Transmission and Air-to-GroundCoordination in UAV-Swarm-Aided .pdf">[PDF]</a>
-            <a href="#" class="abstract-toggle">[Abstract]</a>
-            <a href="#" class="citation-toggle">[Citation]</a>
-          </div>
-
-          <div class="pub-abstract">
-            Unmanned Aerial Vehicles (UAVs), or drones with cameras, are crucial for environmental awareness in applications like smart agriculture, border security, and disaster response. Building realistic UAV testbeds for novel network control algorithms is challenging due to time constraints and regulatory limitations. To develop an autonomous air-to-ground coordination platform, in this paper, we introduce a UAV-swarm-aided Disaster Response Platform (DRP) that simulates video transmission and coordination that integrates simulation for both drones and networks, allowing experimentation with protocols (HTTP/TCP, UDP/RTP, QUIC) and video properties (codec, resolution). Our design combined human-centered interaction principles, prioritizing user experience and indicating multi-modal interactions. In addition, our approach utilizes trace-based experiments to demonstrate its effectiveness in delivering video quality (e.g., PSNR) aligning with real-world measurements, while in the meantime validating model accuracy. Evaluation results demonstrate that our intelligent video transmission and air-to-ground coordination strategies present reasonable video quality under measurement of subjective and objective metrics, and in the meantime achieve \approx 85\% accuracy with dynamic decision-making with competitive time efficiency and energy savings (\approx 18\% gain) compared to on-boarding only. Implementing these strategies in UAV-swarm-aided DRPs significantly enhances overall response efficiency, ensuring the safety of lives and property.
-          </div>
-        </div>
-      </div>
-
-      <!-- Paper 4 -->
-      <div class="pub-item">
-
-        <div class="pub-image">
-          <img src="paper_photo/paper4.png" alt="paper">
-        </div>
-
-        <div class="pub-info">
-
-          <div class="pub-title">
-            Emotion Recognition in Dance: A Novel Approach Using Laban Movement Analysis and Artificial Intelligence
-          </div>
-
-          <div class="pub-authors">
-            <strong>Hong Wang</strong>, Chenyang Zhao, Xu Huang, Yaguang Zhu, Chengyi Qu, and Wenbin Guo.
-          </div>
-
-          <div class="pub-venue">
-            InInternational Conference on Human-Computer Interaction, 2024
-          </div>
-
-          <div class="pub-links">
-            <a href="PDF/Emotion Recognition in Dance  A Novel Approach UsingLaban Movement Analysis and Artificial Intelligence.pdf">[PDF]</a>
-            <a href="#" class="abstract-toggle">[Abstract]</a>
-            <a href="#" class="citation-toggle">[Citation]</a>
-          </div>
-
-          <div class="pub-abstract">
-            Dance, as a highly expressive form of art, conveys intense emotions through bodily movements and postures. In the field of human-computer interaction, the automated recognition of dance movements poses a significant challenge concerning artistic expression and emotional classification. Analyzing dance movements enables us to extract rich emotional information. This paper introduces a novel approach for dance emotion recognition—the Laban Movement Analysis (LMA)—which characterizes the human body based on three aspects: body distribution, body structure, and dynamic trends. Leveraging artificial intelligence-based computer vision technology, we conduct a comparative analysis and supervised learning on existing dance performance video datasets. Various machine learning algorithms are trained and compared. The results indicate that recognizing emotional information from the perspective of dance movements achieves a high level of accuracy.
-          </div>
-        </div>
-      </div>
-
-      <!-- Paper 5 -->
-      <div class="pub-item">
-
-        <div class="pub-image">
-          <img src="paper_photo/paper5.png" alt="paper">
-        </div>
-
-        <div class="pub-info">
-
-          <div class="pub-title">
-            An AI-Based Action Detection UAV System to Improve Firefighter Safety
-          </div>
-
-          <div class="pub-authors">
-            <strong>Hong Wang</strong>, Yuan Feng, Xu Huang, and Wenbin Guo.
-          </div>
-
-          <div class="pub-venue">
-            InInternational Conference on Human-Computer Interaction, 2023
-          </div>
-
-          <div class="pub-links">
-            <a href="PDF/An AI-Based Action Detection UAV System to ImproveFirefighter Safety.pdf">[PDF]</a>
-            <a href="#" class="abstract-toggle">[Abstract]</a>
-            <a href="#" class="citation-toggle">[Citation]</a>
-          </div>
-
-          <div class="pub-abstract">
-            Human hazardous fires can inflict massive harm to life, property, and the environment. Close contact with fire sources threatens firefighters’ lives who are critical first responders to fire suppression and rescue. Unmanned aerial vehicles (UAVs) are recently introduced to improve firefighters’ performance by monitoring fire characteristics and inferring trajectory. Some UAVs studies used artificial intelligence (AI) for pattern recognition for wildfire prevention and other relevant tasks. However, how to coordinate firefighters is equally important and needs to be explored. Therefore, this research offers an analysis and comparison of AI-based computer vision methods that can annotate human movement automatically. This study proposes to use UAVs combined with AI-based human motion detection to recognize firefighters’ action patterns. Based on existing human motion datasets of firefighting videos, we have successfully trained a supervised machine learning algorithm recognizing firefighters’ forward movement and water splashing actions. The trained model was tested in the existing video and reached an 81.55% accuracy rate. Applying this model in the UAV system is able to improve firefighters’ functioning and safeguard their lives.
-          </div>
-        </div>
-      </div>
-
-      <!-- Paper 4 -->
-      <div class="pub-item">
-
-        <div class="pub-image">
-          <img src="paper_photo/paper6.png" alt="paper">
-        </div>
-
-        <div class="pub-info">
-
-          <div class="pub-title">
-            An autonomous robot for shell and tube heat exchanger inspection
-          </div>
-
-          <div class="pub-authors">
-            Zheng, Bujingda, Jheng‐Wun Su, Yunchao Xie, Jonathan Miles, <strong>Hong Wang</strong>, Wenxin Gao, Ming Xin, and Jian Lin.
-          </div>
-
-          <div class="pub-venue">
-            Journal of Field Robotics, 2022
-          </div>
-
-          <div class="pub-links">
-            <a href="PDF/An autonomous robot for shell and tube heat exchangerinspection.pdf">[PDF]</a>
-            <a href="#" class="abstract-toggle">[Abstract]</a>
-            <a href="#" class="citation-toggle">[Citation]</a>
-          </div>
-
-          <div class="pub-abstract">
-            Shell and tube heat exchangers (STHEs) are critical to energy conversion efficiency of power plants. Eddy current examination is a way to evaluate working conditions of these tubes. However, the current testing apparatus requires human to manually insert an eddy current testing (ECT) probe into and extract it out of individual tubes, and meanwhile monitor measurement results for diagnosis. It is a time-consuming and labor-intensive procedure even for an experienced technician. To tackle this challenge, in this study, we developed a robot enabled ECT system for autonomous inspection of STHEs. The robotic platform employs Mecanum wheeled chassis for high mobility, machine vision to locate tube bundle and tube inlets, a rotational Cartesian mechanism to operate at planes with all possible inclinations, and a task-specific mechanism for ECT probe delivery. Machine vision locates tube bundle and tube inlets by an April tag detection algorithm and a Circle Hough Transform algorithm, respectively. Assisted by a guiding cone, the ECT probe is continuously fed into the tubes with a fill factor of 0.819. During this process, the eddy current data are automatically collected and real-time analyzed by convolutional neural networks, showing accuracy of nearly 100% for identifying defective and nondefective tubes and 85% for four types of defective tubes and nondefective tubes.
-          </div>
-        </div>
-      </div>
-      <!-- Paper 4 -->
-      <div class="pub-item">
-
-        <div class="pub-image">
-          <img src="paper_photo/paper7.png" alt="paper">
-        </div>
-
-        <div class="pub-info">
-
-          <div class="pub-title">
-            Inverse design of two-dimensional graphene/h-BN hybrids by a regressional and conditional GAN
-          </div>
-
-          <div class="pub-authors">
-            Dong Yuan, Dawei Li, Chi Zhang, Chuhan Wu, <strong>Hong Wang</strong>, Ming Xin, Jianlin Cheng, and Jian Lin.
-          </div>
-
-          <div class="pub-venue">
-            Carbon, 2020
-          </div>
-
-          <div class="pub-links">
-            <a href="PDF/Inverse design of two-dimensional graphene h-BN hybrids bya regressional and co.pdf">[PDF]</a>
-            <a href="#" class="abstract-toggle">[Abstract]</a>
-            <a href="#" class="citation-toggle">[Citation]</a>
-          </div>
-
-          <div class="pub-abstract">
-            Design of materials with desired properties is currently laborious and heavily relies on intuition of researchers through a trial-and-error process. To tackle this challenge, we propose a novel regressional and conditional generative adversarial network (RCGAN) for inverse design of representative two-dimensional materials, the graphene and boron-nitride (BN) hybrids. RCGAN incorporates a supervised regressor network, thus overcoming the common technical barrier in the traditional unsupervised GANs, which cannot generate data when fed with continuous and quantitative labels. RCGAN can autonomously generate graphene/BN hybrids given any target bandgap values. These structures are distinguished from the ones used for training and exhibit high diversity for a given bandgap. Moreover, they exhibit high fidelity, yielding bandgaps within ∼10% MAEF of the desired bandgaps as validated by density functional theory (DFT) calculations. Analysis by the principle component analysis (PCA) and modified locally linear embedding (MLLE) reveals that the generator has successfully generated structures following the statistical distribution of the real structures. It implies the possibility of the RCGAN in recognizing physical rules hidden in the high-dimensional data. The novel strategy for designing regressional GAN architecture together with the successful application to inverse design of materials would inspire further exploration in research fields beyond materials.
-          </div>
-        </div>
-      </div>
-
-      <!-- Paper 4 -->
-      <div class="pub-item">
-
-        <div class="pub-image">
-          <img src="paper_photo/paper8.png" alt="paper">
-        </div>
-
-        <div class="pub-info">
-
-          <div class="pub-title">
-            Rapid identification of X-ray diffraction patterns based on very limited data by interpretable convolutional neural networks
-          </div>
-          <div class="pub-authors">
-            <strong>Hong Wang</strong>, Yunchao Xie, Dawei Li, Heng Deng, Yunxin Zhao, Ming Xin, and Jian Lin.
-          </div>
-
-          <div class="pub-venue">
-            Journal of chemical information and modeling, 2020
-          </div>
-
-          <div class="pub-links">
-            <a href="PDF/Rapid Identification of X-ray Diffraction Patterns Basedon Very Limited Data by..pdf">[PDF]</a>
-            <a href="#" class="abstract-toggle">[Abstract]</a>
-            <a href="#" class="citation-toggle">[Citation]</a>
-          </div>
-
-          <div class="pub-abstract">
-            Large volumes of data from material characterizations call for rapid and automatic data analysis to accelerate materials discovery. Herein, we report a convolutional neural network (CNN) that was trained based on theoretical data and very limited experimental data for fast identification of experimental X-ray diffraction (XRD) patterns of metal–organic frameworks (MOFs). To augment the data for training the model, noise was extracted from experimental data and shuffled; then it was merged with the main peaks that were extracted from theoretical spectra to synthesize new spectra. For the first time, one-to-one material identification was achieved. Theoretical MOFs patterns (1012) were augmented to a whole data set of 72 864 samples. It was then randomly shuffled and split into training (58 292 samples) and validation (14 572 samples) data sets at a ratio of 4:1. For the task of discriminating, the optimized model showed the highest identification accuracy of 96.7% for the top 5 ranking on a test data set of 30 hold-out samples. Neighborhood component analysis (NCA) on the experimental XRD samples shows that the samples from the same material are clustered in groups in the NCA map. Analysis on the class activation maps of the last CNN layer further discloses the mechanism by which the CNN model successfully identifies individual MOFs from the XRD patterns. This CNN model trained by the data augmentation technique would not only open numerous potential applications for identifying XRD patterns for different materials, but also pave avenues to autonomously analyze data by other characterization tools such as FTIR, Raman, and NMR spectroscopies.
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-
+<body class="revealed site-archive" data-page="publications">
+<div aria-hidden="true" id="scrolltrack"></div>
+<div id="stage">
+<div id="world">
+<div id="orb"></div>
+<h1 id="headline"><span class="inner"><span data-i18n="pub.headline" style="--i:0">publications</span></span></h1>
 </div>
+</div>
+<div aria-hidden="true" class="vig"></div>
+<section aria-hidden="true" aria-label="Selected publications" data-i18n-aria-label="pub.gridLabel" id="grid" inert=""><div class="rows"></div></section>
+  <header class="site-header">
+    <a class="wordmark" href="index.html" aria-label="EI Lab homepage" data-i18n-aria-label="site.homeLabel">EI <em>Lab</em></a>
+    <nav class="site-nav" aria-label="Main navigation" data-i18n-aria-label="site.navigation">
+      <a href="index.html" data-i18n="site.homepage">Homepage</a>
+      <a href="lab.html" data-i18n="site.lab">Lab</a>
+      <a href="publications.html" data-i18n="site.publications" aria-current="page">Publications</a>
+      <a href="news.html" data-i18n="site.news">News</a>
+      <a href="join_us.html" data-i18n="site.join">Join Us</a>
+    </nav>
+    <div class="header-actions">
+      <button id="themeBtn" class="theme-btn" type="button" aria-pressed="false" aria-label="Switch to light background">
+        <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 1v3m0 16v3M1 12h3m16 0h3M4.2 4.2l2.1 2.1m11.4 11.4 2.1 2.1M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"></path></svg>
+        <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.4 15.5A9 9 0 0 1 8.5 3.6a9 9 0 1 0 11.9 11.9Z"></path></svg>
+        <span id="themeLabel" aria-hidden="true">Light</span>
+      </button>
+      <div class="language-switch" role="group" aria-label="Language" data-i18n-aria-label="site.language">
+        <button type="button" data-language="en" aria-pressed="true" aria-label="Switch to English" data-i18n-aria-label="site.english">EN</button>
+        <span aria-hidden="true">/</span>
+        <button type="button" data-language="zh" aria-pressed="false" aria-label="Switch to Chinese" data-i18n-aria-label="site.chinese">CN</button>
+      </div>
+    </div>
+  </header>
+<aside class="bio chrome">
+<div class="who"><img alt="Hong Wang" data-i18n-alt="pub.avatar" decoding="async" height="52" id="avatar" src="https://raw.githubusercontent.com/No1dry/wanghong.github.io/main/images/wanghong.jpg" width="52"/><b data-i18n="pub.researcher">Hong Wang</b></div>
+<p data-i18n="pub.bio">Research across computer vision, deep reinforcement learning, robotics, embodied intelligence, multimodal models, and intelligent systems. This archive presents selected publications from 2020 to 2026.</p>
+</aside>
+<div class="colophon chrome" data-i18n="pub.years">Publications 2020—2026.</div>
+<button aria-label="Toggle grid view" aria-pressed="false" class="gridbtn" data-i18n-aria-label="pub.gridToggle" id="gridBtn" inert="" type="button"><b></b><b></b><b></b><b></b></button>
+<div class="cue chrome"><s aria-hidden="true"></s><span data-i18n="pub.dragHint">Drag to rotate.</span></div>
+<section aria-describedby="litWhere litNote" aria-hidden="true" aria-labelledby="litTitle" aria-modal="true" id="lit" inert="" role="dialog">
+<div aria-hidden="true" class="scrim" data-close=""></div>
+<article class="plate">
+<div class="plate-toolbar"><span data-i18n="pub.details">Publication details</span><button data-close="" data-i18n="pub.close" type="button">Close</button></div>
+<div class="shot"><img alt="" id="litImage"/></div>
+<div class="meta"><div><h2 id="litTitle"></h2><p class="where" id="litWhere"></p></div><p class="note" id="litNote"></p></div>
+<div class="paper-links"><a id="litPdf" rel="noopener noreferrer" target="_blank">PDF ↗</a><a data-i18n="pub.publisher" hidden="" id="litPublisher" rel="noopener noreferrer" target="_blank">Publisher ↗</a></div>
+<p class="pdf-note" hidden="" id="litPdfNote"></p>
+<div class="paper-details">
+<details id="abstractDetails"><summary data-i18n="pub.abstract">Abstract</summary><p id="litAbstract"></p></details>
+<details id="citationDetails"><summary data-i18n="pub.citation">Citation · BibTeX</summary><pre class="citation-code"><code id="litCitation"></code></pre><div class="citation-actions"><button data-i18n="pub.copyCitation" id="copyCitation" type="button">Copy citation</button><a data-i18n="pub.downloadCitation" download="citation.bib" id="downloadCitation">Download .bib</a><span aria-live="polite" id="citationStatus" role="status"></span></div></details>
+</div>
+</article>
+</section>
+<div aria-hidden="true" id="dot"></div>
+<script>
+  (() => {
+    'use strict';
+    const BASE = 'https://raw.githubusercontent.com/No1dry/wanghong.github.io/main/';
+    const papers = [
+      {
+        "image": "paper_photo/paper12.png",
+        "title": "Cross-Domain Adversarial Structural Deformation Model for Post-Disaster Image Generation",
+        "place": "2025 Fourteenth International Conference on Image Processing, Theory, Tools and Applications (IPTA), 2025",
+        "note": "Chengyi Qu, Xiaodong Hao, Xu Huang, Wenbin Guo, Jizhuang Hui, and Hong Wang.",
+        "abstract": "Generative Adversarial Networks (GANs) offer a powerful framework for synthesizing post-disaster imagery, but their application to building damage assessment is limited by difficulties in generating realistic images of severely deformed structures, slow inference speeds that hinder real-time use in emergency scenarios, and a reliance on paired pre- and post-disaster data, which are rarely available in datasets collected by unmanned aerial vehicles (UAVs). To address these challenges, we propose Struct-CycleGAN, a cross-domain GAN model designed to generate high-fidelity and structurally consistent post-disaster building images from unpaired data. The model improves upon prior limitations in texture transformation and structural deformation synthesis while significantly enhancing inference speed for practical deployment. Compared to a commonly used state-of-the-art method, Struct-CycleGAN achieves nearly four times faster inference and obtains a perceptual quality score of 23.7 based on Fréchet Inception Distance (FID) evaluation. Further validation using a ResNet UNet segmentation framework shows that undamaged building areas in pre-disaster images decrease from 45% to 22% in the generated post-disaster outputs, demonstrating the model's effectiveness in simulating structural degradation. This work provides a scalable solution for synthesizing post-disaster building scenarios, supporting rapid damage assessment, emergency preparedness, and intelligent reconstruction efforts.",
+        "pdf": null,
+        "citation": "@inproceedings{qu2025structCycleGAN,\n  author    = {Qu, Chengyi and Hao, Xiaodong and Huang, Xu and Guo, Wenbin and Hui, Jizhuang and Wang, Hong},\n  title     = {Cross-Domain Adversarial Structural Deformation Model for Post-Disaster Image Generation},\n  booktitle = {2025 Fourteenth International Conference on Image Processing, Theory, Tools and Applications (IPTA)},\n  publisher = {IEEE},\n  address   = {Istanbul, T{\\\"u}rkiye},\n  year      = {2025}\n}",
+        "publisherUrl": "https://doi.org/10.1109/IPTA66025.2025.11222067"
+      },
+      {
+        "image": "paper_photo/paper9.png",
+        "title": "VA-FastNavi-MARL: Real-Time Robot Control with Multimedia-Driven Meta-Reinforcement Learning",
+        "place": "2026 IEEE International Conference on Multimedia and Expo (ICME), 2026",
+        "note": "Yang Zhang, Shengxi Jing, Fengxiang Wang, Feng Yuan, and Hong Wang.",
+        "abstract": "Interpreting dynamic, heterogeneous multimedia commands with real-time responsiveness is critical for Human-Robot Interaction. We present VA-FastNavi-MARL, a framework that aligns asynchronous audio-visual inputs into a unified latent representation. By treating diverse instructions as a distribution of navigable goals via Meta-Reinforcement Learning, our method enables rapid adaptation to unseen directives with negligible inference overhead. Unlike approaches bottlenecked by heavy sensory processing, our modality-agnostic stream ensures seamless, low-latency control. Validation on a multi-arm workspace confirms that VA-FastNavi-MARL significantly outperforms baselines in sample efficiency and maintains robust, real-time execution even under noisy multimedia streams.",
+        "pdf": "PDF/VA-FastNavi-MARL.pdf",
+        "citation": "@inproceedings{zhang2026vafastnavi,\n  author       = {Zhang, Yang and Jing, Shengxi and Wang, Fengxiang and Yuan, Feng and Wang, Hong},\n  title        = {VA-FastNavi-MARL: Real-Time Robot Control with Multimedia-Driven Meta-Reinforcement Learning},\n  booktitle    = {2026 IEEE International Conference on Multimedia and Expo (ICME)},\n  year         = {2026},\n  organization = {IEEE}\n}"
+      },
+      {
+        "image": "paper_photo/paper10.png",
+        "title": "Embracing Positional Bias in Multiple-Choice Question Answering via Permutation Equivariant Neural Networks",
+        "place": "The Fortieth AAAI Conference on Artificial Intelligence (AAAI-26), 2026",
+        "note": "Chengyu Jiao, Siyin Huang, and Yu Zhang.",
+        "abstract": "Several studies have demonstrated that large language models (LLMs) exhibit positional bias when answering multiple-choice questions (MCQs). Previous methods have identified such bias to be detrimental, leading to the development of techniques to mitigate it. However, we observe that certain permutations of options can actually improve the performance. Therefore, instead of eliminating such bias, we propose an EMbracing the Bias EquivaRiantly (EMBER) network. Specifically, the EMBER network, which outputs a permutation of options in MCQs, is optimized towards the beneficial permutations to which the LLM is biased. Additionally, to solve the positional bias among different permutations of options, the EMBER network is designed to grant equivariance to the permutation to the LLMs. Theoretically and empirically, we show that the proposed EMBER network can effectively utilize positional bias and demonstrate state-of-the-art performance over various baselines.",
+        "pdf": "PDF/EMBER.pdf",
+        "citation": "@inproceedings{jiao2026ember,\n  author    = {Jiao, Chengyu and Huang, Siyin and Zhang, Yu},\n  title     = {Embracing Positional Bias in Multiple-Choice Question Answering via Permutation Equivariant Neural Networks},\n  booktitle = {The Fortieth AAAI Conference on Artificial Intelligence},\n  year      = {2026}\n}"
+      },
+      {
+        "image": "paper_photo/paper11.png",
+        "title": "SPE Attention: Making Attention Equivariant to Semantic-Preserving Permutation for Code Processing",
+        "place": "Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing, 2025",
+        "note": "Chengyu Jiao, Shuhao Chen, and Yu Zhang.",
+        "abstract": "Codes serve as the fundamental language for humans to communicate with machines, and various Transformer-based models are trained to process code in recent advancements. A unique symmetry of code is its semantic-preserving permutation, which allows certain lines to be rearranged without altering the overall meaning. To capture this symmetry, we propose a novel attention mechanism that incorporates semantic-preserving permutation equivariance, called SPE attention. By leveraging the symmetry relationships within code, we introduce a directed layered graph to represent the code structure, and this graph is then summarized into a symmetry mask. The SPE attention integrates those symmetry masks, granting semantic-preserving permutation equivariance to the model. Experiments on various code-related tasks, including code summarization and error detection, demonstrate the effectiveness of the proposed SPE attention.",
+        "pdf": "PDF/SPE Attention.pdf",
+        "citation": "@inproceedings{jiao2025spe,\n  author    = {Jiao, Chengyu and Chen, Shuhao and Zhang, Yu},\n  title     = {SPE Attention: Making Attention Equivariant to Semantic-Preserving Permutation for Code Processing},\n  booktitle = {Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing},\n  pages     = {6555--6568},\n  year      = {2025}\n}"
+      },
+      {
+        "image": "paper_photo/paper1.png",
+        "title": "Enhancing firefighter safety and efficiency through UAV-assisted AI-based human motion recognition system",
+        "place": "Expert Systems with Applications, 2025",
+        "note": "Hong Wang, Chenyang Zhao, Yuan Feng, Xu Huang, Chenyi Qu, Yaguang Zhu, Ming Xin, and Wenbin Guo.",
+        "abstract": "Fires pose grave threats to lives, properties, and natural resources, necessitating effective fire suppression and rescue efforts. This paper proposes a solution to enhance firefighter safety and efficiency by integrating Unmanned Aerial Vehicles (UAVs) with Artificial Intelligence (AI)-based human motion recognition. The proposed system employs supervised machine learning algorithms trained on firefighting video datasets to recognize six crucial firefighter actions: ‘advance’, ‘climb’, ‘connect’, ‘fetchwater’, ‘hoselaying’, and ‘watersupply’. The trained model demonstrates 74.8% accuracy in identifying these actions during fire suppression activities. By utilizing UAVs and AI, this system offers extended detection range, deployment flexibility, and live, high-resolution image capture without risking pilots’ lives. The integration of UAVs and AI holds great promise in mitigating the devastating impact of fires and safeguarding the lives of firefighters.",
+        "pdf": "PDF/Enhancing firefighter safety and efficiency throughUAV-assisted AI-based human .pdf",
+        "citation": "@article{wang2025firefighter,\n  author  = {Wang, Hong and Zhao, Chenyang and Feng, Yuan and Huang, Xu and Qu, Chenyi and Zhu, Yaguang and Xin, Ming and Guo, Wenbin},\n  title   = {Enhancing firefighter safety and efficiency through UAV-assisted AI-based human motion recognition system},\n  journal = {Expert Systems with Applications},\n  year    = {2025},\n  pages   = {128176}\n}"
+      },
+      {
+        "image": "paper_photo/paper2.png",
+        "title": "Enhancing Human Detection in Post-Disaster Scenarios through Generative Adversarial Networks",
+        "place": "International Conference on Human-Computer Interaction, 2025",
+        "note": "Chengyi Qu, Xiaodong Hao, Feiyu Ma, Jizhuang Hui, Wenbin Guo, and Hong Wang.",
+        "abstract": "Human body detection is critical in post-disaster response, especially in UAV-assisted search and rescue missions, where accurate localization of stranded individuals is essential for efficient emergency operations. However, current disaster scene image datasets are often scarce, poorly annotated, and of inconsistent quality, limiting the performance of deep learning models in complex disaster environments (e.g., ruins, fires, floods). These challenges are exacerbated when human targets are intertwined with complex backgrounds, making existing techniques inadequate for practical needs. To address these limitations, this paper presents an integrated approach combining image generation and target detection techniques to enhance the adaptability and accuracy of deep learning models. By constructing diverse, high-quality disaster scene datasets, the proposed method alleviates data scarcity and improves generalization under complex scenarios. Models trained on the expanded dataset achieve significant improvement, with generated images yielding an FID score of 45 and mAP50 scores exceeding 98% across three detection models. Additionally, this study explores the integration of computer vision and human-computer interaction in UAV search and rescue missions. The proposed framework provides an intelligent, efficient solution for post-disaster search and rescue, demonstrating the transformative potential of data augmentation and target detection technologies in disaster management. This work establishes a robust technological foundation for future post-disaster response and intelligent search and rescue operations.",
+        "pdf": "PDF/Enhancing Human Detection in Post-disaster ScenariosThrough Generative Adversar.pdf",
+        "citation": "@inproceedings{qu2025humanDetection,\n  author    = {Qu, Chengyi and Hao, Xiaodong and Ma, Feiyu and Hui, Jizhuang and Guo, Wenbin and Wang, Hong},\n  title     = {Enhancing Human Detection in Post-Disaster Scenarios through Generative Adversarial Networks},\n  booktitle = {International Conference on Human-Computer Interaction},\n  pages     = {257--272},\n  year      = {2025}\n}"
+      },
+      {
+        "image": "paper_photo/paper3.png",
+        "title": "Autonomous Video Transmission and Air-to-Ground Coordination in UAV-Swarm-Aided Disaster Response Platform",
+        "place": "International Conference on Human-Computer Interaction, 2025",
+        "note": "Chengyi Qu, Xiaodong Hao, Feiyu Ma, Jizhuang Hui, Wenbin Guo, and Hong Wang.",
+        "abstract": "Unmanned Aerial Vehicles (UAVs), or drones with cameras, are crucial for environmental awareness in applications like smart agriculture, border security, and disaster response. Building realistic UAV testbeds for novel network control algorithms is challenging due to time constraints and regulatory limitations. To develop an autonomous air-to-ground coordination platform, in this paper, we introduce a UAV-swarm-aided Disaster Response Platform (DRP) that simulates video transmission and coordination that integrates simulation for both drones and networks, allowing experimentation with protocols (HTTP/TCP, UDP/RTP, QUIC) and video properties (codec, resolution). Our design combined human-centered interaction principles, prioritizing user experience and indicating multi-modal interactions. In addition, our approach utilizes trace-based experiments to demonstrate its effectiveness in delivering video quality (e.g., PSNR) aligning with real-world measurements, while in the meantime validating model accuracy. Evaluation results demonstrate that our intelligent video transmission and air-to-ground coordination strategies present reasonable video quality under measurement of subjective and objective metrics, and in the meantime achieve \\approx 85\\% accuracy with dynamic decision-making with competitive time efficiency and energy savings (\\approx 18\\% gain) compared to on-boarding only. Implementing these strategies in UAV-swarm-aided DRPs significantly enhances overall response efficiency, ensuring the safety of lives and property.",
+        "pdf": "PDF/Autonomous Video Transmission and Air-to-GroundCoordination in UAV-Swarm-Aided .pdf",
+        "citation": "@inproceedings{qu2025uavTransmission,\n  author    = {Qu, Chengyi and Hao, Xiaodong and Ma, Feiyu and Hui, Jizhuang and Guo, Wenbin and Wang, Hong},\n  title     = {Autonomous Video Transmission and Air-to-Ground Coordination in UAV-Swarm-Aided Disaster Response Platform},\n  booktitle = {International Conference on Human-Computer Interaction},\n  pages     = {339--355},\n  year      = {2025}\n}"
+      },
+      {
+        "image": "paper_photo/paper4.png",
+        "title": "Emotion Recognition in Dance: A Novel Approach Using Laban Movement Analysis and Artificial Intelligence",
+        "place": "International Conference on Human-Computer Interaction, 2024",
+        "note": "Hong Wang, Chenyang Zhao, Xu Huang, Yaguang Zhu, Chengyi Qu, and Wenbin Guo.",
+        "abstract": "Dance, as a highly expressive form of art, conveys intense emotions through bodily movements and postures. In the field of human-computer interaction, the automated recognition of dance movements poses a significant challenge concerning artistic expression and emotional classification. Analyzing dance movements enables us to extract rich emotional information. This paper introduces a novel approach for dance emotion recognition—the Laban Movement Analysis (LMA)—which characterizes the human body based on three aspects: body distribution, body structure, and dynamic trends. Leveraging artificial intelligence-based computer vision technology, we conduct a comparative analysis and supervised learning on existing dance performance video datasets. Various machine learning algorithms are trained and compared. The results indicate that recognizing emotional information from the perspective of dance movements achieves a high level of accuracy.",
+        "pdf": "PDF/Emotion Recognition in Dance  A Novel Approach UsingLaban Movement Analysis and Artificial Intelligence.pdf",
+        "citation": "@inproceedings{wang2024danceEmotion,\n  author    = {Wang, Hong and Zhao, Chenyang and Huang, Xu and Zhu, Yaguang and Qu, Chengyi and Guo, Wenbin},\n  title     = {Emotion Recognition in Dance: A Novel Approach Using Laban Movement Analysis and Artificial Intelligence},\n  booktitle = {International Conference on Human-Computer Interaction},\n  pages     = {189--201},\n  year      = {2024}\n}"
+      },
+      {
+        "image": "paper_photo/paper5.png",
+        "title": "An AI-Based Action Detection UAV System to Improve Firefighter Safety",
+        "place": "International Conference on Human-Computer Interaction, 2023",
+        "note": "Hong Wang, Yuan Feng, Xu Huang, and Wenbin Guo.",
+        "abstract": "Human hazardous fires can inflict massive harm to life, property, and the environment. Close contact with fire sources threatens firefighters’ lives who are critical first responders to fire suppression and rescue. Unmanned aerial vehicles (UAVs) are recently introduced to improve firefighters’ performance by monitoring fire characteristics and inferring trajectory. Some UAVs studies used artificial intelligence (AI) for pattern recognition for wildfire prevention and other relevant tasks. However, how to coordinate firefighters is equally important and needs to be explored. Therefore, this research offers an analysis and comparison of AI-based computer vision methods that can annotate human movement automatically. This study proposes to use UAVs combined with AI-based human motion detection to recognize firefighters’ action patterns. Based on existing human motion datasets of firefighting videos, we have successfully trained a supervised machine learning algorithm recognizing firefighters’ forward movement and water splashing actions. The trained model was tested in the existing video and reached an 81.55% accuracy rate. Applying this model in the UAV system is able to improve firefighters’ functioning and safeguard their lives.",
+        "pdf": "PDF/An AI-Based Action Detection UAV System to ImproveFirefighter Safety.pdf",
+        "citation": "@inproceedings{wang2023actionDetection,\n  author    = {Wang, Hong and Feng, Yuan and Huang, Xu and Guo, Wenbin},\n  title     = {An AI-Based Action Detection UAV System to Improve Firefighter Safety},\n  booktitle = {International Conference on Human-Computer Interaction},\n  pages     = {632--641},\n  year      = {2023}\n}"
+      },
+      {
+        "image": "paper_photo/paper6.png",
+        "title": "An autonomous robot for shell and tube heat exchanger inspection",
+        "place": "Journal of Field Robotics, 2022",
+        "note": "Zheng, Bujingda, Jheng‐Wun Su, Yunchao Xie, Jonathan Miles, Hong Wang, Wenxin Gao, Ming Xin, and Jian Lin.",
+        "abstract": "Shell and tube heat exchangers (STHEs) are critical to energy conversion efficiency of power plants. Eddy current examination is a way to evaluate working conditions of these tubes. However, the current testing apparatus requires human to manually insert an eddy current testing (ECT) probe into and extract it out of individual tubes, and meanwhile monitor measurement results for diagnosis. It is a time-consuming and labor-intensive procedure even for an experienced technician. To tackle this challenge, in this study, we developed a robot enabled ECT system for autonomous inspection of STHEs. The robotic platform employs Mecanum wheeled chassis for high mobility, machine vision to locate tube bundle and tube inlets, a rotational Cartesian mechanism to operate at planes with all possible inclinations, and a task-specific mechanism for ECT probe delivery. Machine vision locates tube bundle and tube inlets by an April tag detection algorithm and a Circle Hough Transform algorithm, respectively. Assisted by a guiding cone, the ECT probe is continuously fed into the tubes with a fill factor of 0.819. During this process, the eddy current data are automatically collected and real-time analyzed by convolutional neural networks, showing accuracy of nearly 100% for identifying defective and nondefective tubes and 85% for four types of defective tubes and nondefective tubes.",
+        "pdf": "PDF/An autonomous robot for shell and tube heat exchangerinspection.pdf",
+        "citation": "@article{zheng2022heatExchanger,\n  author  = {Zheng, Bujingda and Su, Jheng-Wun and Xie, Yunchao and Miles, Jonathan and Wang, Hong and Gao, Wenxin and Xin, Ming and Lin, Jian},\n  title   = {An autonomous robot for shell and tube heat exchanger inspection},\n  journal = {Journal of Field Robotics},\n  volume  = {39},\n  number  = {8},\n  pages   = {1165--1177},\n  year    = {2022}\n}"
+      },
+      {
+        "image": "paper_photo/paper7.png",
+        "title": "Inverse design of two-dimensional graphene/h-BN hybrids by a regressional and conditional GAN",
+        "place": "Carbon, 2020",
+        "note": "Dong Yuan, Dawei Li, Chi Zhang, Chuhan Wu, Hong Wang, Ming Xin, Jianlin Cheng, and Jian Lin.",
+        "abstract": "Design of materials with desired properties is currently laborious and heavily relies on intuition of researchers through a trial-and-error process. To tackle this challenge, we propose a novel regressional and conditional generative adversarial network (RCGAN) for inverse design of representative two-dimensional materials, the graphene and boron-nitride (BN) hybrids. RCGAN incorporates a supervised regressor network, thus overcoming the common technical barrier in the traditional unsupervised GANs, which cannot generate data when fed with continuous and quantitative labels. RCGAN can autonomously generate graphene/BN hybrids given any target bandgap values. These structures are distinguished from the ones used for training and exhibit high diversity for a given bandgap. Moreover, they exhibit high fidelity, yielding bandgaps within ∼10% MAEF of the desired bandgaps as validated by density functional theory (DFT) calculations. Analysis by the principle component analysis (PCA) and modified locally linear embedding (MLLE) reveals that the generator has successfully generated structures following the statistical distribution of the real structures. It implies the possibility of the RCGAN in recognizing physical rules hidden in the high-dimensional data. The novel strategy for designing regressional GAN architecture together with the successful application to inverse design of materials would inspire further exploration in research fields beyond materials.",
+        "pdf": "PDF/Inverse design of two-dimensional graphene h-BN hybrids bya regressional and co.pdf",
+        "citation": "@article{dong2020grapheneHBN,\n  author  = {Dong, Yuan and Li, Dawei and Zhang, Chi and Wu, Chuhan and Wang, Hong and Xin, Ming and Cheng, Jianlin and Lin, Jian},\n  title   = {Inverse design of two-dimensional graphene/h-BN hybrids by a regressional and conditional GAN},\n  journal = {Carbon},\n  volume  = {169},\n  pages   = {9--16},\n  year    = {2020}\n}"
+      },
+      {
+        "image": "paper_photo/paper8.png",
+        "title": "Rapid identification of X-ray diffraction patterns based on very limited data by interpretable convolutional neural networks",
+        "place": "Journal of Chemical Information and Modeling, 2020",
+        "note": "Hong Wang, Yunchao Xie, Dawei Li, Heng Deng, Yunxin Zhao, Ming Xin, and Jian Lin.",
+        "abstract": "Large volumes of data from material characterizations call for rapid and automatic data analysis to accelerate materials discovery. Herein, we report a convolutional neural network (CNN) that was trained based on theoretical data and very limited experimental data for fast identification of experimental X-ray diffraction (XRD) patterns of metal–organic frameworks (MOFs). To augment the data for training the model, noise was extracted from experimental data and shuffled; then it was merged with the main peaks that were extracted from theoretical spectra to synthesize new spectra. For the first time, one-to-one material identification was achieved. Theoretical MOFs patterns (1012) were augmented to a whole data set of 72 864 samples. It was then randomly shuffled and split into training (58 292 samples) and validation (14 572 samples) data sets at a ratio of 4:1. For the task of discriminating, the optimized model showed the highest identification accuracy of 96.7% for the top 5 ranking on a test data set of 30 hold-out samples. Neighborhood component analysis (NCA) on the experimental XRD samples shows that the samples from the same material are clustered in groups in the NCA map. Analysis on the class activation maps of the last CNN layer further discloses the mechanism by which the CNN model successfully identifies individual MOFs from the XRD patterns. This CNN model trained by the data augmentation technique would not only open numerous potential applications for identifying XRD patterns for different materials, but also pave avenues to autonomously analyze data by other characterization tools such as FTIR, Raman, and NMR spectroscopies.",
+        "pdf": "PDF/Rapid Identification of X-ray Diffraction Patterns Basedon Very Limited Data by..pdf",
+        "citation": "@article{wang2020xrd,\n  author  = {Wang, Hong and Xie, Yunchao and Li, Dawei and Deng, Heng and Zhao, Yunxin and Xin, Ming and Lin, Jian},\n  title   = {Rapid Identification of X-ray Diffraction Patterns Based on Very Limited Data by Interpretable Convolutional Neural Networks},\n  journal = {Journal of Chemical Information and Modeling},\n  volume  = {60},\n  number  = {4},\n  pages   = {2004--2011},\n  year    = {2020}\n}"
+      }
+    ];
+    const $ = id => document.getElementById(id);
+    const body = document.body, html = document.documentElement;
+    const stage = $('stage'), world = $('world'), orb = $('orb'), headline = $('headline');
+    const grid = $('grid'), rows = grid.querySelector('.rows'), gridBtn = $('gridBtn');
+    const header = document.querySelector('header');
+    const lit = $('lit'), plate = lit.querySelector('.plate'), litImage = $('litImage');
+    const dot = $('dot'), coarse = matchMedia('(pointer:coarse)'), fine = matchMedia('(hover:hover) and (pointer:fine)');
+    const clamp = (n, low, high) => Math.max(low, Math.min(high, n));
+    const DEG = Math.PI / 180, GA = Math.PI * (3 - Math.sqrt(5));
+    const savedHtmlOverflow = html.style.overflow, savedBodyOverflow = body.style.overflow;
+    const blobURLs = new Set(), cards = [], gridCards = [];
+    let R = 155, perspective = 1150, lastWidth = 0, lastHeight = 0;
+    let spin = 0, tilt = -4, camZ = 0, dragX = 0, dragY = 0, velX = 0, velY = 0;
+    const pitchLimit = 32;
+    let focused = -1, litOpen = false, gridOpen = false, citationStatusKey = '';
+    let dragging = false, gesture = null, sourceCard = null, sourceFocus = null;
+    let closeTimer = 0, openFrame = 0, layoutFrame = 0, forceLayout = false, cameraFrame = 0;
+    const archiveRequested = window.location?.hash === '#archive';
+    const cursor = {x:-100,y:-100,targetX:-100,targetY:-100};
+    const t = (key, variables = {}, fallback = '') => window.EILanguage?.t(key, variables, fallback) || fallback;
 
-  <!-- Footer -->
-  <footer class="site-footer">
-    © 2024 王翃 (Hong Wang) · 湖北大学人工智能学院 · 
-    <a href="mailto:hong.wang@hubu.edu.cn">hong.wang@hubu.edu.cn</a>
-  </footer>
+    papers.forEach((paper, i) => {
+      const y = 1 - (i / (papers.length - 1)) * 2;
+      const rad = Math.sqrt(Math.max(0, 1 - y * y)), theta = i * GA;
+      const x = Math.cos(theta) * rad, z = Math.sin(theta) * rad;
+      const lat = Math.asin(y) / DEG, lon = Math.atan2(x, z) / DEG;
+      const card = document.createElement('div');
+      card.className = 'card'; card.dataset.idx = String(i);
+      card.setAttribute('role', 'button'); card.tabIndex = 0;
+      card.setAttribute('aria-label', paper.title); card.setAttribute('aria-haspopup', 'dialog');
+      const figure = document.createElement('figure'), image = document.createElement('img');
+      image.alt = paper.title; image.draggable = false; image.decoding = 'async';
+      figure.append(image); card.append(figure); orb.append(card);
+      cards.push({element:card,image,x,y,z,lat,lon,opacity:'',dim:''});
+      const tile = document.createElement('figure'), gridImage = document.createElement('img'), caption = document.createElement('figcaption');
+      tile.dataset.idx = String(i); tile.setAttribute('role', 'button'); tile.tabIndex = 0;
+      tile.setAttribute('aria-label', paper.title); tile.setAttribute('aria-haspopup', 'dialog');
+      gridImage.alt = ''; gridImage.draggable = false; gridImage.decoding = 'async';
+      caption.textContent = paper.title; tile.append(gridImage, caption); rows.append(tile);
+      gridCards.push({element:tile,image:gridImage});
+      paper.url = BASE + paper.image;
+      paper.displayURL = paper.url;
+    });
 
-  <script>
-
-document.querySelectorAll(".abstract-toggle").forEach(btn=>{
-  btn.addEventListener("click",function(e){
-    e.preventDefault()
-
-    const abstract=this.parentElement.nextElementSibling
-
-    if(abstract.style.display==="block"){
-        abstract.style.display="none"
-    }else{
-        abstract.style.display="block"
+    function syncLayers() {
+      const locked = litOpen || gridOpen;
+      html.style.overflow = locked ? 'hidden' : savedHtmlOverflow;
+      body.style.overflow = locked ? 'hidden' : savedBodyOverflow;
+      stage.inert = litOpen || gridOpen;
+      grid.inert = !gridOpen || litOpen;
+      grid.setAttribute('aria-hidden', String(!gridOpen || litOpen));
+      lit.inert = !litOpen; lit.setAttribute('aria-hidden', String(!litOpen));
+      header.inert = litOpen;
+      gridBtn.inert = litOpen || !(gridOpen || body.classList.contains('deep'));
     }
 
-  })
-})
-
-const citationTexts = [
-String.raw`@inproceedings{qu2025structCycleGAN,
-  author    = {Qu, Chengyi and Hao, Xiaodong and Huang, Xu and Guo, Wenbin and Hui, Jizhuang and Wang, Hong},
-  title     = {Cross-Domain Adversarial Structural Deformation Model for Post-Disaster Image Generation},
-  booktitle = {2025 Fourteenth International Conference on Image Processing, Theory, Tools and Applications (IPTA)},
-  publisher = {IEEE},
-  address   = {Istanbul, T{\"u}rkiye},
-  year      = {2025}
-}`,
-String.raw`@inproceedings{zhang2026vafastnavi,
-  author       = {Zhang, Yang and Jing, Shengxi and Wang, Fengxiang and Yuan, Feng and Wang, Hong},
-  title        = {VA-FastNavi-MARL: Real-Time Robot Control with Multimedia-Driven Meta-Reinforcement Learning},
-  booktitle    = {2026 IEEE International Conference on Multimedia and Expo (ICME)},
-  year         = {2026},
-  organization = {IEEE}
-}`,
-String.raw`@inproceedings{jiao2026ember,
-  author    = {Jiao, Chengyu and Huang, Siyin and Zhang, Yu},
-  title     = {Embracing Positional Bias in Multiple-Choice Question Answering via Permutation Equivariant Neural Networks},
-  booktitle = {The Fortieth AAAI Conference on Artificial Intelligence},
-  year      = {2026}
-}`,
-String.raw`@inproceedings{jiao2025spe,
-  author    = {Jiao, Chengyu and Chen, Shuhao and Zhang, Yu},
-  title     = {SPE Attention: Making Attention Equivariant to Semantic-Preserving Permutation for Code Processing},
-  booktitle = {Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing},
-  pages     = {6555--6568},
-  year      = {2025}
-}`,
-String.raw`@article{wang2025firefighter,
-  author  = {Wang, Hong and Zhao, Chenyang and Feng, Yuan and Huang, Xu and Qu, Chenyi and Zhu, Yaguang and Xin, Ming and Guo, Wenbin},
-  title   = {Enhancing firefighter safety and efficiency through UAV-assisted AI-based human motion recognition system},
-  journal = {Expert Systems with Applications},
-  year    = {2025},
-  pages   = {128176}
-}`,
-String.raw`@inproceedings{qu2025humanDetection,
-  author    = {Qu, Chengyi and Hao, Xiaodong and Ma, Feiyu and Hui, Jizhuang and Guo, Wenbin and Wang, Hong},
-  title     = {Enhancing Human Detection in Post-Disaster Scenarios through Generative Adversarial Networks},
-  booktitle = {International Conference on Human-Computer Interaction},
-  pages     = {257--272},
-  year      = {2025}
-}`,
-String.raw`@inproceedings{qu2025uavTransmission,
-  author    = {Qu, Chengyi and Hao, Xiaodong and Ma, Feiyu and Hui, Jizhuang and Guo, Wenbin and Wang, Hong},
-  title     = {Autonomous Video Transmission and Air-to-Ground Coordination in UAV-Swarm-Aided Disaster Response Platform},
-  booktitle = {International Conference on Human-Computer Interaction},
-  pages     = {339--355},
-  year      = {2025}
-}`,
-String.raw`@inproceedings{wang2024danceEmotion,
-  author    = {Wang, Hong and Zhao, Chenyang and Huang, Xu and Zhu, Yaguang and Qu, Chengyi and Guo, Wenbin},
-  title     = {Emotion Recognition in Dance: A Novel Approach Using Laban Movement Analysis and Artificial Intelligence},
-  booktitle = {International Conference on Human-Computer Interaction},
-  pages     = {189--201},
-  year      = {2024}
-}`,
-String.raw`@inproceedings{wang2023actionDetection,
-  author    = {Wang, Hong and Feng, Yuan and Huang, Xu and Guo, Wenbin},
-  title     = {An AI-Based Action Detection UAV System to Improve Firefighter Safety},
-  booktitle = {International Conference on Human-Computer Interaction},
-  pages     = {632--641},
-  year      = {2023}
-}`,
-String.raw`@article{zheng2022heatExchanger,
-  author  = {Zheng, Bujingda and Su, Jheng-Wun and Xie, Yunchao and Miles, Jonathan and Wang, Hong and Gao, Wenxin and Xin, Ming and Lin, Jian},
-  title   = {An autonomous robot for shell and tube heat exchanger inspection},
-  journal = {Journal of Field Robotics},
-  volume  = {39},
-  number  = {8},
-  pages   = {1165--1177},
-  year    = {2022}
-}`,
-String.raw`@article{dong2020grapheneHBN,
-  author  = {Dong, Yuan and Li, Dawei and Zhang, Chi and Wu, Chuhan and Wang, Hong and Xin, Ming and Cheng, Jianlin and Lin, Jian},
-  title   = {Inverse design of two-dimensional graphene/h-BN hybrids by a regressional and conditional GAN},
-  journal = {Carbon},
-  volume  = {169},
-  pages   = {9--16},
-  year    = {2020}
-}`,
-String.raw`@article{wang2020xrd,
-  author  = {Wang, Hong and Xie, Yunchao and Li, Dawei and Deng, Heng and Zhao, Yunxin and Xin, Ming and Lin, Jian},
-  title   = {Rapid Identification of X-ray Diffraction Patterns Based on Very Limited Data by Interpretable Convolutional Neural Networks},
-  journal = {Journal of Chemical Information and Modeling},
-  volume  = {60},
-  number  = {4},
-  pages   = {2004--2011},
-  year    = {2020}
-}`
-]
-
-document.querySelectorAll(".citation-toggle").forEach((btn,index)=>{
-  btn.addEventListener("click",function(e){
-    e.preventDefault()
-
-    const info=this.closest(".pub-info")
-    let citation=info.querySelector(".pub-citation")
-
-    if(!citation){
-      citation=document.createElement("pre")
-      citation.className="pub-citation"
-      citation.innerHTML="<code></code>"
-      citation.querySelector("code").textContent=citationTexts[index]
-      info.appendChild(citation)
+    function layout(force = false) {
+      const width = innerWidth, height = innerHeight;
+      if (!force && Math.abs(width - lastWidth) < 20 && Math.abs(height - lastHeight) < 20) return;
+      lastWidth = width; lastHeight = height;
+      const small = width <= 380, phone = width <= 640;
+      const hr = small ? .38 : phone ? .42 : .46;
+      const wr = small ? .48 : phone ? .52 : .58;
+      const floor = small ? 108 : phone ? 120 : 155;
+      R = Math.max(floor, Math.min(480, height * hr, width * wr));
+      const cw = Math.round(Math.max(72, R * (small ? .44 : phone ? .46 : .47)));
+      perspective = small ? 620 : phone ? 760 : width <= 900 ? 920 : 1150;
+      html.style.setProperty('--cw', cw + 'px'); html.style.setProperty('--persp', perspective + 'px');
+      cards.forEach(card => {
+        card.element.style.transform = `translate3d(${card.x * R}px, ${-card.y * R}px, ${card.z * R}px) rotateY(${card.lon}deg) rotateX(${card.lat}deg)`;
+      });
+      clampScroll();
+      renderCamera(false);
     }
+    function queueLayout(force = false) {
+      forceLayout = forceLayout || force;
+      if (layoutFrame) return;
+      layoutFrame = requestAnimationFrame(() => {layoutFrame = 0; const requested = forceLayout; forceLayout = false; layout(requested);});
+    }
+    function clampScroll() {
+      const max = innerHeight * .16;
+      if (scrollY > max) scrollTo(0, max);
+      return clamp(scrollY / max, 0, 1);
+    }
+    function renderCamera(advance = true) {
+      if (advance && !dragging && !litOpen) {
+        dragX += velX; dragY += velY;
+        velX *= .94; velY *= .94;
+        if (Math.abs(velX) < .002) velX = 0;
+        if (Math.abs(velY) < .002) velY = 0;
+      }
+      const limitedPitch = clamp(tilt + dragY, -pitchLimit, pitchLimit);
+      if (limitedPitch !== tilt + dragY) {dragY = limitedPitch - tilt; velY = 0;}
+      const p = clampScroll(), camZTarget = p * Math.min(64, R * .12);
+      if (advance && !litOpen) camZ += (camZTarget - camZ) * .075;
+      const sx = tilt + dragY, sy = spin + dragX;
+      world.style.transform = `translateZ(${camZ}px) rotateY(${sy}deg) rotateX(${sx}deg)`;
+      headline.style.transform = `rotateX(${-sx}deg) rotateY(${-sy}deg) translateZ(${R * .62}px)`;
+      headline.style.opacity = String(Math.max(0, 1 - p * .55));
+      const cy = Math.cos(sy * DEG), sySin = Math.sin(sy * DEG), cx = Math.cos(sx * DEG), sxSin = Math.sin(sx * DEG);
+      const shade = 1 - Math.min(1, p * 1.6), near = perspective * .66;
+      cards.forEach((card, i) => {
+        const zf = clamp(-card.x * sySin + (-card.y * sxSin + card.z * cx) * cy, -1, 1);
+        const base = .14 + .86 * Math.pow((zf + 1) / 2, .85);
+        let dim = shade * (1 - base), fade = 1;
+        const absZ = zf * R + camZ;
+        if (absZ > near) fade = Math.max(0, 1 - (absZ - near) / 190);
+        if (litOpen) {dim = Math.min(1, dim + .78); if (i === focused) fade = 0;}
+        const opacity = fade.toFixed(3), wash = dim.toFixed(3);
+        if (opacity !== card.opacity) {card.element.style.opacity = opacity; card.opacity = opacity;}
+        if (wash !== card.dim) {card.element.style.setProperty('--d', wash); card.dim = wash;}
+      });
+      const deep = p > .45;
+      if (body.classList.contains('deep') !== deep) {body.classList.toggle('deep', deep); syncLayers();}
+      if (fine.matches) {
+        cursor.x += (cursor.targetX - cursor.x) * .2; cursor.y += (cursor.targetY - cursor.y) * .2;
+        dot.style.transform = `translate3d(${cursor.x}px, ${cursor.y}px, 0)`;
+      }
+    }
+    function frame() {renderCamera(); cameraFrame = requestAnimationFrame(frame);}
 
-    citation.style.display=citation.style.display==="block" ? "none" : "block"
-  })
-})
+    function cancelGesture() {
+      if (gesture && stage.hasPointerCapture(gesture.id)) stage.releasePointerCapture(gesture.id);
+      gesture = null; dragging = false;
+    }
+    stage.addEventListener('pointerdown', event => {
+      if (litOpen || gridOpen || !event.isPrimary || (event.pointerType === 'mouse' && event.button !== 0)) return;
+      const source = event.target.closest('.card');
+      velX = 0; velY = 0;
+      gesture = {id:event.pointerId,type:event.pointerType,startX:event.clientX,startY:event.clientY,lastX:event.clientX,lastY:event.clientY,maxDistance:0,source,active:event.pointerType !== 'touch',lastMove:performance.now()};
+      dragging = true;
+      if (gesture.active) {stage.setPointerCapture(event.pointerId); event.preventDefault();}
+    });
+    stage.addEventListener('pointermove', event => {
+      if (!gesture || event.pointerId !== gesture.id) return;
+      const dx = event.clientX - gesture.startX, dy = event.clientY - gesture.startY;
+      gesture.maxDistance = Math.max(gesture.maxDistance, Math.hypot(dx, dy));
+      if (!gesture.active) {
+        if (gesture.maxDistance < 10) return;
+        if (Math.abs(dy) > Math.abs(dx) * 1.15) {cancelGesture(); return;}
+        gesture.active = true; stage.setPointerCapture(event.pointerId);
+      }
+      const moveX = event.clientX - gesture.lastX, moveY = event.clientY - gesture.lastY;
+      velX = moveX * .13; velY = moveY * .13;
+      dragX += velX; dragY += velY;
+      gesture.lastX = event.clientX; gesture.lastY = event.clientY; gesture.lastMove = performance.now();
+      renderCamera(false);
+      if (event.cancelable) event.preventDefault();
+    }, {passive:false});
+    stage.addEventListener('pointerup', event => {
+      if (!gesture || event.pointerId !== gesture.id) return;
+      const current = gesture;
+      current.maxDistance = Math.max(current.maxDistance, Math.hypot(event.clientX - current.startX, event.clientY - current.startY));
+      const slop = coarse.matches || current.type === 'touch' ? 14 : 6;
+      const isClick = current.maxDistance <= slop;
+      if (isClick || performance.now() - current.lastMove > 90) {velX = 0; velY = 0;}
+      cancelGesture();
+      if (isClick && current.source) openPaper(Number(current.source.dataset.idx), current.source);
+    });
+    stage.addEventListener('pointercancel', () => {velX = 0; velY = 0; cancelGesture();});
+    stage.addEventListener('lostpointercapture', event => {
+      if (event.target === stage && gesture && gesture.id === event.pointerId && !stage.hasPointerCapture(event.pointerId)) {gesture = null; dragging = false;}
+    });
+    stage.addEventListener('dragstart', event => event.preventDefault());
+    stage.addEventListener('keydown', event => {
+      const source = event.target.closest('.card');
+      if (source && (event.key === 'Enter' || event.key === ' ')) {event.preventDefault(); openPaper(Number(source.dataset.idx), source);}
+    });
 
-</script>
+    function setGrid(open) {
+      if (litOpen) return;
+      cancelGesture(); gridOpen = open;
+      body.classList.toggle('gridview', open); gridBtn.setAttribute('aria-pressed', String(open));
+      syncLayers();
+      if (!open) layout(true);
+    }
+    gridBtn.addEventListener('click', () => setGrid(!gridOpen));
+
+    function updatePaperLanguage() {
+      if (!litOpen || focused < 0) return;
+      const paper = papers[focused], pdf = $('litPdf'), pdfNote = $('litPdfNote');
+      pdf.textContent = paper.pdf ? t('pub.pdf', {}, 'PDF ↗') : t('pub.requestPdf', {}, 'Request PDF');
+      pdf.href = paper.pdf ? BASE + paper.pdf.split('/').map(encodeURIComponent).join('/') : 'mailto:hong.wang@hubu.edu.cn?subject=' + encodeURIComponent(t('pub.requestSubject', {title:paper.title}, 'PDF request: ' + paper.title));
+      pdfNote.textContent = paper.pdf ? '' : t('pub.noPdf', {}, 'The lab archive does not include a PDF for this paper. View the publisher page or request a copy from Hong Wang.');
+      $('citationStatus').textContent = citationStatusKey ? t(citationStatusKey, {}, citationStatusKey === 'pub.copied' ? 'Copied.' : 'Copy unavailable. Select the citation text to copy, or download the .bib file.') : '';
+    }
+    addEventListener('site-language-change', updatePaperLanguage);
+
+    function flipTransform(from, to) {
+      const scale = Math.max(.04, from.width / Math.max(1, to.width));
+      const dx = from.left + from.width / 2 - (to.left + to.width / 2);
+      const dy = from.top + from.height / 2 - (to.top + to.height / 2);
+      return `translate(${dx}px, ${dy}px) scale(${scale})`;
+    }
+    function openPaper(index, source) {
+      if (litOpen || !papers[index]) return;
+      clearTimeout(closeTimer); cancelAnimationFrame(openFrame); cancelGesture();
+      sourceCard = source; sourceFocus = document.activeElement;
+      const sourceRect = source.getBoundingClientRect(), paper = papers[index];
+      litImage.src = paper.displayURL; litImage.alt = paper.title;
+      $('litTitle').textContent = paper.title; $('litWhere').textContent = paper.place; $('litNote').textContent = paper.note;
+      $('litAbstract').textContent = paper.abstract;
+      $('litCitation').textContent = paper.citation;
+      $('abstractDetails').open = false; $('citationDetails').open = false;
+      citationStatusKey = ''; $('citationStatus').textContent = '';
+      const pdf = $('litPdf'), publisher = $('litPublisher'), pdfNote = $('litPdfNote');
+      pdf.target = paper.pdf ? '_blank' : '_self';
+      publisher.hidden = !paper.publisherUrl;
+      if (paper.publisherUrl) publisher.href = paper.publisherUrl;
+      else publisher.removeAttribute('href');
+      pdfNote.hidden = !!paper.pdf;
+      $('downloadCitation').href = 'data:application/x-bibtex;charset=utf-8,' + encodeURIComponent(paper.citation);
+      $('downloadCitation').download = paper.image.split('/').pop().replace('.png', '.bib');
+      lit.scrollTop = 0; plate.scrollTop = 0; focused = index; litOpen = true;
+      updatePaperLanguage();
+      body.classList.add('lit'); gridCards[index].element.classList.add('focused'); syncLayers();
+      plate.style.transition = 'none'; plate.style.transform = 'none'; plate.style.opacity = '0';
+      const targetRect = plate.getBoundingClientRect();
+      plate.style.transform = flipTransform(sourceRect, targetRect);
+      void plate.offsetWidth;
+      renderCamera(false);
+      openFrame = requestAnimationFrame(() => {
+        openFrame = 0;
+        if (!litOpen) return;
+        plate.style.removeProperty('transition'); plate.style.removeProperty('transform'); plate.style.removeProperty('opacity');
+        lit.querySelector('button').focus({preventScroll:true});
+      });
+    }
+    function closePaper() {
+      if (!litOpen) return;
+      cancelAnimationFrame(openFrame); openFrame = 0;
+      const target = sourceCard && sourceCard.isConnected ? sourceCard.getBoundingClientRect() : null;
+      const currentStyle = getComputedStyle(plate);
+      const currentTransform = currentStyle.transform, currentOpacity = currentStyle.opacity;
+      plate.style.transition = 'none'; plate.style.transform = 'none';
+      const home = plate.getBoundingClientRect();
+      // Preserve an interrupted opening animation before animating back to its source.
+      plate.style.transform = currentTransform; plate.style.opacity = currentOpacity;
+      void plate.offsetWidth;
+      focused = -1; litOpen = false;
+      gridCards.forEach(card => card.element.classList.remove('focused'));
+      body.classList.remove('lit'); syncLayers(); renderCamera(false);
+      plate.style.removeProperty('transition');
+      if (target) plate.style.transform = flipTransform(target, home);
+      plate.style.opacity = '0';
+      const returnTarget = sourceCard || sourceFocus;
+      returnTarget?.focus({preventScroll:true});
+      clearTimeout(closeTimer);
+      closeTimer = setTimeout(() => {
+        if (litOpen) return;
+        plate.style.transition = 'none'; plate.style.removeProperty('transform'); plate.style.removeProperty('opacity');
+        void plate.offsetWidth; plate.style.removeProperty('transition');
+      }, 640);
+    }
+    rows.addEventListener('click', event => {const source = event.target.closest('figure[data-idx]'); if (source) openPaper(Number(source.dataset.idx), source);});
+    rows.addEventListener('keydown', event => {
+      const source = event.target.closest('figure[data-idx]');
+      if (source && (event.key === 'Enter' || event.key === ' ')) {event.preventDefault(); openPaper(Number(source.dataset.idx), source);}
+    });
+    lit.addEventListener('click', event => {if (event.target.closest('[data-close]')) closePaper();});
+    $('copyCitation').addEventListener('click', async () => {
+      const index = focused;
+      if (index < 0) return;
+      try {
+        if (!navigator.clipboard?.writeText) throw new Error('Clipboard unavailable');
+        await navigator.clipboard.writeText(papers[index].citation);
+        if (litOpen && focused === index) {citationStatusKey = 'pub.copied'; updatePaperLanguage();}
+      } catch (_) {
+        if (litOpen && focused === index) {citationStatusKey = 'pub.copyUnavailable'; updatePaperLanguage();}
+      }
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') {
+        if (litOpen) closePaper(); else if (gridOpen) setGrid(false);
+      }
+      if (event.key !== 'Tab') return;
+      let stops;
+      if (litOpen) stops = [...lit.querySelectorAll('a[href],button,summary,[tabindex="0"]')].filter(element => {
+        if (element.hidden || element.closest('[hidden]')) return false;
+        const details = element.closest('details');
+        return !details || details.open || element.tagName === 'SUMMARY';
+      });
+      if (!stops) return;
+      const first = stops[0], last = stops[stops.length - 1];
+      if (event.shiftKey && (document.activeElement === first || !stops.includes(document.activeElement))) {event.preventDefault(); last.focus({preventScroll:true});}
+      else if (!event.shiftKey && (document.activeElement === last || !stops.includes(document.activeElement))) {event.preventDefault(); first.focus({preventScroll:true});}
+    });
+
+    document.addEventListener('pointermove', event => {
+      if (!fine.matches || event.pointerType === 'touch') return;
+      cursor.targetX = event.clientX; cursor.targetY = event.clientY;
+      dot.classList.toggle('wide', !!event.target.closest('.card,a,button,summary,#grid figure'));
+    }, {passive:true});
+    document.addEventListener('pointerout', event => {if (!event.relatedTarget) {cursor.targetX = -100; cursor.targetY = -100; dot.classList.remove('wide');}});
+
+    async function downscale(url, maxWidth) {
+      const probe = new Image(); probe.crossOrigin = 'anonymous'; probe.decoding = 'async';
+      try {
+        await new Promise((resolve, reject) => {probe.onload = resolve; probe.onerror = reject; probe.src = url;});
+        if (probe.decode) await probe.decode().catch(() => {});
+        if (!probe.naturalWidth || probe.naturalWidth <= maxWidth) return url;
+        const canvas = document.createElement('canvas'); canvas.width = maxWidth;
+        canvas.height = Math.max(1, Math.round(probe.naturalHeight * maxWidth / probe.naturalWidth));
+        const context = canvas.getContext('2d');
+        if (!context) return url;
+        context.drawImage(probe, 0, 0, canvas.width, canvas.height);
+        const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/webp', .88));
+        if (!blob) return url;
+        const result = URL.createObjectURL(blob); blobURLs.add(result); return result;
+      } catch (_) {return url;}
+    }
+    const cardDecodeMax = innerWidth <= 380 ? 420 : innerWidth <= 640 ? 520 : innerWidth <= 900 ? 640 : 760;
+    papers.forEach((paper, i) => {
+      downscale(paper.url, cardDecodeMax).then(url => {
+        paper.displayURL = url;
+        const image = cards[i].image;
+        image.addEventListener('load', () => image.classList.add('in'), {once:true});
+        image.src = url; gridCards[i].image.src = url;
+        if (image.complete && image.naturalWidth) image.classList.add('in');
+        if (focused === i) litImage.src = url;
+      });
+    });
+    downscale(BASE + 'images/wanghong.jpg', 160).then(url => {$('avatar').src = url;});
+
+    addEventListener('resize', () => queueLayout());
+    addEventListener('orientationchange', () => setTimeout(() => queueLayout(true), 220));
+    if (window.visualViewport) {
+      visualViewport.addEventListener('resize', () => queueLayout(true), {passive:true});
+      visualViewport.addEventListener('scroll', () => queueLayout(true), {passive:true});
+    }
+    addEventListener('scroll', clampScroll, {passive:true});
+    addEventListener('pagehide', event => {
+      cancelAnimationFrame(cameraFrame);
+      if (!event.persisted) blobURLs.forEach(url => URL.revokeObjectURL(url));
+    });
+    addEventListener('pageshow', event => {if (event.persisted) {layout(true); cameraFrame = requestAnimationFrame(frame);}});
+    // The archive is available immediately; image decoding never blocks navigation or interaction.
+    syncLayers(); layout(true); renderCamera(false);
+    if (archiveRequested) setGrid(true);
+    cameraFrame = requestAnimationFrame(frame);
+  })();
+  </script>
 </body>
 </html>

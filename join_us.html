@@ -1,227 +1,213 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hong Wang | School of Artificial Intelligence, Hubei University</title>
+  <script src="assets/js/site-theme.js"></script>
+  <script src="assets/js/site-language.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Join Us | EI Lab</title>
   <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap">
+  <link rel="stylesheet" href="assets/css/join-experience.css">
+  <meta name="description" content="Explore life and research at EI Lab, then introduce yourself with a structured application email.">
+  <script src="assets/js/i18n-join.js"></script>
+  <link rel="stylesheet" href="assets/css/site-shell.css">
+  <link rel="stylesheet" href="assets/css/site-background.css">
+  <script src="assets/js/site-background.js" defer></script>
+  <link rel="stylesheet" href="assets/css/liquid-metal-button.css">
+  <script type="module" src="assets/js/liquid-metal-button.js"></script>
 </head>
-<body>
+<body class="site-page join-page" data-page="join_us">
 
   <!-- ===== Navigation ===== -->
-  <nav class="navbar">
-    <div class="navbar-inner">
-      <ul class="navbar-links">
-        <li><a href="index.html">Homepage</a></li>
-        <li><a href="lab.html">Lab</a></li>
-        <li><a href="publications.html">Publications</a></li>
-        <li><a href="news.html">News</a></li>
-        <li><a href="join_us.html" class="active">Join Us</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <!-- ===== Main Content ===== -->
-  <div class="page-wrapper lab-layout">
-
-  <div class="content-section">
-    <h2 class="section-heading">Join Our Lab</h2>
-
-    <div class="section-text">
-      <p>
-        📢:<font color="red">我们长期招收对 <strong>人工智能、大模型、机器人与具身智能</strong> 感兴趣的本科生与研究生。
-        如果你对科研充满热情，并希望参与前沿 AI 研究，欢迎加入我们的团队。
-        <p><strong>关于2026年研究生招生：课题组接受调剂，但有两点要求：
-          1.必须得过学院的线；
-          2.暑期开始需要提前到实验室。</strong></p>
-      </font>
-      </p>
-
-      <p>
-        📧 联系方式：  
-        <a href="mailto:hong.wang@hubu.edu.cn">hong.wang@hubu.edu.cn</a>
-      </p>
-
-      <p>
-        邮件请附：个人简历（含生活照）+ 成绩单。
-      </p>
-      <p>扫码加入实验室交流群，了解导师研究方向、课题组情况及最新招生信息。</p>
-      <!-- QQ群二维码 -->
-      <div style="margin-top:25px;">
-        <img src="images/qq_group.png" 
-            alt="QQ Group QR Code"
-            style="width:280px; border-radius:6px; box-shadow:0 2px 8px rgba(0,0,0,0.15);">
-            <p style="font-weight:600; margin-bottom:10px; margin-left:48px">学长交流群(不含老师😏)</p>
+  <header class="site-header">
+    <a class="wordmark" href="index.html" aria-label="EI Lab homepage" data-i18n-aria-label="site.homeLabel">EI <em>Lab</em></a>
+    <nav class="site-nav" aria-label="Main navigation" data-i18n-aria-label="site.navigation">
+      <a href="index.html" data-i18n="site.homepage">Homepage</a>
+      <a href="lab.html" data-i18n="site.lab">Lab</a>
+      <a href="publications.html" data-i18n="site.publications">Publications</a>
+      <a href="news.html" data-i18n="site.news">News</a>
+      <a href="join_us.html" data-i18n="site.join" aria-current="page">Join Us</a>
+    </nav>
+    <div class="header-actions">
+      <button id="themeBtn" class="theme-btn" type="button" aria-pressed="false" aria-label="Switch to light background">
+        <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 1v3m0 16v3M1 12h3m16 0h3M4.2 4.2l2.1 2.1m11.4 11.4 2.1 2.1M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"></path></svg>
+        <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.4 15.5A9 9 0 0 1 8.5 3.6a9 9 0 1 0 11.9 11.9Z"></path></svg>
+        <span id="themeLabel" aria-hidden="true">Light</span>
+      </button>
+      <div class="language-switch" role="group" aria-label="Language" data-i18n-aria-label="site.language">
+        <button type="button" data-language="en" aria-pressed="true" aria-label="Switch to English" data-i18n-aria-label="site.english">EN</button>
+        <span aria-hidden="true">/</span>
+        <button type="button" data-language="zh" aria-pressed="false" aria-label="Switch to Chinese" data-i18n-aria-label="site.chinese">CN</button>
       </div>
     </div>
-  </div>
+  </header>
 
-  <div class="content-section">
-    <h2 class="section-heading">About the Lab</h2>
-
-    <div class="section-text">
-      <p>
-        我是湖北大学人工智能学院校聘副研究员，研究生导师，同时也是
-        <strong>具身智能实验室（Embodied AI Lab）</strong> 的创建者。
-      </p>
-
-      <p>
-        课题组致力于人工智能前沿算法研究，并探索 AI 在真实物理世界中的应用，
-        希望推动 AI 从数字世界走向现实世界。
-      </p>
-      <ul>
-        <li>研究方向
-          <ul>
-            <li><strong>VLA Multimodal Models</strong>：研究视觉-语言-动作（Vision-Language-Action）多模态大模型，为机器人提供认知能力。</li>
-            <li><strong>Robot Control</strong>：面向四足机器人与机械臂的复杂环境控制与灵巧操作。</li>
-            <li><strong>Reinforcement Learning</strong>：在动态环境中实现自主学习与智能决策。</li>
-            <li><strong>Computer Vision</strong>：复杂环境感知与三维空间理解。</li>
-            <li><strong>Differential Privacy</strong>：构建安全可信的机器学习系统。</li>
-          </ul>
-        </li>
-        <li>为什么做？
-          <p>让智能体从数字世界走向真实的物理世界，被广泛视为实现通用人工智能（AGI）的关键里程碑。近年来，深度学习与计算机视觉的飞速发展使得AI具备了强大的感知能力，而多模态大语言模型（MLLM）的涌现更为AI提供了类似人类的认知、推理与常识理解能力。然而，如何将这些“大脑”级别的思维能力转化为物理世界中切实可行的“动作”，即具身智能（Embodied AI），仍是当下最前沿且极具挑战的任务。</p>
-          <p>通过深度融合强化学习与VLA（视觉-语言-动作）模型，我们正致力于打破这种感知、认知与控制的壁垒，让机器狗、机械臂等物理实体拥有自主适应复杂环境的能力。此外，随着AI系统与人类社会的交互日益密切，如何在海量多模态数据驱动的训练中保护用户隐私，成为了不可忽视的重要议题。因此，我们积极引入差分隐私等技术，致力于构建不仅智能，而且安全、可信的具身AI系统。</p>
-          <p>这其中仍然存在着许多关键的科学问题，简单举几个例子：</p>
-          <ul>
-            <li>如何设计高效的VLA多模态大模型，实现视觉感知、语言指令与机器人动作输出的端到端对齐？</li>
-            <li>如何利用强化学习让四足机器狗和机械臂在高度不确定性的真实物理环境中实现鲁棒控制与灵巧操作？</li>
-            <li>如何缩小甚至消除具身智能体从仿真训练到真实世界部署的Sim2Real（虚实迁移）鸿沟？</li>
-            <li>如何通过先进的计算机视觉技术，提升智能体对动态、复杂三维物理环境的细粒度空间感知？</li>
-            <li>如何在训练大规模多模态和具身控制模型时，引入差分隐私机制以有效防止敏感数据泄露？</li>
-            <li>如何让机器人系统具备从极少量人类演示或物理世界试错中持续学习和进化的能力？</li>
-          </ul>
-          <p>实现高度智能、泛化且安全的具身人工智能，需要更多有潜力和热情的大家投入到该领域的科研工作中。</p>
-          <p>这是一个极具潜力的朝阳领域，从国家战略布局、地方政府支持到社会各界均给予了前所未有的关注，具身智能被视为人工智能的下一代浪潮。往大了说，具备物理执行力与多模态感知能力的AI将彻底颠覆现有的生产制造和人类生活方式；往小了说，掌握深度学习、强化学习、VLA大模型、机器人控制及隐私计算等核心技术，可以为你谋得一份极具竞争力的工作（你可以看到，目前几乎各大互联网大厂、科技巨头及自动驾驶/机器人独角兽企业都在疯狂招募具身智能相关的算法岗，就业去向广阔且薪资极其丰厚）。</p>
-        </li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="content-section">
-    <h2 class="section-heading">培养方式</h2>
-
-    <div class="section-text">
-      <p>我们以全程陪伴、系统训练、实战落地为核心，为学生搭建从科研入门到独立开展高水平研究的完整成长路径，通过标准化训练与个性化指导相结合，助力每位学生毕业时具备独立科研、学术表达与工程实践的综合能力。</p>
-
-      <ul>
-        <li>常态化学术交流：夯实科研视野与思维
-          <ul>
-            <li>每周固定组会：聚焦领域内顶会、顶刊最新论文，由导师带领精读核心创新点、实验设计、写作逻辑与研究范式，引导学生深度讨论、批判性思考，培养前沿学术视野。</li>
-            <li>专题研讨与成果汇报：定期开展研究进展汇报、文献综述分享、课题思路答辩，倒逼学生主动梳理研究脉络，锻炼逻辑表达、问题分析与学术质疑能力。</li>
-          </ul>
-        </li>
-        <li>导师一对一指导：精准解决研究难题
-          <ul>
-            <li>每周至少 1 次专属沟通：导师针对每位学生的课题方向、研究瓶颈、实验进展、论文撰写进行个性化深度指导，从选题、方案设计到细节调整全程把关。</li>
-            <li>全程跟踪式辅导：覆盖从文献调研、研究框架搭建、实验方案优化，到数据处理、结果分析、论文修改与投稿返修的全流程，及时纠偏、高效推进研究。</li>
-          </ul>
-        </li>
-        <li>高水平学术支持：拓宽学术交流平台
-          <ul>
-            <li>全力支持国内外学术会议：鼓励并支持学生参加领域权威学术会议，提供参会指导、学术交流建议，助力学生与国内外顶尖学者面对面沟通、展示研究成果、积累学术资源。</li>
-            <li>学术规范与投稿训练：系统讲解论文投稿流程、期刊 / 会议选择、返修回复技巧，帮助学生熟悉学术出版规则，提升投稿命中率。</li>
-          </ul>
-        </li>
-        <li>产学研结合：提供多元实践机会
-          <ul>
-            <li>优质企业实习推荐：对接行业内优质企业与科研院所，为学生推荐匹配度高的实习岗位，将科研理论与工程实践结合，积累工业界项目经验，提升就业与深造竞争力。</li>
-            <li>产学研课题联动：鼓励参与横向课题与实际应用项目，培养解决真实场景问题的能力，实现学术研究与产业需求双向赋能。</li>
-          </ul>
-        </li>
-        <li>全链条科研训练：打造完整科研能力
-          <ul>
-            <li>研究设计训练：教授文献检索与综述、研究问题提炼、创新点挖掘、实验方案设计、变量控制与对照设置，建立严谨研究逻辑。</li>
-            <li>实验方法指导：规范数据采集、处理、分析与可视化流程，教授专业工具使用、实验复现与结果验证方法，培养严谨、可复现的科研习惯。</li>
-            <li>论文写作专项提升：从结构搭建、摘要撰写、逻辑表达、图表设计到语言润色全程指导，针对性训练英文写作、学术规范与审稿意见回复，让学生掌握高水平学术论文的完整写作能力。</li>
-          </ul>
-        </li>
-      </ul>
-
-      <p>
-        我们始终坚持以能力培养为核心，不只是完成课题、发表论文，更让学生真正掌握独立发现问题、设计研究、解决问题、输出成果的完整科研素养，为后续深造、学术研究或职业发展打下坚实基础。
-      </p>
-    </div>
-  </div>
-
-  <div class="content-section">
-    <h2 class="section-heading">福利保障</h2>
-
-    <div class="section-text">
-      <p>课题组致力于为每位成员提供优渥的科研环境、充足的经费支持以及温暖的团队氛围：</p>
-
-      <ul>
-        <li>硬件与基础设施
-          <ul>
-            <li>个人工作设备：提供高性能台式机/笔记本电脑补贴（根据情况）；配备单台提升生产力的显示器（根据情况）；提供键盘、鼠标、耳机等外设（根据情况）😲。</li>
-            <li>实验与计算资源：免费或便捷使用课题组自有仪器；承担校内外公共平台的使用费用；提供部分正版专业软件授权（如WPS）；提供充足的服务器、NAS等数据存储空间。</li>
-            <li>办公环境：拥有专属办公桌及固定工位；提供安全、整洁、设备齐全的实验场地；提供高速网络及免费的打印/复印额度。</li>
-          </ul>
-        </li>
-        <li>科研经费支持
-          <ul>
-            <li>科研消耗品：实验材料、耗材、加工费等均由课题组经费承担；支付样品数据分析的相关费用。</li>
-            <li>论文相关费用：支持发表开放获取（OA）论文的版面费（例如：3500刀）；购买或订阅相关绘图与排版工具（如Origin, Illustrator等）。</li>
-          </ul>
-        </li>
-        <li>差旅会议支持
-          <ul>
-            <li>学术会议：支付会议注册费用（800-1200刀）；承担往返交通（机票/高铁）及会议期间的住宿费用；鼓励学生参会并作报告（口头/墙报）。</li>
-            <li>学术交流与访学：支持短期赴国内外合作课题组进行学习、实验；对于需要野外或企业实地调研的学科，提供差旅保障。</li>
-          </ul>
-        </li>
-        <li>成长与发展支持
-          <ul>
-            <li>技能培训：资助参加与科研相关的部分专业技能付费培训课程；支持参加国内外举办的短期讲习班或暑期学校；依据表现提供工作实习机会。</li>
-            <li>学术指导与网络：导师提供稳定、有效的一对一学术指导时间；导师主动为学生引荐领域内专家，拓展人脉；定期举办组会、文献分享会，促进内部交流。</li>
-          </ul>
-        </li>
-        <li>生活与奖励
-          <ul>
-            <li>经济补助：对发表高水平论文、获专利、得奖等给予额外绩效奖金（根据组内经济情况）🤤。</li>
-            <li>福利与保障：定期举行聚餐交流等团建活动；课题组在成员遇到困难时（如生病）给予深切的人文关怀和帮助。</li>
-          </ul>
-        </li>
-        <li>学术培训与暑期学校支持</li>
-      </ul>
-
-    </div>
-  </div>
-
-  <div class="content-section">
-    <h2 class="section-heading">招生要求</h2>
-
-    <div class="section-text">
-
-      <p><strong>基本要求：</strong></p>
-
-      <ul>
-        <li>愿意参加暑假能力提升营和寒假实践活动，提升自己的代码水平、动手能力、项目实践组织能力。</li>
-        <li>计算机、人工智能、数学、统计等相关专业</li>
-        <li>对科研有足够的热情，有好奇心和自驱力</li>
-        <li>具有良好的编程能力或数学基础</li>
-        <li>具有良好的英语阅读能力和写作能力</li>
-        <li>具备团队合作精神</li>
-      </ul>
-
-      <p><strong>优先考虑：</strong></p>
-
-      <ul>
-        <li>有 AI / 机器学习科研或竞赛经历</li>
-        <li>发表过人工智能领域相关论文</li>
-        <li>熟悉 PyTorch 等深度学习框架</li>
-        <li>参与过 LLM / 多模态模型项目</li>
-      </ul>
-
-    </div>
-  </div>
+  <!-- ===== Main Content ===== -->
+ <main class="join-experience" id="joinExperience">
+<section aria-labelledby="joinQuestion" class="join-intro" data-phase="sphere" id="joinIntro">
+<canvas aria-hidden="true" id="joinParticles"></canvas>
+<p class="join-intro-kicker" data-i18n="join.text000">EI LAB · A NEW CHAPTER</p>
+<h1 data-i18n="join.question" id="joinQuestion">Do you want to join us?</h1>
+<div class="join-intro-bottom">
+<p id="joinParticleHint">Scroll to scatter / gather<br/>Move to rotate</p>
+<button class="join-primary liquid-metal-button" disabled="" id="joinContinue" type="button"><span data-i18n="join.text004">Continue</span><span aria-hidden="true">↗</span></button>
 </div>
+</section>
+<div class="join-flow" hidden="" id="joinFlow">
+<div class="join-progress-head"><span data-i18n="join.text005">JOIN EI LAB</span><p id="joinRoute">01 / 08 · About the Lab</p></div>
+<div aria-label="Join Us progress" aria-valuemax="8" aria-valuemin="0" aria-valuenow="1" class="join-progress" data-i18n-aria-label="join.text007" id="joinProgress" role="progressbar"><span></span></div>
+<form id="joinForm" novalidate="">
+        <section class="join-step join-information" data-join-step="0" hidden aria-labelledby="joinTitle0"><p data-i18n="join.text075" class="join-kicker">FROM DIGITAL INTELLIGENCE TO THE PHYSICAL WORLD</p><h2 data-i18n="join.about.title" id="joinTitle0" tabindex="-1">About the Lab</h2><p data-i18n="join.about.lead" class="join-lead">We welcome undergraduate and graduate students interested in AI, large models, robotics and embodied intelligence. Explore how AI can perceive, understand and act in the physical world with us.</p><div class="join-info-grid"><article class="join-info-card"><span class="join-card-number">01</span><h3 data-i18n="join.about.card0.title">VLA Multimodal Models</h3><p data-i18n="join.about.card0.body">Vision-Language-Action models that give robots cognitive capabilities.</p></article><article class="join-info-card"><span class="join-card-number">02</span><h3 data-i18n="join.about.card1.title">Robot Control</h3><p data-i18n="join.about.card1.body">Control in complex environments and dexterous manipulation for quadruped robots and robotic arms.</p></article><article class="join-info-card"><span class="join-card-number">03</span><h3 data-i18n="join.about.card2.title">Reinforcement Learning</h3><p data-i18n="join.about.card2.body">Autonomous learning and intelligent decision-making in dynamic environments.</p></article><article class="join-info-card"><span class="join-card-number">04</span><h3 data-i18n="join.about.card3.title">Computer Vision</h3><p data-i18n="join.about.card3.body">Perception in complex environments and understanding three-dimensional space.</p></article><article class="join-info-card"><span class="join-card-number">05</span><h3 data-i18n="join.about.card4.title">Differential Privacy</h3><p data-i18n="join.about.card4.body">Secure and trustworthy machine learning and privacy protection.</p></article></div><details class="join-full-copy"><summary data-i18n="join.about.expand">Read the full lab introduction</summary><div data-i18n-html="join.about.full"><p>I am a University-appointed Associate Research Fellow and graduate supervisor at the School of Artificial Intelligence, Hubei University, and the founder of the <strong>Embodied AI Lab</strong>.</p>
+<p>Our group develops algorithms at the frontiers of artificial intelligence and explores AI in the physical world. We want to help AI move from digital environments into real-world applications.</p>
+<ul><li>Research directions<ul>
+<li><strong>VLA Multimodal Models</strong>: Vision-Language-Action models that give robots cognitive capabilities.</li>
+<li><strong>Robot Control</strong>: Control in complex environments and dexterous manipulation for quadruped robots and robotic arms.</li>
+<li><strong>Reinforcement Learning</strong>: Autonomous learning and intelligent decision-making in dynamic environments.</li>
+<li><strong>Computer Vision</strong>: Perception in complex environments and understanding three-dimensional space.</li>
+<li><strong>Differential Privacy</strong>: Building secure and trustworthy machine-learning systems.</li>
+</ul></li><li>Why this research matters
+<p>Bringing intelligent agents from digital environments into the physical world is widely considered a key milestone toward artificial general intelligence (AGI). Rapid advances in deep learning and computer vision have given AI powerful perceptual capabilities. Multimodal large language models (MLLMs) have added capabilities resembling human cognition, reasoning and common-sense understanding. Turning these brain-like abilities into practical actions in the physical world—embodied AI—remains a frontier challenge.</p>
+<p>By combining reinforcement learning with Vision-Language-Action models, we aim to bridge perception, cognition and control, enabling robot dogs and robotic arms to adapt autonomously to complex environments. As AI systems interact more closely with society, protecting privacy during training on large volumes of multimodal data becomes increasingly important. We therefore also investigate differential privacy to build embodied AI systems that are intelligent, secure and trustworthy.</p>
+<p>Many scientific questions remain open. For example:</p><ul>
+<li>How can efficient VLA models align visual perception, language instructions and robot actions end to end?</li>
+<li>How can reinforcement learning enable robust control and dexterous manipulation for quadruped robots and robotic arms in highly uncertain physical environments?</li>
+<li>How can we reduce or eliminate the Sim2Real gap between simulated training and real-world deployment?</li>
+<li>How can advanced computer vision improve fine-grained spatial perception in dynamic, complex three-dimensional environments?</li>
+<li>How can differential privacy prevent sensitive-data leakage when training large multimodal and embodied-control models?</li>
+<li>How can robot systems continually learn and improve from very few human demonstrations or real-world trials?</li>
+</ul><p>Developing capable, generalizable and secure embodied AI requires more researchers with potential and enthusiasm to join this field.</p>
+<p>This emerging field is receiving attention from national strategies, local governments and society, and is viewed as the next wave of AI. At a broad level, AI with physical execution and multimodal perception could transform manufacturing and everyday life. At an individual level, skills in deep learning, reinforcement learning, VLA models, robot control and privacy-preserving computation can support a competitive career. Major internet companies, technology firms, and autonomous-driving and robotics companies are actively recruiting embodied-AI researchers and engineers, with a broad range of opportunities and attractive compensation.</p>
+</li></ul></div></details></section>
+<section class="join-step join-information" data-join-step="1" hidden aria-labelledby="joinTitle1"><p data-i18n="join.text076" class="join-kicker">LEARN. EXPERIMENT. GROW.</p><h2 data-i18n="join.training.title" id="joinTitle1" tabindex="-1">Training &amp; Mentoring</h2><p data-i18n="join.training.lead" class="join-lead">From first research steps to independent work, connect each stage of your development through systematic training, individual guidance and real projects.</p><div class="join-info-grid"><article class="join-info-card"><span class="join-card-number">01</span><h3 data-i18n="join.training.card0.title">Regular Academic Exchange</h3><p data-i18n="join.training.card0.body">Weekly group meetings and close reading of papers, with regular research updates, literature reviews and project discussions.</p></article><article class="join-info-card"><span class="join-card-number">02</span><h3 data-i18n="join.training.card1.title">Individual Supervision</h3><p data-i18n="join.training.card1.body">At least one dedicated discussion each week, covering topics, experiments, writing, submission and revisions.</p></article><article class="join-info-card"><span class="join-card-number">03</span><h3 data-i18n="join.training.card2.title">Conferences &amp; Publication Practice</h3><p data-i18n="join.training.card2.body">Support for domestic and international conferences, academic standards, submission procedures and responses to reviewers.</p></article><article class="join-info-card"><span class="join-card-number">04</span><h3 data-i18n="join.training.card3.title">Research &amp; Industry Practice</h3><p data-i18n="join.training.card3.body">Recommendations for suitable internships and opportunities to join collaborative and applied projects.</p></article><article class="join-info-card"><span class="join-card-number">05</span><h3 data-i18n="join.training.card4.title">A Complete Research Toolkit</h3><p data-i18n="join.training.card4.body">From literature search, study design and replication to data analysis, visualization and academic writing.</p></article></div><details class="join-full-copy"><summary data-i18n="join.training.expand">Read the full training plan</summary><div data-i18n-html="join.training.full"><p>Our approach combines sustained mentoring, systematic training and hands-on work. We support students from their first research steps to independent work, combining structured training with individual guidance to develop research, academic communication and engineering skills.</p>
+<ul><li>Regular academic exchange: building research perspective and critical thinking<ul>
+<li>Weekly group meetings: we study recent papers from leading conferences and journals. The supervisor guides close reading of core contributions, experimental design, writing and research methods, encouraging discussion and critical thinking.</li>
+<li>Focused discussions and progress reports: regular research updates, literature reviews and project proposals help students organize their thinking and develop presentation, analytical and critical-questioning skills.</li>
+</ul></li><li>Individual supervision: addressing research challenges<ul>
+<li>At least one dedicated discussion each week: individual guidance covers research direction, obstacles, experiments and writing, from topic selection and study design to detailed refinements.</li>
+<li>Support throughout the process: literature review, research planning, experimental improvement, data processing, analysis, manuscript revision, submission and responses to reviewers.</li>
+</ul></li><li>Academic support: broadening opportunities for exchange<ul>
+<li>Support for domestic and international conferences: students are encouraged to attend respected conferences, with guidance on participation and academic exchange, to meet researchers and present their work.</li>
+<li>Publication practice and academic standards: training covers submission procedures, choosing journals and conferences, and responding to reviews.</li>
+</ul></li><li>Connecting research and industry: practical experience<ul>
+<li>Internship recommendations: connections with companies and research institutes help us recommend suitable opportunities, connecting research with engineering practice and industry projects.</li>
+<li>Collaborative applied projects: students are encouraged to join externally funded and real-world projects that develop practical problem-solving skills and connect research with industry needs.</li>
+</ul></li><li>Training across the research process<ul>
+<li>Research design: literature search and review, defining questions, identifying contributions, designing experiments, and selecting controls and comparisons.</li>
+<li>Experimental methods: systematic data collection, processing, analysis and visualization; professional tools, replication and verification; and rigorous, reproducible research habits.</li>
+<li>Academic writing: guidance on structure, abstracts, argumentation, figures and language, with focused practice in English writing, academic standards and responses to reviewers.</li>
+</ul></li></ul>
+<p>Our focus is developing ability, beyond completing projects or publishing papers. We want students to independently identify problems, design studies, solve problems and communicate results, building a foundation for further study, academic research or other careers.</p></div></details></section>
+<section class="join-step join-information" data-join-step="2" hidden aria-labelledby="joinTitle2"><p data-i18n="join.text077" class="join-kicker">SPACE TO DO YOUR BEST WORK</p><h2 data-i18n="join.support.title" id="joinTitle2" tabindex="-1">Research Support</h2><p data-i18n="join.support.lead" class="join-lead">Make room for research. The group provides a research environment, funding and opportunities for exchange. Equipment, subsidies and rewards depend on the circumstances.</p><div class="join-info-grid"><article class="join-info-card"><span class="join-card-number">01</span><h3 data-i18n="join.support.card0.title">Equipment &amp; Workspace</h3><p data-i18n="join.support.card0.body">Research and computing resources, workstations and networking. Computer subsidies, monitors and peripherals depend on circumstances.</p></article><article class="join-info-card"><span class="join-card-number">02</span><h3 data-i18n="join.support.card1.title">Research Funding</h3><p data-i18n="join.support.card1.body">Support for research consumables, analysis, publication costs and selected professional tools.</p></article><article class="join-info-card"><span class="join-card-number">03</span><h3 data-i18n="join.support.card2.title">Conferences &amp; Exchange</h3><p data-i18n="join.support.card2.body">Support for conference registration, travel, accommodation and short research visits.</p></article><article class="join-info-card"><span class="join-card-number">04</span><h3 data-i18n="join.support.card3.title">Skills &amp; Development</h3><p data-i18n="join.support.card3.body">Support for selected courses, workshops and summer schools, with internship opportunities based on performance.</p></article><article class="join-info-card"><span class="join-card-number">05</span><h3 data-i18n="join.support.card4.title">Community &amp; Recognition</h3><p data-i18n="join.support.card4.body">Team activities and care, with publication, patent and award bonuses subject to the group’s finances.</p></article></div><details class="join-full-copy"><summary data-i18n="join.support.expand">Read the full support details</summary><div data-i18n-html="join.support.full"><p>The group aims to provide a productive research environment, research funding and a supportive team:</p>
+<ul><li>Hardware and infrastructure<ul>
+<li>Personal equipment: support for a high-performance desktop or laptop, a productivity monitor, and peripherals such as a keyboard, mouse and headphones, depending on circumstances.</li>
+<li>Experimental and computing resources: free or convenient access to group equipment; support for the use of shared facilities; selected licensed software such as WPS; and server, NAS and other storage capacity.</li>
+<li>Workspace: a dedicated desk and workstation, a safe and equipped laboratory, high-speed networking, and printing and photocopying allowances.</li>
+</ul></li><li>Research funding<ul>
+<li>Consumables: group funding covers research materials, consumables, fabrication and relevant sample-analysis costs.</li>
+<li>Publication costs: support for open-access publication fees (for example, USD 3,500) and relevant illustration or typesetting tools such as Origin and Illustrator.</li>
+</ul></li><li>Travel and conference support<ul>
+<li>Academic conferences: support for registration fees (USD 800–1,200), return transport and accommodation; students are encouraged to present talks or posters.</li>
+<li>Academic exchange and visits: support for short research visits to domestic or international collaborators and travel for fieldwork or company visits when required.</li>
+</ul></li><li>Skills and professional development<ul>
+<li>Skills training: support for selected paid research-related courses, short courses and summer schools, with internship opportunities based on performance.</li>
+<li>Supervision and academic networks: regular individual guidance, introductions to researchers, and group meetings and literature discussions.</li>
+</ul></li><li>Community and recognition<ul>
+<li>Additional rewards: performance bonuses for strong publications, patents or awards, subject to the group's financial circumstances.</li>
+<li>Wellbeing and support: team meals and other activities, and care and assistance when members face difficulties such as illness.</li>
+</ul></li><li>Support for academic training and summer schools.</li></ul></div></details></section>
+<section class="join-step join-information" data-join-step="3" hidden aria-labelledby="joinTitle3"><p data-i18n="join.text078" class="join-kicker">CURIOSITY IS A GOOD START</p><h2 data-i18n="join.requirements.title" id="joinTitle3" tabindex="-1">Who We Are Looking For</h2><p data-i18n="join.requirements.lead" class="join-lead">We value curiosity, initiative and teamwork, alongside foundations in programming, mathematics and academic communication.</p><div class="join-info-grid"><article class="join-info-card"><span class="join-card-number">01</span><h3 data-i18n="join.requirements.card0.title">Background &amp; Foundations</h3><p data-i18n="join.requirements.card0.body">Computer science, AI, mathematics, statistics or a related field, with good programming skills or mathematical foundations.</p></article><article class="join-info-card"><span class="join-card-number">02</span><h3 data-i18n="join.requirements.card1.title">Research &amp; Collaboration</h3><p data-i18n="join.requirements.card1.body">Enthusiasm, curiosity and initiative, together with a collaborative attitude.</p></article><article class="join-info-card"><span class="join-card-number">03</span><h3 data-i18n="join.requirements.card2.title">Commitment to Learning</h3><p data-i18n="join.requirements.card2.body">Good English reading and writing skills, and willingness to join summer training and winter practical activities.</p></article><article class="join-info-card"><span class="join-card-number">04</span><h3 data-i18n="join.requirements.card3.title">Preferred Experience</h3><p data-i18n="join.requirements.card3.body">AI or machine-learning research, competitions or publications; familiarity with PyTorch; or LLM and multimodal projects.</p></article></div><div class="join-admission-note"><strong data-i18n="join.text079">2026 graduate admission · transfer applications accepted</strong><p data-i18n="join.text080">Applicants must meet the college’s score cutoff and arrive at the lab early in the summer.</p></div><details class="join-full-copy"><summary data-i18n="join.requirements.expand">Read the full entry requirements</summary><div data-i18n-html="join.requirements.full"><p><strong>Basic requirements:</strong></p><ul>
+<li>Willingness to join summer skills-development activities and winter practical activities to improve coding, hands-on work and project organization.</li>
+<li>A background in computer science, artificial intelligence, mathematics, statistics or a related subject.</li>
+<li>Enthusiasm for research, curiosity and self-motivation.</li>
+<li>Good programming skills or a strong mathematical foundation.</li>
+<li>Good English reading and writing skills.</li>
+<li>A collaborative attitude.</li></ul><p><strong>Preferred experience:</strong></p><ul>
+<li>AI or machine-learning research or competitions.</li>
+<li>Publications related to artificial intelligence.</li>
+<li>Familiarity with deep-learning frameworks such as PyTorch.</li>
+<li>Participation in LLM or multimodal-model projects.</li></ul></div></details></section>
+
+        <section aria-labelledby="identityTitle" class="join-step join-questionnaire" data-join-step="4" hidden="">
+<p class="join-kicker" data-i18n="join.text008">FIRST, A LITTLE ABOUT YOU</p>
+<h2 data-i18n="join.text009" id="identityTitle" tabindex="-1">Who are you?</h2>
+<p class="join-lead" data-i18n="join.text010">Let us get to know you. Fields marked * are required.</p>
+<fieldset class="join-fieldset"><legend data-i18n="join.text011">Current role *</legend><div class="join-choice-grid four">
+<label class="join-choice"><input name="identity" required="" type="radio" value="undergraduate"/><span data-i18n="join.identity.undergraduate">Undergraduate</span></label>
+<label class="join-choice"><input name="identity" type="radio" value="masters"/><span data-i18n="join.identity.masters">Master’s student</span></label>
+<label class="join-choice"><input name="identity" type="radio" value="phd"/><span data-i18n="join.identity.phd">PhD student</span></label>
+<label class="join-choice"><input name="identity" type="radio" value="other"/><span data-i18n="join.identity.other">Other</span></label>
+</div></fieldset>
+<div class="join-fields">
+<label><span data-i18n="join.text016">Name *</span><input autocomplete="name" data-i18n-placeholder="join.text021" id="applicantName" maxlength="60" name="applicantName" placeholder="Your name" required=""/></label>
+<label><span data-i18n="join.text017">Contact email *</span><input autocomplete="email" id="applicantEmail" maxlength="120" name="email" placeholder="you@example.com" required="" type="email"/></label>
+<label><span data-i18n="join.text018">School / organization *</span><input autocomplete="organization" data-i18n-placeholder="join.text022" id="applicantSchool" maxlength="80" name="school" placeholder="Your current school or organization" required=""/></label>
+<label><span data-i18n="join.text019">Major / research field *</span><input data-i18n-placeholder="join.text023" id="applicantMajor" maxlength="80" name="major" placeholder="Your major or current research area" required=""/></label>
+<label><span data-i18n="join.text020">Year / expected graduation</span><input data-i18n-placeholder="join.text024" id="applicantYear" maxlength="40" name="year" placeholder="For example: Year 3 / graduating in 2027"/></label>
+</div>
+</section>
+<section aria-labelledby="interestsTitle" class="join-step join-questionnaire" data-join-step="5" hidden="">
+<p class="join-kicker" data-i18n="join.text025">FOLLOW YOUR CURIOSITY</p>
+<h2 data-i18n="join.text026" id="interestsTitle" tabindex="-1">What interests you?</h2>
+<p class="join-lead" data-i18n="join.text027">Choose one or more areas. You are welcome to explore questions you have not yet settled on.</p>
+<fieldset aria-describedby="interestHelp" class="join-fieldset" id="interestFieldset"><legend data-i18n="join.text028">Research interests *</legend><p class="join-field-help" data-i18n="join.text029" id="interestHelp">Select at least one area, or describe another interest below.</p><div class="join-choice-grid research">
+<label class="join-choice"><input name="interests" type="checkbox" value="vla"/><span><span data-i18n="join.interest.vla">VLA Multimodal Models</span><small data-i18n="join.text030">Vision-Language-Action multimodal models</small></span></label>
+<label class="join-choice"><input name="interests" type="checkbox" value="robotics"/><span><span data-i18n="join.interest.robotics">Robot Control</span><small data-i18n="join.text031">Quadruped robots, robotic arms and dexterous manipulation</small></span></label>
+<label class="join-choice"><input name="interests" type="checkbox" value="rl"/><span><span data-i18n="join.interest.rl">Reinforcement Learning</span><small data-i18n="join.text032">Autonomous learning and intelligent decisions</small></span></label>
+<label class="join-choice"><input name="interests" type="checkbox" value="vision"/><span><span data-i18n="join.interest.vision">Computer Vision</span><small data-i18n="join.text033">Complex environments and 3D understanding</small></span></label>
+<label class="join-choice"><input name="interests" type="checkbox" value="privacy"/><span><span data-i18n="join.interest.privacy">Differential Privacy</span><small data-i18n="join.text034">Secure, trustworthy machine learning</small></span></label>
+<label class="join-choice"><input name="interests" type="checkbox" value="exploring"/><span><span data-i18n="join.text035">Still exploring</span><small data-i18n="join.text036">Find a suitable research topic through conversation</small></span></label>
+</div></fieldset>
+<label class="join-field"><span data-i18n="join.text037">Other interests / additional notes</span><input data-i18n-placeholder="join.text038" id="otherInterest" maxlength="120" name="otherInterest" placeholder="You can also describe a question you would like to study"/></label>
+</section>
+<section aria-labelledby="motivationTitle" class="join-step join-questionnaire" data-join-step="6" hidden="">
+<p class="join-kicker" data-i18n="join.text039">TELL US YOUR STORY</p>
+<h2 data-i18n="join.text040" id="motivationTitle" tabindex="-1">Why would you like to join us?</h2>
+<p class="join-lead" data-i18n="join.text041">Specific ideas matter more than a standard answer. Tell us about your interests, experience and plans.</p>
+<div class="join-fields narrative">
+<label><span data-i18n="join.text042">Why join the lab? What would you like to study? *</span><textarea data-i18n-placeholder="join.text043" id="motivation" maxlength="500" name="motivation" placeholder="What draws you here? What would you like to learn, explore or accomplish?" required="" rows="4"></textarea><small data-i18n="join.text044">Up to 500 characters</small></label>
+<label><span data-i18n="join.text045">Relevant experience and skills</span><textarea data-i18n-placeholder="join.text046" id="experience" maxlength="500" name="experience" placeholder="Course projects, research, competitions, programming or mathematics are all relevant. If you are new to research, tell us that too." rows="3"></textarea><small data-i18n="join.text047">Optional · up to 500 characters</small></label>
+<label><span data-i18n="join.text048">Expected start date and time commitment *</span><input data-i18n-placeholder="join.text049" id="availability" maxlength="160" name="availability" placeholder="For example: starting in summer, around 15 hours per week" required=""/></label>
+<label><span data-i18n="join.text050">Portfolio / GitHub / personal website</span><input data-i18n-placeholder="join.text051" id="portfolio" maxlength="240" name="portfolio" placeholder="Optional: add a link"/></label>
+</div>
+<p class="join-local-note" data-i18n="join.text052">Your answers prepare an email draft. The lab receives them only after you send the email.</p>
+</section>
+<section aria-labelledby="reviewTitle" class="join-step join-review" data-join-step="7" hidden="">
+<p class="join-kicker" data-i18n="join.text053">LET’S START A CONVERSATION</p>
+<h2 data-i18n="join.text054" id="reviewTitle" tabindex="-1">Let’s get to know each other.</h2>
+<p class="join-lead" data-i18n="join.text055">Your answers are ready as an email draft. Review them, then open your email app to contact us.</p>
+<div class="join-review-grid">
+<div>
+<div class="join-email-card">
+<p class="join-email-to"><span data-i18n="join.text056">TO</span> hong.wang@hubu.edu.cn</p>
+<div class="join-attachment"><span aria-hidden="true">↗</span><p><strong data-i18n="join.text057">Please attach your CV (including a personal photo) and transcript</strong><br/><span data-i18n="join.text058">The button fills in your answers. Add the attachments yourself in the email app, then review and send.</span></p></div>
+<a class="join-primary join-send liquid-metal-button" href="mailto:hong.wang@hubu.edu.cn" id="sendEmail"><span data-i18n="join.text059">Send an email</span><span aria-hidden="true">↗</span></a>
+<p class="join-mail-help" data-i18n="join.text060">If your email app does not open or the body is incomplete, copy the content below or download the draft.</p>
+</div>
+<details class="join-email-preview" open=""><summary data-i18n="join.text061">Email preview</summary><pre id="emailPreview"></pre></details>
+<div class="join-email-tools"><button data-i18n="join.text062" id="copyEmail" type="button">Copy email content</button><button data-i18n="join.text063" id="downloadEmail" type="button">Download email draft</button><button data-i18n="join.text064" id="joinEdit" type="button">Edit answers</button></div>
+<p aria-live="polite" class="join-copy-status" id="emailStatus" role="status"></p>
+</div>
+<aside class="join-qr-card"><p class="join-kicker" data-i18n="join.text065">MEET THE COMMUNITY</p><img alt="Student community QR code" data-i18n-alt="join.text066" height="280" loading="lazy" src="images/qq_group.png" width="280"/><h3 data-i18n="join.text067">Talk with current students</h3><p data-i18n="join.text068">Student group (faculty are not in this group)</p><p data-i18n="join.text069">Scan to learn about research directions, the lab and recruitment updates.</p></aside>
+</div>
+</section>
+</form>
+<p class="join-error" hidden="" id="joinError" role="alert"></p>
+<div class="join-actions"><button class="join-back" data-i18n="join.text070" id="joinBack" type="button">← Back</button><span data-i18n="join.text071" hidden="" id="joinFinalHint">See you at EI Lab.</span><button class="join-primary liquid-metal-button" id="joinNext" type="button"><span data-i18n="join.text004">Continue</span><span aria-hidden="true">→</span></button></div>
+<p aria-live="polite" class="join-sr-only" id="joinStepStatus" role="status"></p>
+</div>
+<noscript><style>#joinIntro,.join-questionnaire,.join-review,.join-actions,.join-progress-head,.join-progress{display:none!important}#joinFlow,.join-step[data-join-step="0"],.join-step[data-join-step="1"],.join-step[data-join-step="2"],.join-step[data-join-step="3"]{display:block!important}</style><div class="join-no-script"><p><span data-i18n="join.text072">You are welcome to contact</span><a href="mailto:hong.wang@hubu.edu.cn">hong.wang@hubu.edu.cn</a><span data-i18n="join.text073">Please attach your CV (including a personal photo) and transcript, and introduce your background, research interests and motivation.</span></p><img alt="Student group QR code" data-i18n-alt="join.text074" src="images/qq_group.png" width="220"/></div></noscript>
+</main>
+
+
 
   <!-- Footer -->
   <footer class="site-footer">
-    © 2024 王翃 (Hong Wang) · 湖北大学人工智能学院 · 
-    <a href="mailto:hong.wang@hubu.edu.cn">hong.wang@hubu.edu.cn</a>
+    <span data-i18n="join.footer">© 2024 Hong Wang · School of Artificial Intelligence, Hubei University ·</span> <a href="mailto:hong.wang@hubu.edu.cn">hong.wang@hubu.edu.cn</a>
   </footer>
-
+  <script src="assets/js/join-particles.js"></script>
+  <script src="assets/js/join-flow.js"></script>
 </body>
 </html>

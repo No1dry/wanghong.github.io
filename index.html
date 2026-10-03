@@ -1,168 +1,544 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hong Wang | School of Artificial Intelligence, Hubei University</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
+<meta charset="utf-8"/>
+  <script src="assets/js/site-theme.js"></script>
+  <script src="assets/js/site-language.js"></script>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title data-i18n="home.title">Hong Wang | School of Artificial Intelligence, Hubei University</title>
+<link href="assets/css/style.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&amp;family=Inter:wght@300;400;500&amp;display=swap" rel="stylesheet"/>
+<style id="ei-intro-style">
+  html.ei-intro-locked,body.ei-intro-locked{overflow:hidden!important;overscroll-behavior:none}
+  #ei-intro{position:fixed;inset:0;z-index:10000;isolation:isolate;overflow:hidden;background:#02070c;color:#f4f2ef;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;opacity:1;transition:opacity .85s cubic-bezier(.22,.61,.36,1);--ei-pad:clamp(20px,3.2vw,50px);--ei-serif:"Playfair Display","Times New Roman",serif}
+  #ei-intro *{box-sizing:border-box}
+  #ei-intro canvas{position:absolute;inset:0;display:block;width:100%;height:100%;touch-action:none}
+  #ei-intro .ei-vignette{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,transparent 18%,rgba(0,3,9,.08) 55%,rgba(0,3,9,.6) 100%)}
+  #ei-intro .ei-brand{position:absolute;left:calc(var(--ei-pad) + env(safe-area-inset-left,0px));top:calc(var(--ei-pad) + env(safe-area-inset-top,0px));font:400 clamp(22px,2.2vw,30px)/1 var(--ei-serif);letter-spacing:.02em;color:#f4f2ef;opacity:.9;z-index:2}
+  #ei-intro .ei-origin{position:absolute;right:calc(var(--ei-pad) + env(safe-area-inset-right,0px));top:calc(var(--ei-pad) + env(safe-area-inset-top,0px));font-size:10px;line-height:1.6;letter-spacing:.18em;text-transform:uppercase;text-align:right;color:rgba(223,234,244,.5)}
+  #ei-intro .ei-welcome{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:90px var(--ei-pad);text-align:center;opacity:0;visibility:hidden;transform:translateY(22px) scale(.97);filter:blur(12px);transition:opacity 1.3s ease,transform 1.6s cubic-bezier(.22,.61,.36,1),filter 1.4s ease,visibility 0s 1.6s;pointer-events:none}
+  #ei-intro.ei-arrived .ei-welcome{opacity:1;visibility:visible;transform:none;filter:none;transition-delay:0s;pointer-events:auto}
+  #ei-intro .ei-eyebrow{margin:0 0 23px;font-size:10px;font-weight:400;line-height:1.5;letter-spacing:.32em;text-transform:uppercase;color:rgba(211,227,242,.6)}
+  #ei-intro h1{margin:0;color:#f4f2ef;font-family:var(--ei-serif);font-weight:400;font-size:clamp(44px,6.5vw,110px);line-height:1.02;letter-spacing:-.045em;text-shadow:0 6px 80px rgba(128,190,233,.16)}
+  #ei-intro h1 span{display:block}
+  #ei-intro h1 .ei-name{font-size:clamp(100px,16vw,248px);line-height:1.02;letter-spacing:-.055em}
+  #ei-intro .ei-tagline{margin:24px 0 0;font-size:clamp(11px,1vw,13px);font-weight:300;line-height:1.7;letter-spacing:.13em;color:rgba(213,228,240,.55)}
+  #ei-intro .ei-enter{display:inline-flex;align-items:center;justify-content:center;gap:30px;min-height:48px;margin-top:35px;padding:13px 23px;border:1px solid rgba(227,237,246,.33);border-radius:999px;font:400 12px/1.5 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;letter-spacing:.045em;background:rgba(12,25,39,.4);color:#f4f2ef;cursor:pointer;transition:background .3s ease,border-color .3s ease,transform .3s ease;touch-action:manipulation}
+  #ei-intro .ei-enter:hover{background:rgba(57,87,111,.35);border-color:rgba(227,237,246,.7);transform:translateY(-2px)}
+  #ei-intro .ei-enter span{font-size:19px;font-weight:300;transition:transform .3s ease}
+  #ei-intro .ei-enter:hover span{transform:translateX(4px)}
+  #ei-intro .ei-controls{position:absolute;right:calc(var(--ei-pad) + env(safe-area-inset-right,0px));bottom:calc(var(--ei-pad) + env(safe-area-inset-bottom,0px));z-index:3;display:flex;gap:18px;align-items:center}
+  #ei-intro .ei-control{min-height:44px;padding:8px 4px;background:none;border:0;color:rgba(235,241,247,.66);font:400 11px/1.5 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;letter-spacing:.08em;cursor:pointer;touch-action:manipulation}
+  #ei-intro .ei-control:hover{color:#fff}
+  #ei-intro .ei-control[hidden]{display:none}
+  #ei-intro .ei-signature{position:absolute;left:calc(var(--ei-pad) + env(safe-area-inset-left,0px));bottom:calc(var(--ei-pad) + env(safe-area-inset-bottom,0px) + 12px);font-size:10px;letter-spacing:.12em;color:rgba(220,232,242,.4);line-height:1.5}
+  #ei-intro .ei-fields{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity 2s ease .15s;color:rgba(213,230,243,.24);font:400 11px/1.3 var(--ei-serif)}
+  #ei-intro.ei-arrived .ei-fields{opacity:1}
+  #ei-intro .ei-fields span{position:absolute}
+  #ei-intro .ei-fields span:nth-child(1){left:13%;top:27%}
+  #ei-intro .ei-fields span:nth-child(2){right:10%;top:32%}
+  #ei-intro .ei-fields span:nth-child(3){left:9%;bottom:24%}
+  #ei-intro .ei-fields span:nth-child(4){right:15%;bottom:22%}
+  #ei-intro button{-webkit-tap-highlight-color:transparent}
+  #ei-intro button:focus-visible{outline:2px solid #d7e8f8;outline-offset:6px}
+  #ei-intro.ei-leaving{opacity:0;pointer-events:none}
+  @media(max-width:640px){#ei-intro{--ei-pad:20px}#ei-intro .ei-origin{font-size:8px;letter-spacing:.12em;max-width:130px}#ei-intro .ei-welcome{padding:95px 18px}#ei-intro h1{font-size:clamp(38px,10vw,58px)}#ei-intro h1 .ei-name{font-size:clamp(92px,26vw,156px)}#ei-intro .ei-eyebrow{font-size:9px;letter-spacing:.23em}#ei-intro .ei-tagline{max-width:270px;font-size:10px;letter-spacing:.06em}#ei-intro .ei-fields span{font-size:9px}#ei-intro .ei-fields span:nth-child(1){left:8%;top:22%}#ei-intro .ei-fields span:nth-child(2){right:8%;top:28%}#ei-intro .ei-fields span:nth-child(3){left:7%;bottom:22%}#ei-intro .ei-fields span:nth-child(4){right:9%;bottom:17%}#ei-intro .ei-signature{max-width:160px;font-size:9px}#ei-intro .ei-enter{margin-top:29px}}
+  @media(max-height:540px) and (orientation:landscape){#ei-intro .ei-welcome{padding:60px 20px}#ei-intro h1{font-size:28px}#ei-intro h1 .ei-name{font-size:80px}#ei-intro .ei-eyebrow{margin-bottom:10px}#ei-intro .ei-tagline{margin-top:10px}#ei-intro .ei-enter{margin-top:16px;min-height:42px}#ei-intro .ei-fields{display:none}}
+  @media(prefers-reduced-motion:reduce){#ei-intro,#ei-intro *{transition-duration:.14s!important;transition-delay:0s!important}}
+</style>
+<script src="assets/js/i18n-home.js"></script>  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap">
+  <link rel="stylesheet" href="assets/css/site-shell.css">
+  <link rel="stylesheet" href="assets/css/site-background.css">
+  <script src="assets/js/site-background.js" defer></script>
+  <link rel="stylesheet" href="assets/css/liquid-metal-button.css">
+  <script type="module" src="assets/js/liquid-metal-button.js"></script>
+  <link rel="stylesheet" href="assets/css/masked-heading.css">
+  <script src="assets/vendor/gsap/gsap.min.js" defer></script>
+  <script src="assets/js/masked-heading.js" defer></script>
 </head>
-<body>
-
-  <!-- ===== Navigation ===== -->
-  <nav class="navbar">
-    <div class="navbar-inner">
-      <ul class="navbar-links">
-        <li><a href="index.html" class="active">Homepage</a></li>
-        <li><a href="lab.html">Lab</a></li>
-        <li><a href="publications.html">Publications</a></li>
-        <li><a href="news.html">News</a></li>
-        <li><a href="join_us.html">Join Us</a></li>
-      </ul>
+<body class="site-page" data-page="index">
+<section aria-label="Welcome to EI Lab" aria-modal="true" data-i18n-aria-label="home.intro.dialog" data-state="journey" id="ei-intro" role="dialog">
+<canvas aria-hidden="true" id="ei-wormhole"></canvas>
+<div aria-hidden="true" class="ei-vignette"></div>
+<div class="ei-brand">EI Lab</div>
+<div class="ei-origin" data-i18n-html="home.intro.origin">Embodied Intelligence Lab<br/>Hubei University</div>
+<div aria-hidden="true" class="ei-fields"><span data-i18n="home.intro.field0">Computer Vision</span><span data-i18n="home.intro.field1">Embodied Intelligence</span><span data-i18n="home.intro.field2">Robotics</span><span data-i18n="home.intro.field3">Multimodal Learning</span></div>
+<div class="ei-welcome" id="ei-welcome" inert="">
+<p class="ei-eyebrow" data-i18n="home.intro.eyebrow">Beyond the known</p>
+<h1 id="ei-welcome-title"><span data-i18n="home.intro.welcome">Welcome to</span> <span class="ei-name">EI Lab</span></h1>
+<p class="ei-tagline" data-i18n="home.intro.tagline">Exploring intelligence. Understanding the world.</p>
+<button class="ei-enter liquid-metal-button" data-i18n-html="home.intro.enter" id="ei-enter" type="button">Enter Homepage <span aria-hidden="true">→</span></button>
+</div>
+<div class="ei-signature" data-i18n="home.intro.signature">Intelligence, in motion.</div>
+<div class="ei-controls"><button class="ei-control" data-i18n="home.intro.replay" hidden="" id="ei-replay" type="button">Replay</button><button class="ei-control" data-i18n="home.intro.skip" id="ei-skip" type="button">Skip</button></div>
+</section>
+<noscript><style>#ei-intro{display:none!important}</style></noscript>
+<!-- ===== Navigation ===== -->
+  <header class="site-header">
+    <a class="wordmark" href="index.html" aria-label="EI Lab homepage" data-i18n-aria-label="site.homeLabel">EI <em>Lab</em></a>
+    <nav class="site-nav" aria-label="Main navigation" data-i18n-aria-label="site.navigation">
+      <a href="index.html" data-i18n="site.homepage" aria-current="page">Homepage</a>
+      <a href="lab.html" data-i18n="site.lab">Lab</a>
+      <a href="publications.html" data-i18n="site.publications">Publications</a>
+      <a href="news.html" data-i18n="site.news">News</a>
+      <a href="join_us.html" data-i18n="site.join">Join Us</a>
+    </nav>
+    <div class="header-actions">
+      <button id="themeBtn" class="theme-btn" type="button" aria-pressed="false" aria-label="Switch to light background">
+        <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 1v3m0 16v3M1 12h3m16 0h3M4.2 4.2l2.1 2.1m11.4 11.4 2.1 2.1M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"></path></svg>
+        <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.4 15.5A9 9 0 0 1 8.5 3.6a9 9 0 1 0 11.9 11.9Z"></path></svg>
+        <span id="themeLabel" aria-hidden="true">Light</span>
+      </button>
+      <div class="language-switch" role="group" aria-label="Language" data-i18n-aria-label="site.language">
+        <button type="button" data-language="en" aria-pressed="true" aria-label="Switch to English" data-i18n-aria-label="site.english">EN</button>
+        <span aria-hidden="true">/</span>
+        <button type="button" data-language="zh" aria-pressed="false" aria-label="Switch to Chinese" data-i18n-aria-label="site.chinese">CN</button>
+      </div>
     </div>
-  </nav>
+  </header>
+<!-- ===== Main Page ===== -->
+<div class="page-wrapper">
+<div class="index-layout">
+<!-- ===== Left Sidebar (Sticky) ===== -->
+<aside class="profile-sidebar">
+<div class="profile-card">
+<!-- Photo placeholder – replace src with actual photo -->
+<div class="profile">
+<img alt="Hong Wang" class="profile-photo-placeholder" data-i18n-alt="home.profile.photo" src="images/wanghong.jpg"/>
+</div>
+<div class="profile-name" data-i18n="home.profile.name">Hong Wang</div>
+<div class="profile-name-en" data-i18n="home.profile.nameSub">Associate Research Fellow</div>
+<ul class="profile-info-list">
+<li>
+<span class="info-icon">🏫</span>
+<span>
+<a data-i18n="home.profile.university" href="https://ai.hubu.edu.cn" target="_blank">Hubei University</a><br>
+<a data-i18n="home.profile.school" href="https://ai.hubu.edu.cn" target="_blank">School of Artificial Intelligence</a>
+</br></span>
+</li>
+<li>
+<span class="info-icon">🎓</span>
+<span data-i18n-html="home.profile.roles">Provincial Talent Program<br/>University-appointed Associate Research Fellow</span>
+</li>
+<li>
+<span class="info-icon">✉️</span>
+<span><a href="mailto:hong.wang@hubu.edu.cn">hong.wang@hubu.edu.cn</a></span>
+</li>
+<li>
+<span class="info-icon">🎓</span>
+<span>
+<a href="https://scholar.google.jp/citations?user=XAU4ClkAAAAJ&amp;hl=zh-CN&amp;oi=sra" target="_blank">Google Scholar</a>
+</span>
+</li>
+<li>
+<span class="info-icon">📍</span>
+<span data-i18n="home.profile.address">368 Youyi Avenue, Wuchang District, Wuhan, Hubei, China</span>
+</li>
+</ul>
+</div>
+</aside>
+<!-- ===== Right Scrollable Content ===== -->
+<main class="main-content">
+<!-- About -->
+<section class="content-section" id="about">
+<h2 class="section-heading" data-i18n="home.heading.about">About</h2>
+<div class="section-text">
+<p data-i18n="home.about.profile">I am Hong Wang, a University-appointed Associate Research Fellow at the School of Artificial Intelligence, Hubei University, and director of the Embodied Intelligence Lab. I earned three graduate degrees in related disciplines from the University of Missouri–Columbia in the United States. My research focuses on computer vision, deep reinforcement learning, and robotics.</p>
+<p data-i18n="home.about.background">Before joining academia, I worked at PayPal and Siemens Healthineers AI Lab in the United States, gaining substantial industry experience. I currently lead and contribute to research projects supported by national, provincial, and ministerial funding, advancing research in artificial intelligence and robotics.</p>
+</div>
+</section>
+<!-- Research -->
+<section class="content-section" id="research">
+<h2 class="section-heading" data-i18n="home.heading.research">Research</h2>
+<div class="section-text">
+<p data-i18n="home.research.overview">My research spans computer vision, deep reinforcement learning, and robotics. I focus on the foundations and engineering of embodied agents, aiming to build general intelligent systems that can perceive complex environments, reason, and make autonomous decisions in the physical world.</p>
+<p data-i18n="home.research.approach">Using a perception–cognition–action loop, I study multimodal visual representations, dynamic environment modeling, hierarchical reinforcement learning, and simulation-to-real transfer (Sim2Real). The goal is to enable human-like environmental understanding, task planning, and autonomous manipulation in unstructured physical environments. Core topics include:</p>
+</div>
+<div class="research-tags">
+<span class="research-tag" data-i18n="home.research.tag0">Computer Vision</span>
+<span class="research-tag" data-i18n="home.research.tag1">Deep Learning</span>
+<span class="research-tag" data-i18n="home.research.tag2">Reinforcement Learning</span>
+<span class="research-tag" data-i18n="home.research.tag3">Large Language Models</span>
+<span class="research-tag" data-i18n="home.research.tag4">Robotics</span>
+<span class="research-tag" data-i18n="home.research.tag5">Sim2Real</span>
+<span class="research-tag" data-i18n="home.research.tag6">Intelligent Agents</span>
+</div>
+<div class="research-figure">
+<img alt="Research overview" data-i18n-alt="home.research.figure" src="images/reserch.png"/>
+</div>
+</section>
+<!-- Education -->
+<section class="content-section" id="education">
+<h2 class="section-heading" data-i18n="home.heading.education">Education &amp; Experience</h2>
+<div class="section-text">
+<p data-i18n-html="home.education.degrees"><strong>University of Missouri–Columbia</strong><br/>Ph.D., Mechanical and Aerospace Engineering<br/>M.S., Computer Science<br/>M.S., Mechanical and Aerospace Engineering</p>
+<p data-i18n-html="home.education.experienceHeading" style="margin-top:14px;"><strong>Professional Experience</strong></p>
+<p data-i18n-html="home.education.experience">• University-appointed Associate Research Fellow, School of Artificial Intelligence, Hubei University (present)<br/>• Lecturer, School of Construction Machinery, Chang’an University<br/>• Research Scientist, Siemens Healthineers AI Lab, United States<br/>• Data Scientist, PayPal, United States</p>
+</div>
+</section>
+<!-- Publications (preview) -->
+<section class="content-section" id="publications">
+<h2 class="section-heading" data-i18n="home.heading.publications">Join Us</h2>
+<div class="section-text">
+<p data-i18n-html="home.recruitment">📢 <font color="red">We welcome undergraduate and graduate students interested in <strong>artificial intelligence, large models, robotics, and embodied intelligence</strong>. If you are passionate about research and want to contribute to AI research, we invite you to join our team.</font> <u><a href="join_us.html">Explore opportunities</a></u>.</p>
+</div>
+</section>
+</main>
+</div>
+</div>
+<!-- Footer -->
+<footer class="site-footer" data-i18n-html="home.footer">© 2024 Hong Wang · School of Artificial Intelligence, Hubei University · <a href="mailto:hong.wang@hubu.edu.cn">hong.wang@hubu.edu.cn</a></footer>
+<script id="ei-intro-script">
+(() => {
+  'use strict';
+  const intro = document.getElementById('ei-intro');
+  if (!intro) return;
+  const welcome = document.getElementById('ei-welcome'), enter = document.getElementById('ei-enter');
+  const skip = document.getElementById('ei-skip'), replay = document.getElementById('ei-replay');
+  let canvas = document.getElementById('ei-wormhole');
+  const root = document.documentElement, body = document.body;
+  const reduced = matchMedia('(prefers-reduced-motion:reduce)');
+  const restoreFocus = document.activeElement;
+  const content = Array.from(body.children).filter(node => node !== intro && !['SCRIPT','STYLE','LINK'].includes(node.tagName));
+  const originalInert = content.map(node => node.inert);
+  content.forEach(node => {node.inert = true;});
+  root.classList.add('ei-intro-locked'); body.classList.add('ei-intro-locked');
+  const clamp = (v,a,b) => Math.max(a,Math.min(b,v));
+  const smooth = (a,b,v) => {const x = clamp((v-a)/(b-a),0,1); return x*x*(3-2*x);};
+  const duration = 7.4;
+  // Moving toward a fixed wall feature decreases its camera-relative depth.
+  // In the inverse projection used below, its screen radius therefore grows.
+  const forwardSpeed = .24;
+  const cameraDepth = distance => distance * forwardSpeed;
+  const relativeDepth = (seed, distance, near=.55, span=13.5) => near + ((seed*span-cameraDepth(distance))%span+span)%span;
+  // The same world-space centerline drives the camera and both renderers.
+  // Its alternating bends and elevation changes are geometry, not a screen pan.
+  const tunnelCenter = z => [.72*Math.sin(z*1.1)+.18*Math.sin(z*2.2+.4),.42*Math.sin(z*.83+.7)+.1*Math.sin(z*1.8)];
+  const normalize = v => {const n=Math.hypot(...v);return v.map(x=>x/n);};
+  const dot = (a,b) => a[0]*b[0]+a[1]*b[1]+a[2]*b[2];
+  function cameraFrame(distance){
+    const z=cameraDepth(distance),position=tunnelCenter(z),ahead=tunnelCenter(z+1.15);
+    const forward=normalize([ahead[0]-position[0],ahead[1]-position[1],1.15]);
+    const right=normalize([forward[2],0,-forward[0]]);
+    const up=[forward[1]*right[2],forward[2]*right[0]-forward[0]*right[2],-forward[1]*right[0]];
+    return {origin:[position[0],position[1],z],forward,right,up};
+  }
+  function projectPoint(x,y,z,frame){
+    const delta=[x-frame.origin[0],y-frame.origin[1],z-frame.origin[2]],depth=dot(delta,frame.forward);
+    return {x:dot(delta,frame.right)/depth,y:dot(delta,frame.up)/depth,depth};
+  }
+  let elapsed = 0, lastTime = null, raf = 0, arrived = false, leaving = false, disposed = false;
+  let width = 1, height = 1, dpr = 1, gl = null, context = null, program = null, buffer = null, texture = null;
+  let uniforms = null, stillFrames = 0, quality = 1, slowSeconds = 0;
+  const pointer = {x:0,y:0,targetX:0,targetY:0};
+  const resources = [];
+  const random = n => {const k = Math.sin(n*127.1+311.7)*43758.5453; return k-Math.floor(k);};
+  const stars = new Float32Array(750*4);
+  for (let i=0;i<750;i++){stars[i*4]=random(i+1)*Math.PI*2;stars[i*4+1]=.2+random(i+6)*.8;stars[i*4+2]=random(i+17);stars[i*4+3]=random(i+29);}
+  const equations = ['E = mc²','∇ × E = −∂B/∂t','iℏ ∂ψ/∂t = Ĥψ','Gμν + Λgμν = κTμν','f(x) = ∫ ψ(k)eⁱᵏˣ dk','∇ · B = 0','H = −Σ p log p','π(a | s)','∂L / ∂θ','x² + y² + z² = r²','F = ma','P(x | z)'];
 
-  <!-- ===== Main Page ===== -->
-  <div class="page-wrapper">
-    <div class="index-layout">
+  function equationTexture() {
+    const image = document.createElement('canvas'); image.width = image.height = 1024;
+    const ctx = image.getContext('2d'); if (!ctx) return null;
+    ctx.clearRect(0,0,1024,1024); ctx.fillStyle = '#c7d9e8'; ctx.textBaseline = 'middle';
+    for (let row=0;row<18;row++) {
+      for (let col=0;col<3;col++) {
+        const n=row*3+col; ctx.font=`italic ${22+Math.floor(random(n+70)*10)}px "Times New Roman",serif`;
+        ctx.globalAlpha=.28+random(n+90)*.45;
+        ctx.fillText(equations[n%equations.length],col*345+12+(row%2)*17,row*57+25,305);
+      }
+    }
+    ctx.globalAlpha=.18; ctx.strokeStyle='#a0c4dc';ctx.lineWidth=1;
+    for(let i=0;i<16;i++){ctx.beginPath();ctx.moveTo(i*64,0);ctx.lineTo(i*64,1024);ctx.stroke();ctx.beginPath();ctx.moveTo(0,i*64);ctx.lineTo(1024,i*64);ctx.stroke();}
+    return image;
+  }
+  const map = equationTexture();
+  function compile(type,source) {
+    const s=gl.createShader(type);gl.shaderSource(s,source);gl.compileShader(s);
+    if(!gl.getShaderParameter(s,gl.COMPILE_STATUS)){gl.deleteShader(s);throw new Error('Tunnel shader unavailable');}
+    resources.push(s);return s;
+  }
+  function fallback() {
+    if(gl){const replacement=canvas.cloneNode(true);canvas.replaceWith(replacement);canvas=replacement;}
+    gl=null;context=canvas.getContext('2d');
+  }
+  try {
+    gl=canvas.getContext('webgl',{alpha:false,antialias:false,depth:false,stencil:false,powerPreference:'high-performance'});
+    if(!gl||!map)throw new Error('Use Canvas rendering');
+    const vertex=compile(gl.VERTEX_SHADER,'attribute vec2 position;void main(){gl_Position=vec4(position,0.0,1.0);}');
+    const fragment=compile(gl.FRAGMENT_SHADER,`
+      precision highp float;
+      uniform vec2 resolution;
+      uniform vec2 pointer;
+      uniform float travel;
+      uniform float cameraZ;
+      uniform vec3 cameraOrigin;
+      uniform vec3 cameraForward;
+      uniform vec3 cameraRight;
+      uniform vec3 cameraUp;
+      uniform float arrival;
+      uniform sampler2D equations;
+      const float TAU=6.28318530718;
+      float hash(float n){vec3 p=fract(vec3(n,n*1.17,n*.73)*.1031);p+=dot(p,p.yzx+19.19);return fract((p.x+p.y)*p.z);}
+      float noise(vec3 x){
+        vec3 p=floor(x),f=fract(x);f=f*f*(3.0-2.0*f);
+        float n=p.x+p.y*157.0+p.z*113.0;
+        return mix(mix(mix(hash(n),hash(n+1.0),f.x),mix(hash(n+157.0),hash(n+158.0),f.x),f.y),mix(mix(hash(n+113.0),hash(n+114.0),f.x),mix(hash(n+270.0),hash(n+271.0),f.x),f.y),f.z);
+      }
+      float fbm(vec3 p){float value=0.0,amp=.53;for(int i=0;i<4;i++){value+=noise(p)*amp;p=p*2.04+vec3(7.1,3.8,5.4);amp*=.49;}return value;}
+      vec2 tunnelCenter(float z){return vec2(.72*sin(z*1.1)+.18*sin(z*2.2+.4),.42*sin(z*.83+.7)+.1*sin(z*1.8));}
+      void main(){
+        vec2 uv=(gl_FragCoord.xy*2.0-resolution)/min(resolution.x,resolution.y);
+        vec2 skyUV=uv;
+        float motion=1.0-arrival;
+        vec2 p=uv-pointer*.025;
+        vec3 ray=normalize(cameraForward+p.x*cameraRight+p.y*cameraUp);
+        float rayDistance=0.0;
+        float previousDistance=0.0,previousClearance=1.0;
+        vec3 hit=cameraOrigin;
+        // March inside a radius-one curved cylinder. The .54 safety factor
+        // accounts for the centerline slope and avoids stepping through walls.
+        for(int step=0;step<32;step++){
+          hit=cameraOrigin+ray*rayDistance;
+          float clearance=1.0-length(hit.xy-tunnelCenter(hit.z));
+          if(clearance<.0015){
+            if(clearance<0.0)rayDistance=mix(previousDistance,rayDistance,previousClearance/(previousClearance-clearance));
+            break;
+          }
+          if(rayDistance>18.0)break;
+          previousDistance=rayDistance;previousClearance=clearance;
+          rayDistance+=max(.04,clearance*.54);
+        }
+        hit=cameraOrigin+ray*rayDistance;
+        vec2 wall=hit.xy-tunnelCenter(hit.z);
+        float worldDepth=hit.z;
+        float radius=1.0/max(rayDistance,.025);
+        float angle=atan(wall.y,wall.x);
+        float twist=angle+worldDepth*.15;
+        vec3 cloudPosition=vec3(cos(twist)*3.8,sin(twist)*3.8,worldDepth*1.45);
+        float warp=fbm(cloudPosition*.53);
+        float cloud=fbm(cloudPosition+vec3(warp*1.6));
+        float ridge=pow(clamp(1.0-abs(cloud*2.0-1.0),0.0,1.0),6.0);
+        float billow=smoothstep(.36,.76,cloud);
+        float edge=smoothstep(.57,.72,cloud)-smoothstep(.72,.88,cloud);
+        float warm=pow(max(0.0,cos(angle+.7+worldDepth*.11)),7.0);
+        float ribPhase=worldDepth*4.4+sin(angle*5.0)*.17+warp*.65;
+        float ribs=pow(.5+.5*cos(ribPhase),18.0);
+        float ringMist=pow(.5+.5*cos(ribPhase-.35),3.0);
+        float rails=pow(.5+.5*cos(angle*18.0+sin(worldDepth*.14)*.22),28.0);
+        vec3 color=vec3(.009,.023,.045)+vec3(.023,.07,.13)*ridge;
+        color+=mix(vec3(.12,.24,.37),vec3(.37,.25,.14),warm)*billow;
+        color+=mix(vec3(.43,.64,.8),vec3(.86,.64,.38),warm)*edge*.76;
+        color+=mix(vec3(.16,.4,.64),vec3(.55,.39,.2),warm)*ribs*(.35+cloud*.5);
+        color+=vec3(.018,.055,.10)*ringMist+vec3(.07,.17,.25)*rails*(.25+ridge*.35);
+        float depthFade=smoothstep(.035,.19,radius);
+        color*=depthFade;
+        // Farther, partly occluded tube sections form the opening around bends.
+        color+=vec3(.12,.31,.53)*exp(-pow((radius-.09)/.035,2.0))*.25;
+        vec2 inkUV=vec2(angle/TAU+worldDepth*.012,worldDepth*.23);
+        vec4 ink=texture2D(equations,inkUV);
+        color+=vec3(.41,.58,.7)*ink.a*.2*smoothstep(.15,.5,radius)*(1.0-billow*.6);
+        float sector=floor((angle/TAU+.5)*310.0);
+        float starsAlong=worldDepth*4.0;
+        float star=step(.989,hash(sector+floor(starsAlong)*41.0));
+        star*=pow(1.0-abs(fract((angle/TAU+.5)*310.0)*2.0-1.0),15.0);
+        star*=pow(1.0-abs(fract(starsAlong)*2.0-1.0),2.0);
+        color+=vec3(.5,.68,.85)*star*motion*depthFade;
+        // A soft fog falloff hides the bounded far-field solve at grazing rays.
+        color*=mix(.18,1.0,1.0-smoothstep(.015,.25,1.0-length(wall)));
+        float exitRadius=arrival*arrival*3.6;
+        color*=smoothstep(exitRadius,exitRadius+.3,length(uv));
+        vec2 cells=floor((skyUV+3.0)*vec2(100.0));
+        vec2 local=fract((skyUV+3.0)*vec2(100.0))-.5;
+        float fixedStar=step(.9975,hash(cells.x+cells.y*157.0))*exp(-dot(local,local)*100.0);
+        color+=vec3(.19,.28,.39)*fixedStar*smoothstep(.4,.95,arrival);
+        color+=vec3(.002,.005,.009);
+        color*=1.0-smoothstep(.7,2.5,length(uv))*.55;
+        gl_FragColor=vec4(pow(max(color,vec3(0.0)),vec3(.88)),1.0);
+      }
+    `);
+    program=gl.createProgram();gl.attachShader(program,vertex);gl.attachShader(program,fragment);gl.linkProgram(program);
+    if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw new Error('Tunnel program unavailable');
+    resources.forEach(s=>gl.deleteShader(s));resources.length=0;
+    gl.useProgram(program);buffer=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buffer);
+    gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,-1,1,1,-1,1,1]),gl.STATIC_DRAW);
+    const location=gl.getAttribLocation(program,'position');gl.enableVertexAttribArray(location);gl.vertexAttribPointer(location,2,gl.FLOAT,false,0,0);
+    uniforms={};['resolution','pointer','travel','cameraZ','cameraOrigin','cameraForward','cameraRight','cameraUp','arrival','equations'].forEach(name=>{uniforms[name]=gl.getUniformLocation(program,name);});
+    texture=gl.createTexture();gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,texture);
+    gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL,true);
+    gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,map);
+    gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.REPEAT);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.REPEAT);
+    gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR_MIPMAP_LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);gl.generateMipmap(gl.TEXTURE_2D);
+    gl.uniform1i(uniforms.equations,0);
+  }catch(_){fallback();}
 
-      <!-- ===== Left Sidebar (Sticky) ===== -->
-      <aside class="profile-sidebar">
-        <div class="profile-card">
-          <!-- Photo placeholder – replace src with actual photo -->
-          <div class="profile">
-            <img src="images/wanghong.jpg" class="profile-photo-placeholder" alt="Hong Wang">
-          </div>
-
-          <div class="profile-name">王 翃</div>
-          <div class="profile-name-en">Hong Wang</div>
-
-          <ul class="profile-info-list">
-            <li>
-              <span class="info-icon">🏫</span>
-              <span>
-                <a href="https://ai.hubu.edu.cn" target="_blank">湖北大学</a><br/>
-                <a href="https://ai.hubu.edu.cn" target="_blank">人工智能学院</a>
-              </span>
-            </li>
-            <li>
-              <span class="info-icon">🎓</span>
-              <span>省级人才</br>校聘副研究员</span>
-            </li>
-            <li>
-              <span class="info-icon">✉️</span>
-              <span><a href="mailto:hong.wang@hubu.edu.cn">hong.wang@hubu.edu.cn</a></span>
-            </li>
-            <li>
-              <span class="info-icon">🎓</span>
-              <span>
-                <a href="https://scholar.google.jp/citations?user=XAU4ClkAAAAJ&hl=zh-CN&oi=sra" target="_blank">Google Scholar</a>
-              </span>
-            </li>
-            <li>
-              <span class="info-icon">📍</span>
-              <span>湖北省武汉市武昌区友谊大道368号</span>
-            </li>
-          </ul>
-        </div>
-      </aside>
-
-      <!-- ===== Right Scrollable Content ===== -->
-      <main class="main-content">
-
-        <!-- About -->
-        <section class="content-section" id="about">
-          <h2 class="section-heading">About</h2>
-          <div class="section-text">
-            <p>
-              王翃（Hong Wang），湖北大学人工智能学院校聘副研究员，具身智能实验室负责人。
-              毕业于美国密苏里大学哥伦比亚分校（University of Missouri-Columbia），
-              拥有三个相关领域的研究生学位。
-            </p>
-            <p>
-              曾就职于美国 PayPal 及西门子医疗 AI 实验室（Siemens Healthineers AI Lab），
-              在工业界积累了丰富的实践经验。
-              目前主持并参与多项国家级及省部级科研基金项目，
-              致力于推动人工智能与机器人领域的创新与发展。
-            </p>
-            <p>
-              I am a University-appointed Associate Research Fellow at the School of Artificial Intelligence, Hubei University, 
-              and the director of the Embodied Intelligence Lab. 
-              My research focuses on computer vision, deep reinforcement learning, and robotics. 
-              I received three graduate degrees from the University of Missouri-Columbia.
-              Prior to joining academia, I worked at PayPal and Siemens Healthineers AI Lab in the United States.
-            </p>
-          </div>
-        </section>
-
-        <!-- Research -->
-        <section class="content-section" id="research">
-          <h2 class="section-heading">Research</h2>
-          <div class="section-text">
-            <p>
-              我的研究方向横跨计算机视觉、深度强化学习与机器人学，
-              聚焦于具身智能体的底层理论与工程实现，致力于构建能够在真实物理世界中完成复杂场景感知、逻辑推理与自主决策行动的通用智能系统。
-            </p>
-            <p>
-              我以 “感知 - 认知 - 行动” 闭环为核心框架，探索多模态视觉表征、动态环境建模、分层强化学习与仿真到真实迁移（Sim2Real）等关键技术，旨在让智能体在无结构物理场景中具备类人级的环境理解、任务规划与自主操控能力。核心研究主题包括：
-            </p>
-          </div>
-          <div class="research-tags">
-            <span class="research-tag">Compute Vision(计算机视觉)</span>
-            <span class="research-tag">Deep learning(深度学习)</span>
-            <span class="research-tag">Reinforce learning(强化学习)</span>
-            <span class="research-tag">LLM(大语言模型)</span>
-            <span class="research-tag">Robotics(机器人)</span>
-            <span class="research-tag">Sim2real(仿真到真实迁移)</span>
-            <span class="research-tag">Agent(智能体)</span>
-          </div>
-          <div class="research-figure">
-              <img src="images/reserch.png" alt="Research Overview">
-          </div>
-        </section>
-
-        <!-- Education -->
-        <section class="content-section" id="education">
-          <h2 class="section-heading">Education & Experience</h2>
-          <div class="section-text">
-            <p>
-              <strong>University of Missouri-Columbia</strong>（密苏里大学哥伦比亚分校）<br/>
-              Ph.D. Mechanical and Aerospace Engineer<br/>
-              M.S. Computer Science<br/>
-              M.S. Mechanical and Aerospace Engineer<br/>
-            </p>
-            <p style="margin-top:14px;">
-              <strong>工作经历</strong>
-            </p>
-            <p>
-              • 湖北大学人工智能学院，校聘副研究员（现任）<br/>
-              • 长安大学工程机械学院，讲师<br/>
-              • Siemens Healthineers AI Lab（美国西门子医疗 AI 实验室），Research scientist<br/>
-              • PayPal（美国），Data scientist
-            </p>
-          </div>
-        </section>
-
-        <!-- Publications (preview) -->
-        <section class="content-section" id="publications">
-          <h2 class="section-heading">Join us</h2>
-          <div class="section-text">
-            <p>
-              📢:<font color="red">我们长期招收对 <strong>人工智能、大模型、机器人与具身智能</strong> 感兴趣的本科生与研究生。
-              如果你对科研充满热情，并希望参与前沿 AI 研究，欢迎加入我们的团队。更多内容请见:</font><u><a href="join_us.html">招生说明</a></u>。
-            </p>
-
-          </div>
-        </section>
-
-      </main>
-    </div>
-  </div>
-
-  <!-- Footer -->
-  <footer class="site-footer">
-    © 2024 王翃 (Hong Wang) · 湖北大学人工智能学院 · 
-    <a href="mailto:hong.wang@hubu.edu.cn">hong.wang@hubu.edu.cn</a>
-  </footer>
-
+  function cloudSprite(warm) {
+    const image=document.createElement('canvas');image.width=image.height=192;
+    const ctx=image.getContext('2d');if(!ctx)return null;
+    for(let i=0;i<50;i++){
+      const x=40+random(i+11)*112,y=40+random(i+37)*112,r=10+random(i+59)*45;
+      const gradient=ctx.createRadialGradient(x,y,0,x,y,r);
+      gradient.addColorStop(0,warm?'rgba(170,133,91,.10)':'rgba(116,150,179,.12)');gradient.addColorStop(1,'rgba(0,0,0,0)');
+      ctx.fillStyle=gradient;ctx.fillRect(x-r,y-r,r*2,r*2);
+    }
+    return image;
+  }
+  const blueCloud=!gl?cloudSprite(false):null,amberCloud=!gl?cloudSprite(true):null;
+  function drawFallback(distance,arrival){
+    if(!context)return;
+    context.setTransform(dpr,0,0,dpr,0,0);context.globalAlpha=1;context.fillStyle='#02070c';context.fillRect(0,0,width,height);
+    const focal=Math.min(width,height)*.5,frame=cameraFrame(distance),previousFrame=cameraFrame(Math.max(0,distance-.35));
+    const centerX=width*.5+pointer.x*focal*.025,centerY=height*.5-pointer.y*focal*.025;
+    const screen=point=>({x:centerX+point.x*focal,y:centerY-point.y*focal,depth:point.depth});
+    context.save();context.globalCompositeOperation='screen';
+    for(let i=95;i>=0;i--){
+      const z=relativeDepth(i/96,distance),worldZ=z+cameraDepth(distance);
+      const angle=i*2.399963+worldZ*.15,path=tunnelCenter(worldZ),cylinder=1+Math.sin(worldZ*.6)*.05;
+      const projected=screen(projectPoint(path[0]+Math.cos(angle)*cylinder,path[1]+Math.sin(angle)*cylinder,worldZ,frame));
+      if(projected.depth<.12)continue;
+      const x=projected.x,y=projected.y,size=(.85+random(i+96)*.65)*focal/projected.depth;
+      const opacity=(1-arrival)*Math.min(1,z/.9)*(.35+.65*(1-z/14.05));
+      const sprite=Math.cos(angle+.7)>.7?amberCloud:blueCloud;
+      if(!sprite)continue;
+      context.globalAlpha=opacity;context.drawImage(sprite,x-size/2,y-size/2,size,size);
+    }
+    // Project successive 3D cross-sections along the actual curved centerline.
+    // Their centers and perspective ellipses differ with depth.
+    for(let ring=0;ring<18;ring++){
+      const z=relativeDepth(ring/18,distance),worldZ=z+cameraDepth(distance),path=tunnelCenter(worldZ),r=focal/z;
+      context.globalAlpha=(1-arrival)*(.11+.19*(1-z/14.05));
+      context.strokeStyle='#638fb7';context.lineWidth=Math.max(.55,r*.009);
+      context.beginPath();let penDown=false;
+      for(let side=0;side<=32;side++){
+        const a=side/32*Math.PI*2,point=screen(projectPoint(path[0]+Math.cos(a),path[1]+Math.sin(a),worldZ,frame));
+        if(point.depth<.12){penDown=false;continue;}
+        if(penDown)context.lineTo(point.x,point.y);else context.moveTo(point.x,point.y);penDown=true;
+      }
+      context.stroke();
+    }
+    context.restore();context.strokeStyle='#a9c3d7';context.fillStyle='#a9c3d7';context.lineWidth=.7;
+    for(let i=0;i<750;i++){
+      const j=i*4;
+      if(arrival>.98){
+        if(i>180)break;context.globalAlpha=.08+stars[j+3]*.25;
+        context.fillRect(stars[j]/(Math.PI*2)*width,stars[j+2]*height,.8,.8);continue;
+      }
+      const z=relativeDepth(stars[j+2],distance),worldZ=z+cameraDepth(distance),path=tunnelCenter(worldZ),a=stars[j],rad=.9+stars[j+1]*.15;
+      const worldX=path[0]+Math.cos(a)*rad,worldY=path[1]+Math.sin(a)*rad;
+      const head=screen(projectPoint(worldX,worldY,worldZ,frame)),tail=screen(projectPoint(worldX,worldY,worldZ,previousFrame));
+      if(head.depth<.12||tail.depth<.12)continue;
+      context.globalAlpha=(1-arrival)*(.08+stars[j+3]*.48);
+      context.beginPath();context.moveTo(tail.x,tail.y);context.lineTo(head.x,head.y);context.stroke();
+    }
+    if(map&&arrival<.98){
+      context.save();context.globalAlpha=.13*(1-arrival);
+      for(let ring=0;ring<7;ring++){
+        const z=relativeDepth(ring/7,distance),worldZ=z+cameraDepth(distance),path=tunnelCenter(worldZ);
+        const point=screen(projectPoint(path[0],path[1],worldZ,frame));if(point.depth<.12)continue;
+        const scale=focal/point.depth;
+        context.save();context.translate(point.x,point.y);context.scale(scale/270,scale/270);context.font='italic 18px "Times New Roman",serif';
+        for(let side=0;side<4;side++){context.rotate(Math.PI/2);context.fillText(equations[(ring*4+side)%equations.length],-150,-250);}
+        context.restore();
+      }
+      context.restore();
+    }
+    if(arrival>0&&arrival<.99){context.fillStyle='#02070c';context.globalAlpha=1;context.beginPath();context.arc(centerX,centerY,arrival*arrival*Math.hypot(width,height)*.55,0,Math.PI*2);context.fill();}
+    context.globalAlpha=1;
+  }
+  function draw(){
+    if(disposed||!width||!height)return;
+    const progress=clamp(elapsed/duration,0,1),distance=(.5-.5*Math.cos(Math.PI*progress))*32;
+    const arrival=smooth(.68,.98,progress);
+    if(gl){
+      const frame=cameraFrame(distance);
+      gl.useProgram(program);gl.uniform2f(uniforms.resolution,canvas.width,canvas.height);gl.uniform2f(uniforms.pointer,pointer.x,pointer.y);
+      gl.uniform3f(uniforms.cameraOrigin,...frame.origin);gl.uniform3f(uniforms.cameraForward,...frame.forward);
+      gl.uniform3f(uniforms.cameraRight,...frame.right);gl.uniform3f(uniforms.cameraUp,...frame.up);
+      gl.uniform1f(uniforms.travel,distance);gl.uniform1f(uniforms.cameraZ,cameraDepth(distance));gl.uniform1f(uniforms.arrival,arrival);gl.drawArrays(gl.TRIANGLES,0,6);
+    }else drawFallback(distance,arrival);
+  }
+  function resize(){
+    if(disposed)return;width=intro.clientWidth||innerWidth;height=intro.clientHeight||innerHeight;
+    // The curved tube uses more fragment work than the original straight view.
+    // Keep its soft cloud field at a bounded resolution before the first frame.
+    const budget=(width<640?300000:520000)*quality;
+    dpr=Math.min(devicePixelRatio||1,1.4,Math.sqrt(budget/(width*height)));
+    canvas.width=Math.max(1,Math.round(width*dpr));canvas.height=Math.max(1,Math.round(height*dpr));
+    if(gl)gl.viewport(0,0,canvas.width,canvas.height);draw();stillFrames=0;
+  }
+  function arrive(){
+    if(arrived||leaving)return;arrived=true;elapsed=duration;
+    intro.classList.add('ei-arrived');intro.dataset.state='welcome';welcome.inert=false;replay.hidden=false;skip.hidden=true;
+    if(document.activeElement===skip)enter.focus({preventScroll:true});draw();
+  }
+  function tick(now){
+    raf=0;if(disposed||leaving||document.hidden){lastTime=null;return;}
+    const frameSeconds=lastTime===null?0:(now-lastTime)/1000;
+    const dt=Math.min(frameSeconds,.05);lastTime=now;
+    if(gl&&!arrived&&elapsed>.15){
+      slowSeconds=frameSeconds>.032?slowSeconds+frameSeconds:Math.max(0,slowSeconds-frameSeconds*2);
+      if(slowSeconds>.18&&quality>.38){quality=Math.max(.38,quality*.72);slowSeconds=0;resize();}
+    }
+    // Use actual visible time for the cinematic. Capping this to the pointer
+    // smoothing dt stretches a 7.4-second journey into tens of seconds at low FPS.
+    if(!arrived)elapsed=Math.min(duration,elapsed+frameSeconds);
+    const blend=1-Math.exp(-dt*6);
+    pointer.x+=(pointer.targetX-pointer.x)*blend;pointer.y+=(pointer.targetY-pointer.y)*blend;
+    const moving=Math.abs(pointer.x-pointer.targetX)+Math.abs(pointer.y-pointer.targetY)>.001;
+    if(!arrived||moving||stillFrames<3){draw();stillFrames++;}
+    if(elapsed>=duration&&!arrived)arrive();
+    raf=requestAnimationFrame(tick);
+  }
+  function schedule(){if(!disposed&&!leaving&&!document.hidden&&!raf){lastTime=null;raf=requestAnimationFrame(tick);}}
+  function onPointer(event){
+    pointer.targetX=(event.clientX/width-.5)*2;pointer.targetY=-(event.clientY/height-.5)*2;stillFrames=0;
+  }
+  function onVisibility(){if(document.hidden){cancelAnimationFrame(raf);raf=0;lastTime=null;}else schedule();}
+  function onReduced(){if(reduced.matches&&!leaving){arrive();draw();}}
+  function restart(){
+    if(leaving||disposed)return;
+    elapsed=0;lastTime=null;arrived=false;stillFrames=0;
+    intro.classList.remove('ei-arrived');intro.dataset.state='journey';welcome.inert=true;replay.hidden=true;skip.hidden=false;
+    skip.focus({preventScroll:true});schedule();
+  }
+  function dispose(){
+    if(disposed)return;disposed=true;cancelAnimationFrame(raf);raf=0;
+    removeEventListener('resize',resize);document.removeEventListener('visibilitychange',onVisibility);document.removeEventListener('keydown',onKey);
+    intro.removeEventListener('pointermove',onPointer);reduced.removeEventListener?.('change',onReduced);
+    window.visualViewport?.removeEventListener('resize',resize);
+    if(gl){if(buffer)gl.deleteBuffer(buffer);if(texture)gl.deleteTexture(texture);if(program)gl.deleteProgram(program);resources.forEach(s=>gl.deleteShader(s));}
+  }
+  function enterHomepage(){
+    if(leaving)return;leaving=true;intro.dataset.state='leaving';intro.classList.add('ei-leaving');
+    dispose();
+    content.forEach((node,index)=>{node.inert=originalInert[index];});
+    root.classList.remove('ei-intro-locked');body.classList.remove('ei-intro-locked');
+    const first=body.querySelector('.site-header .site-nav a[aria-current="page"]')||body.querySelector('.navbar a.active')||restoreFocus;
+    first?.focus?.({preventScroll:true});intro.inert=true;
+    setTimeout(()=>{intro.remove();document.getElementById('ei-intro-style')?.remove();},900);
+  }
+  function onKey(event){
+    if(leaving)return;
+    if(event.key==='Escape'){event.preventDefault();if(arrived)enterHomepage();else arrive();return;}
+    if(event.key!=='Tab')return;
+    const stops=arrived?[enter,replay]:[skip],first=stops[0],last=stops[stops.length-1];
+    if(event.shiftKey&&(document.activeElement===first||!stops.includes(document.activeElement))){event.preventDefault();last.focus({preventScroll:true});}
+    else if(!event.shiftKey&&(document.activeElement===last||!stops.includes(document.activeElement))){event.preventDefault();first.focus({preventScroll:true});}
+  }
+  skip.addEventListener('click',arrive);replay.addEventListener('click',restart);enter.addEventListener('click',enterHomepage);
+  intro.addEventListener('pointermove',onPointer,{passive:true});document.addEventListener('keydown',onKey);
+  addEventListener('resize',resize,{passive:true});document.addEventListener('visibilitychange',onVisibility);
+  window.visualViewport?.addEventListener('resize',resize,{passive:true});reduced.addEventListener?.('change',onReduced);
+  canvas.addEventListener('webglcontextlost',event=>{event.preventDefault();if(!disposed){gl=null;arrive();canvas.style.opacity='0';}});
+  addEventListener('pagehide',event=>{cancelAnimationFrame(raf);raf=0;if(!event.persisted)dispose();});
+  addEventListener('pageshow',event=>{if(event.persisted&&!disposed)schedule();});
+  resize();if(reduced.matches||(!gl&&!context))arrive();schedule();
+})();
+</script>
 </body>
 </html>

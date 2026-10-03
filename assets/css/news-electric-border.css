@@ -1,0 +1,61 @@
+/* One decorative border follows the selected card inside the news scrollport. */
+.news-timeline-page .nt-panel {position:relative}
+.news-timeline-page .nt-electric-layer {
+  position:absolute;
+  z-index:2;
+  overflow:hidden;
+  overflow:clip;
+  pointer-events:none;
+  user-select:none;
+  contain:strict;
+}
+.news-timeline-page .nt-electric-layer[hidden] {display:none}
+.news-timeline-page .nt-electric-border {
+  --electric-border-color:#7df9ff;
+  --electric-glow-soft:rgba(125,249,255,.2);
+  --electric-glow-strong:rgba(125,249,255,.55);
+  position:absolute;
+  border-radius:6px;
+  isolation:isolate;
+  pointer-events:none;
+}
+html[data-theme=light] .news-timeline-page .nt-electric-border {
+  --electric-border-color:#2879b9;
+  --electric-glow-soft:rgba(40,121,185,.13);
+  --electric-glow-strong:rgba(40,121,185,.38);
+}
+.news-timeline-page .nt-electric-border .eb-canvas-container {
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  z-index:2;
+  pointer-events:none;
+}
+.news-timeline-page .nt-electric-border .eb-canvas {display:block;max-width:none}
+.news-timeline-page .nt-electric-border .eb-layers,
+.news-timeline-page .nt-electric-border .eb-glow-1,
+.news-timeline-page .nt-electric-border .eb-glow-2,
+.news-timeline-page .nt-electric-border .eb-background-glow {
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  pointer-events:none;
+}
+.news-timeline-page .nt-electric-border .eb-glow-1 {
+  border:2px solid var(--electric-glow-strong);
+  filter:blur(1px);
+}
+.news-timeline-page .nt-electric-border .eb-glow-2 {
+  border:2px solid var(--electric-border-color);
+  filter:blur(4px);
+  opacity:.65;
+}
+.news-timeline-page .nt-electric-border .eb-background-glow {
+  /* A halo along the perimeter keeps the original news surface readable. */
+  box-shadow:0 0 20px 3px var(--electric-glow-soft),inset 0 0 14px var(--electric-glow-soft);
+}
+@media(prefers-reduced-motion:reduce) {
+  .news-timeline-page .nt-electric-border .eb-canvas-container {display:none}
+  .news-timeline-page .nt-electric-border .eb-glow-2 {opacity:.3}
+}
